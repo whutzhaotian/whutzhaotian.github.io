@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-05 00:38:54" itemprop="dateModified" datetime="2020-08-05T00:38:54+08:00">2020-08-05</time>
+                <time title="修改时间：2020-08-05 23:13:40" itemprop="dateModified" datetime="2020-08-05T23:13:40+08:00">2020-08-05</time>
               </span>
 
           
@@ -294,10 +294,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-04 22:59:26 / 修改时间：23:47:30" itemprop="dateCreated datePublished" datetime="2020-08-04T22:59:26+08:00">2020-08-04</time>
+              <time title="创建时间：2020-08-04 22:59:26" itemprop="dateCreated datePublished" datetime="2020-08-04T22:59:26+08:00">2020-08-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-05 22:25:53" itemprop="dateModified" datetime="2020-08-05T22:25:53+08:00">2020-08-05</time>
+              </span>
 
           
 
@@ -310,9 +316,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="服务器命令"><a href="#服务器命令" class="headerlink" title="服务器命令"></a>服务器命令</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo server Hexo  //会监视文件变动并自动更新，您无须重启服务器。</span><br><span class="line">hexo server -s   //静态模式</span><br><span class="line">hexo server -p <span class="number">5000</span>    //更改端口</span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>   //自定义 IP</span><br><span class="line"></span><br><span class="line">hexo clean  //清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo g  //生成静态网页</span><br><span class="line">hexo d  //开始部署</span><br></pre></td></tr></table></figure>
+          <h1 id="sever-command"><a href="#sever-command" class="headerlink" title="sever command"></a>sever command</h1><h1 id="服务器命令"><a href="#服务器命令" class="headerlink" title="服务器命令"></a>服务器命令</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo server Hexo  //会监视文件变动并自动更新，您无须重启服务器。</span><br><span class="line">hexo server -s   //静态模式</span><br><span class="line">hexo server -p <span class="number">5000</span>    //更改端口</span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>   //自定义 IP</span><br><span class="line"></span><br><span class="line">hexo clean  //清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo g  //生成静态网页</span><br><span class="line">hexo d  //开始部署</span><br></pre></td></tr></table></figure>
 
-<h1 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate  //使用 Hexo 生成静态文件快速而且简单</span><br><span class="line">hexo generate --watch  //监视文件变动</span><br></pre></td></tr></table></figure>
+<h1 id="file-watch"><a href="#file-watch" class="headerlink" title="file watch"></a>file watch</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate  //使用 Hexo 生成静态文件快速而且简单</span><br><span class="line">hexo generate --watch  //监视文件变动</span><br></pre></td></tr></table></figure>
 
 <h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">两个命令的作用是相同的</span><br><span class="line">hexo generate --deploy</span><br><span class="line">hexo deploy --generate</span><br><span class="line"></span><br><span class="line">hexo deploy -g</span><br><span class="line">hexo server -g</span><br></pre></td></tr></table></figure>
 
@@ -344,6 +350,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish draft newpage</span><br></pre></td></tr></table></figure>
 
 <p>就会自动把newpage.md发送到post中</p>
+<h1 id="Exception-Solution"><a href="#Exception-Solution" class="headerlink" title="Exception Solution"></a>Exception Solution</h1><h2 id="md文档标题为中文时在hexo不能正常跳转"><a href="#md文档标题为中文时在hexo不能正常跳转" class="headerlink" title="md文档标题为中文时在hexo不能正常跳转"></a>md文档标题为中文时在hexo不能正常跳转</h2><p>解决：<a target="_blank" rel="noopener" href="https://mdluo.com/heading-anchors-in-hexo">https://mdluo.com/heading-anchors-in-hexo</a></p>
 
       
     </div>
@@ -389,6 +396,13 @@
 
               <time title="创建时间：2020-08-03 23:32:20" itemprop="dateCreated datePublished" datetime="2020-08-03T23:32:20+08:00">2020-08-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-05 22:27:05" itemprop="dateModified" datetime="2020-08-05T22:27:05+08:00">2020-08-05</time>
+              </span>
 
           
 
@@ -537,7 +551,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
