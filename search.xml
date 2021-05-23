@@ -4,6 +4,72 @@
   
     
     <entry>
+      <title>策略模式</title>
+      <link href="/2021/05/23/DesignPattern/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2021/05/23/DesignPattern/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+            <tag> 策略模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>三剑客——(awk、sed、grep)</title>
+      <link href="/2021/05/23/Linux/awk-sed-grep/"/>
+      <url>/2021/05/23/Linux/awk-sed-grep/</url>
+      
+        <content type="html"><![CDATA[<h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><p>详细可参考：<a href="https://www.cnblogs.com/ginvip/p/6352157.html">https://www.cnblogs.com/ginvip/p/6352157.html</a></p><p>适合处理高度表格化的数据，逐行处理</p><p><code>awk &#39;&#123;print $1 &quot; &quot; $2&#125;&#39; filename</code>   </p><p>输出<code>filename</code> 每行第一列数据  <code>$2</code>表示第二列 以此类推，<code>$0</code>表示整行;</p><p><code>awk &#39;BEGIN&#123;count=0 &#125; &#123;count+=$1&#125; END&#123;print count&#125; &#39; filename</code>  </p><p><code>BEGIN&#123;&#125;</code>初始化，在开始处理行之前执行，<code>END&#123;&#125;</code>后处理，在处理完所有行执行</p><h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> awk </category>
+          
+          <category> sed </category>
+          
+          <category> grep </category>
+          
+          <category> tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> awk </tag>
+            
+            <tag> sed </tag>
+            
+            <tag> grep </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>next主题</title>
       <link href="/2020/08/04/next%E4%B8%BB%E9%A2%98/"/>
       <url>/2020/08/04/next%E4%B8%BB%E9%A2%98/</url>
