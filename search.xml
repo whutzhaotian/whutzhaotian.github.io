@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>maven命令</title>
+      <link href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/"/>
+      <url>/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="清空构建产物"><a href="#清空构建产物" class="headerlink" title="清空构建产物"></a>清空构建产物</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure><h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>详细参考：<a href="https://www.cnblogs.com/hiver/p/7850954.html">https://www.cnblogs.com/hiver/p/7850954.html</a></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Dmaven.test.skip -pl parentModule.childModule -am -Pcustom_profile</span><br></pre></td></tr></table></figure><p><code>-Dmaven.test.skip</code> 跳过测试代码</p><p><code>-pl XXX.xxx </code>  选择指定模块  父模块.子模块</p><p><code>-am</code>  同时处理选定模块所依赖的模块 </p><p><code>-Pxxxx</code> 选定构建的profile环境</p><h1 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h1><p>完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库</p><h1 id="mvn-deploy"><a href="#mvn-deploy" class="headerlink" title="mvn deploy"></a>mvn deploy</h1><p>deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> maven </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>编码</title>
       <link href="/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/"/>
       <url>/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/</url>
