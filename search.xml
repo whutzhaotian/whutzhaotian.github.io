@@ -4,6 +4,73 @@
   
     
     <entry>
+      <title>一点心得</title>
+      <link href="/2021/06/25/%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/"/>
+      <url>/2021/06/25/%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/</url>
+      
+        <content type="html"><![CDATA[<p>1.写sql时涉及大表，或者未来会成为大表的表都需要考虑慢查询，提前根据业务建好索引，充分利用好索引</p><p>2.写涉及更新插入的业务，需要考虑事务，如果某一阶段出现异常对全局的影响是否符合预期，需不需要回滚</p><p>3.涉及临界资源（可通过多种渠道改变其状态时），应当加锁处理，保证互斥性</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 心得 </tag>
+            
+            <tag> 好习惯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cookie</title>
+      <link href="/2021/06/06/cookie/"/>
+      <url>/2021/06/06/cookie/</url>
+      
+        <content type="html"><![CDATA[<p>参考：</p><p><a href="https://www.cnblogs.com/zhuanzhuanfe/p/8010854.html">https://www.cnblogs.com/zhuanzhuanfe/p/8010854.html</a></p><p><a href="https://www.cnblogs.com/daysme/p/8052930.html">https://www.cnblogs.com/daysme/p/8052930.html</a></p><p>简要描述：cookie的存在是为了弥补HTTP连接的无状态，由服务器产生，存在客户端(浏览器，通过小型文本文件存储 大小有限制一般是4K 与浏览器有关)，下次请求带上这个cookie，以维持连接状态；但是cookie的安全性是个弊端，一般在cookie存储敏感信息</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/login&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">m5</span><span class="params">(HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// K-V cookie键值</span></span><br><span class="line">       Cookie cookie1 = <span class="keyword">new</span> Cookie(<span class="string">&quot;user&quot;</span>, <span class="string">&quot;ztt&quot;</span>);</span><br><span class="line">       <span class="comment">// 限制了cookie对HTTP请求的作用范围。特别的，该属性指示用户代理忽略那些通过&quot;非 HTTP&quot; 方式对 cookie 的访问（比如浏览器暴露给js的接口）</span></span><br><span class="line">       <span class="comment">// document.cookie是获取不到改cookie的</span></span><br><span class="line">       cookie1.setHttpOnly(<span class="keyword">true</span>);</span><br><span class="line">       <span class="comment">// 正数：表示在指定秒后失效；负数：表示会话cookie,关闭浏览器即失效</span></span><br><span class="line">       cookie1.setMaxAge(<span class="number">100000</span>);</span><br><span class="line">       <span class="comment">// 可以访问此cookie的域名</span></span><br><span class="line">       cookie1.setDomain(<span class="string">&quot;baidu.com&quot;</span>);</span><br><span class="line">       <span class="comment">// 是否只能通过https来传递此条cookie true-是 false-否</span></span><br><span class="line">       cookie1.setSecure(<span class="keyword">true</span>);</span><br><span class="line">       <span class="comment">// 指定与cookie关联在一起的网页 baidu.com/test路径下的页面才可以使用该cookie</span></span><br><span class="line">       cookie1.setPath(<span class="string">&quot;/test&quot;</span>);</span><br><span class="line">       <span class="comment">// 设置新的V值</span></span><br><span class="line">       cookie1.setValue(<span class="string">&quot;new&quot;</span>);</span><br><span class="line">       Cookie cookie2 = <span class="keyword">new</span> Cookie(<span class="string">&quot;psw&quot;</span>, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">       response.addCookie(cookie1);</span><br><span class="line">       response.addCookie(cookie2);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;login success&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>请求<a href="http://localhost:8080/login%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4%EF%BC%9A">http://localhost:8080/login的响应头：</a></p><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Content-Length</span>: 13</span><br><span class="line"><span class="attribute">Content-Type</span>: text/html;charset=UTF-8</span><br><span class="line"><span class="attribute">Date</span>: Thu, 03 Jun 2021 08:51:35 GMT</span><br><span class="line"><span class="attribute">Keep-Alive</span>: timeout=60</span><br><span class="line"><span class="attribute">Set-Cookie</span>: user=new; Max-Age=100000; Expires=Fri, 04-Jun-2021 12:38:15 GMT; Domain=baidu.com; Path=/test; Secure; HttpOnly</span><br><span class="line"><span class="attribute">Set-Cookie</span>: psw=123</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> cookie </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cookie </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IDEA</title>
+      <link href="/2021/05/29/idea/"/>
+      <url>/2021/05/29/idea/</url>
+      
+        <content type="html"><![CDATA[<h1 id="激活码"><a href="#激活码" class="headerlink" title="激活码"></a>激活码</h1><p><a href="http://idea.medeming.com/jihuoma/">http://idea.medeming.com/jihuoma/</a> </p><p>下载，将txt上的激活码粘上去即可</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> IDEA </tag>
+            
+            <tag> JetBrains激活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>maven命令</title>
       <link href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/"/>
       <url>/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/</url>
