@@ -20,20 +20,27 @@
     var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="编码参考： https:&#x2F;&#x2F;www.cnblogs.com&#x2F;skynet&#x2F;archive&#x2F;2011&#x2F;05&#x2F;03&#x2F;2035105.html 1.按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码” 2.字符，抽象的最小文本单位， 仅仅代表一个符号 ，是一个英文字母也可能是汉字亦或是一个特殊符号 3.字符集，某个符号和某个数字映">
+  <meta name="description" content="单元测试概述最近读代码整洁之道，了解了单元测试的重要性，单元测试可以在极大程度上保证我们在以前的代码上的修改没有什么问题(比如新的更改对其它关联业务产生的影响)，基本可以保障代码实际运行情况与我们的预期保持一致。TDD(测试驱动开发)真的很不错，不然都没信心重构代码和修改代码。 关于写单元测试的一些好的标准&#x2F;规范：  每个测试一个概念，正所谓单元测试 自动化，测试自动化，结果判断自动化 可重复执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编码">
-<meta property="og:url" content="https://ztt0tian.github.io/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/index.html">
+<meta property="og:title" content="单元测试">
+<meta property="og:url" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="不知名TT">
-<meta property="og:description" content="编码参考： https:&#x2F;&#x2F;www.cnblogs.com&#x2F;skynet&#x2F;archive&#x2F;2011&#x2F;05&#x2F;03&#x2F;2035105.html 1.按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码” 2.字符，抽象的最小文本单位， 仅仅代表一个符号 ，是一个英文字母也可能是汉字亦或是一个特殊符号 3.字符集，某个符号和某个数字映">
+<meta property="og:description" content="单元测试概述最近读代码整洁之道，了解了单元测试的重要性，单元测试可以在极大程度上保证我们在以前的代码上的修改没有什么问题(比如新的更改对其它关联业务产生的影响)，基本可以保障代码实际运行情况与我们的预期保持一致。TDD(测试驱动开发)真的很不错，不然都没信心重构代码和修改代码。 关于写单元测试的一些好的标准&#x2F;规范：  每个测试一个概念，正所谓单元测试 自动化，测试自动化，结果判断自动化 可重复执行">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-24T15:02:04.000Z">
-<meta property="article:modified_time" content="2021-05-24T15:02:56.353Z">
+<meta property="og:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724115801746.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724115830641.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120059121.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120148795.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120508826.png">
+<meta property="article:published_time" content="2021-07-24T02:54:20.000Z">
+<meta property="article:modified_time" content="2021-07-24T04:06:58.762Z">
 <meta property="article:author" content="zhaotian">
-<meta property="article:tag" content="编码">
+<meta property="article:tag" content="单元测试">
+<meta property="article:tag" content="测试覆盖率">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724115801746.png">
 
-<link rel="canonical" href="https://ztt0tian.github.io/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/">
+<link rel="canonical" href="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
 
 
 <script id="page-configurations">
@@ -46,7 +53,7 @@
   };
 </script>
 
-  <title>编码 | 不知名TT</title>
+  <title>单元测试 | 不知名TT</title>
   
 
 
@@ -200,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -213,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          编码
+          单元测试
         </h1>
 
         <div class="post-meta">
@@ -224,7 +231,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-24 23:02:04 / 修改时间：23:02:56" itemprop="dateCreated datePublished" datetime="2021-05-24T23:02:04+08:00">2021-05-24</time>
+              <time title="创建时间：2021-07-24 10:54:20 / 修改时间：12:06:58" itemprop="dateCreated datePublished" datetime="2021-07-24T10:54:20+08:00">2021-07-24</time>
             </span>
 
           
@@ -245,29 +252,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html</a></p>
-<p>1.按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”</p>
-<p>2.字符，抽象的最小文本单位， 仅仅代表一个符号 ，是一个英文字母也可能是汉字亦或是一个特殊符号</p>
-<p>3.字符集，某个符号和某个数字映射关系的一个表，不同的表有不同的映射关系</p>
-<p>4.字符编码方式，决定一个字符的表示方式</p>
-<h2 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h2><p>American Standard Code for Information Interchange，美国信息互换标准代码</p>
-<p>使用指定的7 位或8 位二进制数组合来表示128 或256 种可能的字符</p>
-<p>标准 ASCII码一共规定了128个字符的编码，只占用了一个字节的后面7位，最前面的1位统一规定为0</p>
-<h2 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h2><p>对 ASCII 的中文扩展</p>
-<h2 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h2><p>包括了 GB2312 的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。</p>
-<h2 id="GB18030"><a href="#GB18030" class="headerlink" title="GB18030"></a>GB18030</h2><p>又加了几千个新的少数民族的字，GBK 扩成了 GB18030</p>
-<h2 id="UNICODE"><a href="#UNICODE" class="headerlink" title="UNICODE"></a>UNICODE</h2><p>包括了地球上所有文化、所有字母和符号的编码;在UNICODE 中，一个字符就是两个字节，不论是英文字符还是汉字，前三种支持中文的编码方式都是使用双字节表示汉字，用单字节表示英文字符</p>
-<p>存在的问题：</p>
-<p>第一个问题是，如何才能区别unicode和ascii？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hongsong673150343/article/details/88584753">https://blog.csdn.net/hongsong673150343/article/details/88584753</a></p>
-<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是Unicode的实现方式之一</p>
-<p>是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</p>
-<p>UTF-8的编码规则很简单，只有二条：</p>
-<p>1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</p>
-<p>2）对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</p>
-<h2 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h2><p>一种字符代码，对于英文文件是ASCII编码，对于简体中文文件是GB2312编码（只针对Windows简体中文版，如果是繁体中文版会采用Big5码）</p>
+        <h1 id="单元测试概述"><a href="#单元测试概述" class="headerlink" title="单元测试概述"></a>单元测试概述</h1><p>最近读代码整洁之道，了解了单元测试的重要性，单元测试可以在极大程度上保证我们在以前的代码上的修改没有什么问题(比如新的更改对其它关联业务产生的影响)，基本可以保障代码实际运行情况与我们的预期保持一致。TDD(测试驱动开发)真的很不错，不然都没信心重构代码和修改代码。</p>
+<p>关于写单元测试的一些好的标准/<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/37ffeef5ee5b">规范</a>：</p>
+<ul>
+<li>每个测试一个概念，正所谓单元测试</li>
+<li>自动化，测试自动化，结果判断自动化</li>
+<li>可重复执行</li>
+<li>针对性，一个单元测试只测一个方法</li>
+<li>彻底性，覆盖所有可能的情况，保持代码路径覆盖率越高越好</li>
+<li>单测应该测试目标方法本身的逻辑，对于被测试的方法内部调用的非私有方法应进行mock，推荐使用Mockito进行mock（避免因其它方法导致当前方法的逻辑出现问题）</li>
+<li>独立性，不依赖于其它单元测试</li>
+<li>对实现类进行测试而非接口</li>
+<li>隔离性，涉及到数据变更，必须进行回滚</li>
+<li>只需要测含有业务逻辑的方法（包括service层 dao层 含有业务逻辑controller层的一些方法），只要是提供了逻辑的就应该测试</li>
+<li>私有方法通过调用类的单测进行测试（抽象成另外一个类中的public方法/在测试中利用反射进行调用）</li>
+<li>测试保护正向测试和反向测试（正常/异常情况都应覆盖，其对于异常的测试可以异常测试的相关注解，不要在test中使用try catch）</li>
+<li>如果被测试的方法的逻辑结果体现在方法返回或成员变量中，则使用Assert断言验证该返回或成员变量</li>
+<li>如果被测试的方法的逻辑体现在内部的方法调用行为本身，则使用Mockito的verify验证内部方法调用的情况</li>
+<li>单测应在相应的目标方法开发完后立即编写，如能在开发前就开始编写则更好（TDD）</li>
+</ul>
+<h1 id="测试覆盖率实践-IDEA"><a href="#测试覆盖率实践-IDEA" class="headerlink" title="测试覆盖率实践(IDEA)"></a>测试覆盖率实践(IDEA)</h1><p>业务代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ((x &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;it is Odd&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;it is not Odd&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>保证有测试目录</p>
+<p><img src="/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724115801746.png" alt="image-20210724115801746"></p>
+<p>光标停在isOdd方法上，ctrl+shift+T ，enter，自动生成测试模板</p>
+<p><img src="/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724115830641.png" alt="image-20210724115830641"></p>
+<p>完成单元测试方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Assert;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Main main;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        main = <span class="keyword">new</span> Main();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isOdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> res1 = main.isOdd(<span class="number">1</span>);</span><br><span class="line">        Assert.assertTrue(res1 == <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">boolean</span> res2 = main.isOdd(<span class="number">2</span>);</span><br><span class="line">        Assert.assertTrue(res2 == <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接运行单元测试</p>
+<p><img src="/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120059121.png" alt="image-20210724120059121"></p>
+<p>带有覆盖率统计的运行</p>
+<p><img src="/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120148795.png" alt="image-20210724120148795"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31702847/article/details/104866713">运行结果</a></p>
+<p><img src="/2021/07/24/%E6%B5%8B%E8%AF%95/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/image-20210724120508826.png" alt="image-20210724120508826"></p>
+<h1 id="WEB项目中的单元测试实践"><a href="#WEB项目中的单元测试实践" class="headerlink" title="WEB项目中的单元测试实践"></a>WEB项目中的单元测试实践</h1>
     </div>
 
     
@@ -296,7 +316,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BC%96%E7%A0%81/" rel="tag"># 编码</a>
+              <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag"># 单元测试</a>
+              <a href="/tags/%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87/" rel="tag"># 测试覆盖率</a>
           </div>
 
         
@@ -305,13 +326,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/" rel="prev" title="拦截器实现">
-      <i class="fa fa-chevron-left"></i> 拦截器实现
+    <a href="/2021/07/24/LeetCode/array/" rel="prev" title="数组类的解题总结">
+      <i class="fa fa-chevron-left"></i> 数组类的解题总结
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/" rel="next" title="maven命令">
-      maven命令 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -370,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">ASCII码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GB2312"><span class="nav-number">1.2.</span> <span class="nav-text">GB2312</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GBK"><span class="nav-number">1.3.</span> <span class="nav-text">GBK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GB18030"><span class="nav-number">1.4.</span> <span class="nav-text">GB18030</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNICODE"><span class="nav-number">1.5.</span> <span class="nav-text">UNICODE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.5.1.</span> <span class="nav-text">UTF-8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANSI"><span class="nav-number">1.6.</span> <span class="nav-text">ANSI</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">单元测试概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E5%AE%9E%E8%B7%B5-IDEA"><span class="nav-number">2.</span> <span class="nav-text">测试覆盖率实践(IDEA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEB%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5"><span class="nav-number">3.</span> <span class="nav-text">WEB项目中的单元测试实践</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

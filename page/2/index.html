@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,84 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Web/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Web/ajax/" class="post-title-link" itemprop="url">ajax属性配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:50:13 / 修改时间：22:52:44" itemprop="dateCreated datePublished" datetime="2021-05-24T22:50:13+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ajax/" itemprop="url" rel="index"><span itemprop="name">ajax</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tylerdonet/p/3520862.html">https://www.cnblogs.com/tylerdonet/p/3520862.html</a></p>
+<p>列举几个比较常用的属性：</p>
+<h1 id="url"><a href="#url" class="headerlink" title="url"></a>url</h1><p>String类型，请求地址url</p>
+<h1 id="type"><a href="#type" class="headerlink" title="type"></a>type</h1><p>String类型，请求方式（post或get）默认为get。注意其他http请求方法，例如put和delete也可以使用，但仅部分浏览器支持。</p>
+<h1 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h1><p>Boolean类型，默认为true（当dataType为script时，默认为false），设置为false将不会从浏览器缓存中加载请求信息。</p>
+<h1 id="data"><a href="#data" class="headerlink" title="data"></a>data</h1><p>Object或String类型，发送到服务器的数据</p>
+<h1 id="contentType"><a href="#contentType" class="headerlink" title="contentType"></a>contentType</h1><p>String类型，发送数据到服务器时的内容编码类型， 内容编码类型默认为”application/x-www-form-urlencoded” </p>
+<p>更多参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tugenhua0707/p/8975121.html">https://www.cnblogs.com/tugenhua0707/p/8975121.html</a></p>
+<h1 id="dataType"><a href="#dataType" class="headerlink" title="dataType"></a>dataType</h1><p>String类型，预期服务器返回的数据类型。如果不指定，JQuery将自动根据http包mime信息返回responseXML或responseText，并作为回调函数参数传递。可用的类型如下：<br>xml：返回XML文档，可用JQuery处理。<br>html：返回纯文本HTML信息；包含的script标签会在插入DOM时执行。<br>script：返回纯文本JavaScript代码。不会自动缓存结果。除非设置了cache参数。注意在远程请求时（不在同一个域下），所有post请求都将转为get请求。<br>json：返回JSON数据。<br>jsonp：JSONP格式。使用SONP形式调用函数时，例如myurl?callback=?，JQuery将自动替换后一个“?”为正确的函数名，以执行回调函数。<br>text：返回纯文本字符串。</p>
+<h1 id="success"><a href="#success" class="headerlink" title="success"></a>success</h1><p>请求成功后调用的回调函数，有两个参数。<br>         (1)由服务器返回，并根据dataType参数进行处理后的数据。<br>         (2)描述状态的字符串。</p>
+<h1 id="error"><a href="#error" class="headerlink" title="error"></a>error</h1><p>请求失败时被调用的函数。该函数有3个参数，即XMLHttpRequest对象、错误信息、捕获的错误对象</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -968,7 +1046,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -981,7 +1059,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
