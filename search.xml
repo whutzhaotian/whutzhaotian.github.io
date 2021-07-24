@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>数组类的解题总结</title>
+      <link href="/2021/07/24/LeetCode/array/"/>
+      <url>/2021/07/24/LeetCode/array/</url>
+      
+        <content type="html"><![CDATA[<h1 id="N数之和-对撞指针"><a href="#N数之和-对撞指针" class="headerlink" title="N数之和(对撞指针)"></a>N数之和(对撞指针)</h1><p>一般需要保持数组有序，首先进行排序</p><p>固定第1个数，再固定第二个数…留下最后两个游标表示最后两个数，得到他们临时的一个和与目标值比较，大了右游标左移，小了左游标右移，相等则记录结果，左右游标同时往中间靠，这个过程需要排除重复值</p><h1 id="最大装水量（对撞指针）"><a href="#最大装水量（对撞指针）" class="headerlink" title="最大装水量（对撞指针）"></a>最大装水量（对撞指针）</h1><p>高度取左右指针对应高度更高的；宽度取左右指针间隔距离；移动时，高度较低的指针率先往中间靠；</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTTP请求头和响应头</title>
       <link href="/2021/06/28/%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%92%8C%E5%93%8D%E5%BA%94%E5%A4%B4/"/>
       <url>/2021/06/28/%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%92%8C%E5%93%8D%E5%BA%94%E5%A4%B4/</url>
@@ -25,11 +46,11 @@
     
     
     <entry>
-      <title>一点心得</title>
+      <title>一点mysql心得</title>
       <link href="/2021/06/25/%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/"/>
       <url>/2021/06/25/%E4%B8%80%E7%82%B9%E5%BF%83%E5%BE%97/</url>
       
-        <content type="html"><![CDATA[<p>1.写sql时涉及大表，或者未来会成为大表的表都需要考虑慢查询，提前根据业务建好索引，充分利用好索引</p><p>2.写涉及更新插入的业务，需要考虑事务，如果某一阶段出现异常对全局的影响是否符合预期，需不需要回滚</p><p>3.涉及临界资源（可通过多种渠道改变其状态时），应当加锁处理，保证互斥性</p><p>4.慢查询优化</p><ul><li><p>​    搞清楚需要获取的目标信息，当为了获取这些信息时需要不得已关联多个表时（尤其存在较大数据量的表），需要斟酌先查哪个表，一般是避免先查大表。比如A表(大表),B表(小表)，最终的结果是由A表和B表共同决定的，先查A表再查B表筛选一般来说效率要低很多，这时可以先查出B表，过滤性更高，再可通过B表一些额外的关联属性去根据A表再滤除(exist等等)</p></li><li><p>分页查询查的慢，除了分页本身的查询优化外，还需要看查总记录数的count查询语句，如果只是简单的加一层count(*)的封装一般是不合理的；一次性查出所有的记录可能确实比较慢，但是在查询一页的数据时因查count时导致慢查询进而失败确有些可惜；limit越靠前的数据查询时会比较迅速的</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>1.写sql时涉及大表，或者未来会成为大表的表都需要考虑慢查询，提前根据业务建好索引，充分利用好索引</p><p>2.写涉及更新插入的业务，需要考虑事务，如果某一阶段出现异常对全局的影响是否符合预期，需不需要回滚</p><p>3.涉及临界资源（可通过多种渠道改变其状态时），应当加锁处理，保证互斥性</p><p>4.慢查询优化</p><ul><li>​    搞清楚需要获取的目标信息，当为了获取这些信息时需要不得已关联多个表时（尤其存在较大数据量的表），需要斟酌先查哪个表，一般是避免先查大表。比如A表(大表),B表(小表)，最终的结果是由A表和B表共同决定的，先查A表再查B表筛选一般来说效率要低很多，这时可以先查出B表，过滤性更高，再可通过B表一些额外的关联属性去根据A表再滤除(exist等等)</li><li>分页查询查的慢，除了分页本身的查询优化外，还需要看查总记录数的count查询语句，如果只是简单的加一层count(*)的封装一般是不合理的；一次性查出所有的记录可能确实比较慢，但是在查询一页的数据时因查count时导致慢查询进而失败确有些可惜；limit越靠前的数据查询时会比较迅速的</li><li>在做业务时需要查询数据库时，尽可能只获取自己需要的数据；写查询逻辑前思考下：我一定需要这么查么，我有必要查出这么信息么:一个很简单的事情，比如我只需要知道有没有，并不关注有多少个，此时就没必要去统计多少个的信息</li><li>关于冗余的设计，我觉得那些不会变动的信息且又需要被关联显示的时候，大可以在主表加上冗余字段，这样在查询时无需再去关联表</li></ul>]]></content>
       
       
       
@@ -128,33 +149,6 @@
         <tags>
             
             <tag> 编码 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>LeetCode数组类型题集</title>
-      <link href="/2021/05/24/LeetCode/%E6%95%B0%E7%BB%84/"/>
-      <url>/2021/05/24/LeetCode/%E6%95%B0%E7%BB%84/</url>
-      
-        <content type="html"><![CDATA[<p><strong>数组-&gt; 链表-&gt; 哈希表-&gt;字符串-&gt;栈与队列-&gt;树-&gt;回溯-&gt;贪心</strong> </p><h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><p>基础条件：有序</p><p>额外考虑：元素重复的可能</p><p>例题：</p><p>704.<a href="https://leetcode-cn.com/problems/binary-search/">二分查找</a></p><p>最原始的最单纯的查找</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>35.<a href="https://leetcode-cn.com/problems/search-insert-position/">搜索插入位置</a></p><p>最后找不到时是应该插到nums[middle]的位置还是nums[middle]之后的一个位置，这取决于它和target谁大谁小</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[middle] &gt; target ? middle : middle + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>34.<a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">在排序数组中查找元素的第一个和最后一个位置</a></p><p>找到target后，往前遍历至不是target的下标即是第一个位置，往后遍历至不是target的下标即是最后一个位置</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)  &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = &#123;-<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res[<span class="number">0</span>] = middle;</span><br><span class="line">                res[<span class="number">1</span>] = middle;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = middle; i &gt;= <span class="number">0</span> &amp;&amp; nums[i] == target; i--) &#123;</span><br><span class="line">                    res[<span class="number">0</span>] = i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = middle; i &lt; nums.length &amp;&amp; nums[i] == target; i++) &#123;</span><br><span class="line">                    res[<span class="number">1</span>] = i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>69.<a href="https://leetcode-cn.com/problems/sqrtx/">x 的平方根</a></p><p>367.<a href="https://leetcode-cn.com/problems/valid-perfect-square/">有效的完全平方数</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> LeetCode </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LeetCode </tag>
-            
-            <tag> 二分法 </tag>
             
         </tags>
       

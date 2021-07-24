@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数组-&gt; 链表-&gt; 哈希表-&gt;字符串-&gt;栈与队列-&gt;树-&gt;回溯-&gt;贪心  数组二分法基础条件：有序 额外考虑：元素重复的可能 例题： 704.二分查找 最原始的最单纯的查找 12345678910111213141516public int search(int[] nums, int target) &amp;#123;        int left &#x3D; 0;">
+  <meta name="description" content="N数之和(对撞指针)一般需要保持数组有序，首先进行排序 固定第1个数，再固定第二个数…留下最后两个游标表示最后两个数，得到他们临时的一个和与目标值比较，大了右游标左移，小了左游标右移，相等则记录结果，左右游标同时往中间靠，这个过程需要排除重复值 最大装水量（对撞指针）高度取左右指针对应高度更高的；宽度取左右指针间隔距离；移动时，高度较低的指针率先往中间靠；">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode数组类型题集">
-<meta property="og:url" content="https://ztt0tian.github.io/2021/05/24/LeetCode/%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="数组类的解题总结">
+<meta property="og:url" content="https://ztt0tian.github.io/2021/07/24/LeetCode/array/index.html">
 <meta property="og:site_name" content="不知名TT">
-<meta property="og:description" content="数组-&gt; 链表-&gt; 哈希表-&gt;字符串-&gt;栈与队列-&gt;树-&gt;回溯-&gt;贪心  数组二分法基础条件：有序 额外考虑：元素重复的可能 例题： 704.二分查找 最原始的最单纯的查找 12345678910111213141516public int search(int[] nums, int target) &amp;#123;        int left &#x3D; 0;">
+<meta property="og:description" content="N数之和(对撞指针)一般需要保持数组有序，首先进行排序 固定第1个数，再固定第二个数…留下最后两个游标表示最后两个数，得到他们临时的一个和与目标值比较，大了右游标左移，小了左游标右移，相等则记录结果，左右游标同时往中间靠，这个过程需要排除重复值 最大装水量（对撞指针）高度取左右指针对应高度更高的；宽度取左右指针间隔距离；移动时，高度较低的指针率先往中间靠；">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-24T14:59:27.000Z">
-<meta property="article:modified_time" content="2021-05-24T15:01:18.038Z">
+<meta property="article:published_time" content="2021-07-24T01:07:08.000Z">
+<meta property="article:modified_time" content="2021-07-24T02:27:00.970Z">
 <meta property="article:author" content="zhaotian">
-<meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="二分法">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="array">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://ztt0tian.github.io/2021/05/24/LeetCode/%E6%95%B0%E7%BB%84/">
+<link rel="canonical" href="https://ztt0tian.github.io/2021/07/24/LeetCode/array/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>LeetCode数组类型题集 | 不知名TT</title>
+  <title>数组类的解题总结 | 不知名TT</title>
   
 
 
@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-java">
@@ -201,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/LeetCode/%E6%95%B0%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/07/24/LeetCode/array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -214,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode数组类型题集
+          数组类的解题总结
         </h1>
 
         <div class="post-meta">
@@ -225,16 +225,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-24 22:59:27 / 修改时间：23:01:18" itemprop="dateCreated datePublished" datetime="2021-05-24T22:59:27+08:00">2021-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
+              <time title="创建时间：2021-07-24 09:07:08 / 修改时间：10:27:00" itemprop="dateCreated datePublished" datetime="2021-07-24T09:07:08+08:00">2021-07-24</time>
             </span>
 
           
@@ -255,24 +246,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>数组-&gt; 链表-&gt; 哈希表-&gt;字符串-&gt;栈与队列-&gt;树-&gt;回溯-&gt;贪心</strong> </p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><p>基础条件：有序</p>
-<p>额外考虑：元素重复的可能</p>
-<p>例题：</p>
-<p>704.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-search/">二分查找</a></p>
-<p>最原始的最单纯的查找</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>35.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position/">搜索插入位置</a></p>
-<p>最后找不到时是应该插到nums[middle]的位置还是nums[middle]之后的一个位置，这取决于它和target谁大谁小</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[middle] &gt; target ? middle : middle + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>34.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">在排序数组中查找元素的第一个和最后一个位置</a></p>
-<p>找到target后，往前遍历至不是target的下标即是第一个位置，往后遍历至不是target的下标即是最后一个位置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)  &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = &#123;-<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            middle = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res[<span class="number">0</span>] = middle;</span><br><span class="line">                res[<span class="number">1</span>] = middle;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = middle; i &gt;= <span class="number">0</span> &amp;&amp; nums[i] == target; i--) &#123;</span><br><span class="line">                    res[<span class="number">0</span>] = i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = middle; i &lt; nums.length &amp;&amp; nums[i] == target; i++) &#123;</span><br><span class="line">                    res[<span class="number">1</span>] = i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>69.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sqrtx/">x 的平方根</a></p>
-<p>367.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-perfect-square/">有效的完全平方数</a></p>
+        <h1 id="N数之和-对撞指针"><a href="#N数之和-对撞指针" class="headerlink" title="N数之和(对撞指针)"></a>N数之和(对撞指针)</h1><p>一般需要保持数组有序，首先进行排序</p>
+<p>固定第1个数，再固定第二个数…留下最后两个游标表示最后两个数，得到他们临时的一个和与目标值比较，大了右游标左移，小了左游标右移，相等则记录结果，左右游标同时往中间靠，这个过程需要排除重复值</p>
+<h1 id="最大装水量（对撞指针）"><a href="#最大装水量（对撞指针）" class="headerlink" title="最大装水量（对撞指针）"></a>最大装水量（对撞指针）</h1><p>高度取左右指针对应高度更高的；宽度取左右指针间隔距离；移动时，高度较低的指针率先往中间靠；</p>
 
     </div>
 
@@ -302,8 +278,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-              <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag"># 二分法</a>
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+              <a href="/tags/array/" rel="tag"># array</a>
           </div>
 
         
@@ -312,13 +288,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/" rel="prev" title="拦截器实现">
-      <i class="fa fa-chevron-left"></i> 拦截器实现
+    <a href="/2021/06/28/%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%92%8C%E5%93%8D%E5%BA%94%E5%A4%B4/" rel="prev" title="HTTP请求头和响应头">
+      <i class="fa fa-chevron-left"></i> HTTP请求头和响应头
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/" rel="next" title="编码">
-      编码 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -377,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">二分法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#N%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%AF%B9%E6%92%9E%E6%8C%87%E9%92%88"><span class="nav-number">1.</span> <span class="nav-text">N数之和(对撞指针)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E8%A3%85%E6%B0%B4%E9%87%8F%EF%BC%88%E5%AF%B9%E6%92%9E%E6%8C%87%E9%92%88%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">最大装水量（对撞指针）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -399,7 +372,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
