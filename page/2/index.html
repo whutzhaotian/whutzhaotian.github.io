@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">28</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">30</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,78 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Web/web%E5%AE%89%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Web/web%E5%AE%89%E5%85%A8/" class="post-title-link" itemprop="url">web安全问题及解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:54:21 / 修改时间：22:56:47" itemprop="dateCreated datePublished" datetime="2021-05-24T22:54:21+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">web安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="路径穿越攻击"><a href="#路径穿越攻击" class="headerlink" title="路径穿越攻击"></a>路径穿越攻击</h1><p>利用平台暴露的文件下载接口，加上“上层目录符号../  ..”跳至父目录，该漏洞可下载服务器上的任意文件（越权）</p>
+<p>修复方案：</p>
+<p>1）最终的下载路径特殊符号（.. ../等）过滤，防止跨目录下载，另项目提供的下载文件资源 最好设置一个相对独立的父目录，父目录不要设置为”/“ “/root”等</p>
+<p>2）换文件下载策略，通过id和文件路径的对应关系来表征文件下载路径，不直接暴露文件下载的接口</p>
+<h1 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h1><p>不能仅在前端的菜单项作权限，后端接口同样需要作权限校验，否则可通过接口工具(postman等)直接越过前端直接执行接口业务，造成意料之外的结果</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1052,7 +1124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1065,7 +1137,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
