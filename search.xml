@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>MQ平滑升级</title>
+      <link href="/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/"/>
+      <url>/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>生产环境上的MQ版本过低，因某些安全漏洞需要升级MQ的版本；</p><p>因某些因素需要更换MQ服务器；</p><p>同时要求不中断MQ服务</p><h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>消费者 双向订阅（旧MQ和新MQ）</p><p>生产者升级为新MQ</p><p>消费者下线旧MQ</p><p>参考：<a href="https://www.zhihu.com/question/330522940/answer/723077536">https://www.zhihu.com/question/330522940/answer/723077536</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MQ </tag>
+            
+            <tag> 平滑升级 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GROUP_CONCAT()函数使用</title>
       <link href="/2021/08/29/mysql/group_concat/"/>
       <url>/2021/08/29/mysql/group_concat/</url>

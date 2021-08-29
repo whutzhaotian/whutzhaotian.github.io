@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,71 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">MQ平滑升级</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-29 12:07:52 / 修改时间：12:13:36" itemprop="dateCreated datePublished" datetime="2021-08-29T12:07:52+08:00">2021-08-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>生产环境上的MQ版本过低，因某些安全漏洞需要升级MQ的版本；</p>
+<p>因某些因素需要更换MQ服务器；</p>
+<p>同时要求不中断MQ服务</p>
+<h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>消费者 双向订阅（旧MQ和新MQ）</p>
+<p>生产者升级为新MQ</p>
+<p>消费者下线旧MQ</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/330522940/answer/723077536">https://www.zhihu.com/question/330522940/answer/723077536</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -942,85 +1007,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/" class="post-title-link" itemprop="url">拦截器实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-24 22:57:17 / 修改时间：23:14:07" itemprop="dateCreated datePublished" datetime="2021-05-24T22:57:17+08:00">2021-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>用于对请求进行拦截处理</p>
-<p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bear7/p/13390202.html">https://www.cnblogs.com/bear7/p/13390202.html</a></p>
-<h1 id="自定义实现方式"><a href="#自定义实现方式" class="headerlink" title="自定义实现方式"></a>自定义实现方式</h1><p>HandlerInterceptor</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements HandlerInterceptor</span><br></pre></td></tr></table></figure>
-
-<p>HandlerInterceptorAdapter</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extends HandlerInterceptorAdapter</span><br></pre></td></tr></table></figure>
-
-<p>重写 <strong>preHandler()**、 **postHandler()</strong> 、 **afterCompletion():**方法</p>
-<h1 id="过滤器VS拦截器"><a href="#过滤器VS拦截器" class="headerlink" title="过滤器VS拦截器"></a>过滤器VS拦截器</h1><p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/panxuejun/p/7715917.html">https://www.cnblogs.com/panxuejun/p/7715917.html</a></p>
-<p>过滤器属于sevlert规范（要早于拦截器执行）</p>
-<p>拦截器属于Spring框架所支持的</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1091,7 +1077,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1104,7 +1090,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
