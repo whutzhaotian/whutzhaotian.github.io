@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>表格数据导出方案</title>
+      <link href="/2021/09/01/mysql/mysql%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%88%90csv%E6%96%B9%E6%A1%88/"/>
+      <url>/2021/09/01/mysql/mysql%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%88%90csv%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="select-into-outfile方式"><a href="#select-into-outfile方式" class="headerlink" title="select into outfile方式"></a>select into outfile方式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sys_user INTO OUTFILE &#39;D:&#x2F;&#x2F;sys_user.csv&#39;</span><br><span class="line">FIELDS TERMINATED BY &#39;,&#39; OPTIONALLY ENCLOSED BY &#39;&quot;&#39;</span><br><span class="line">LINES TERMINATED BY &#39;\r\n&#39;;</span><br></pre></td></tr></table></figure><p><code>&#39;D://sys_user.csv&#39;</code> 指定的导出csv文件路径（仅限在mysql服务器上）</p><p><code>FIELDS TERMINATED BY &#39;,&#39;</code>导出的字段间的分隔符为’,’</p><p><code>OPTIONALLY ENCLOSED BY &#39;&quot;&#39;</code> 导出的字段用“””包裹 这个可以解决字段中包含“,”时 导致CSV产生多列</p><p><code>LINES TERMINATED BY &#39;\r\n&#39;</code> 指定换行</p><blockquote><p>缺点</p></blockquote><ul><li><code>--secure-file-priv</code>问题</li></ul><p>show global variables like ‘%secure_file_priv%’;</p><p>secure_file_priv需要配置值 （一个目录或者是空 但不能为NULL）</p><p>上面指定导出文件的路径时需要在secure_file_privp配置的目录下，否则无法导出</p><p>参考：<a href="https://www.cnblogs.com/dazhan/p/9815194.html">https://www.cnblogs.com/dazhan/p/9815194.html</a></p><ul><li>局限</li></ul><p>导出的文件路径范围只限于数据库服务器中</p><h1 id="mysql-e-跨服务器导出"><a href="#mysql-e-跨服务器导出" class="headerlink" title="mysql -e 跨服务器导出"></a>mysql -e 跨服务器导出</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysql -u<span class="string">&quot;root&quot;</span> -p<span class="string">&quot;123456&quot;</span>  -e <span class="string">&quot;</span></span></span><br><span class="line">select sch_name,sch_addr,sch_profession from all_university;</span><br><span class="line">quit&quot; | awk &#x27;&#123;print $1&quot;,&quot;,$2&quot;,&quot;$3&#125;&#x27; &gt; log.csv</span><br></pre></td></tr></table></figure><p>参考：</p><p><a href="https://www.jianshu.com/p/092a6c260c2f">https://www.jianshu.com/p/092a6c260c2f</a></p><p><a href="https://blog.csdn.net/xsj_blog/article/details/52617199">https://blog.csdn.net/xsj_blog/article/details/52617199</a></p><h1 id="mysqldump方式"><a href="#mysqldump方式" class="headerlink" title="mysqldump方式"></a>mysqldump方式</h1><p>基本和into outfile一致，mysqldump导出csv格式只能在本地进行，无法远程操作</p><h1 id="一点tips"><a href="#一点tips" class="headerlink" title="一点tips"></a>一点tips</h1><blockquote><p>导出字段自动被科学计数显示</p></blockquote><p>在导出字段时，有些字段字符串比较长且又都是数字，导出CSV打开后会自动转成科学计数，可能末尾的一些字符全部都置为0了，可以在输出字段值时使用concat(xxx,’\t’);</p><blockquote><p>一些NULL值字段导出后显示为\N</p></blockquote><p>导出的字段可能为NULL时，select时使用ifnull(xxx,’’);</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+            <tag> select into outfile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MQ平滑升级</title>
       <link href="/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/"/>
       <url>/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/</url>
