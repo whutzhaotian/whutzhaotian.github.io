@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,84 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">maven命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-25 22:53:35 / 修改时间：23:16:42" itemprop="dateCreated datePublished" datetime="2021-05-25T22:53:35+08:00">2021-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="清空构建产物"><a href="#清空构建产物" class="headerlink" title="清空构建产物"></a>清空构建产物</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure>
+
+<h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hiver/p/7850954.html">https://www.cnblogs.com/hiver/p/7850954.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Dmaven.test.skip -pl parentModule.childModule -am -Pcustom_profile</span><br></pre></td></tr></table></figure>
+
+<p><code>-Dmaven.test.skip</code> 跳过测试代码</p>
+<p><code>-pl XXX.xxx </code>  选择指定模块  父模块.子模块</p>
+<p><code>-am</code>  同时处理选定模块所依赖的模块 </p>
+<p><code>-Pxxxx</code> 选定构建的profile环境</p>
+<h1 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h1><p>完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库</p>
+<h1 id="mvn-deploy"><a href="#mvn-deploy" class="headerlink" title="mvn deploy"></a>mvn deploy</h1><p>deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1098,125 +1176,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2020/08/04/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/04/hexo/" class="post-title-link" itemprop="url">hexo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-04 22:59:26" itemprop="dateCreated datePublished" datetime="2020-08-04T22:59:26+08:00">2020-08-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-24 23:34:40" itemprop="dateModified" datetime="2021-05-24T23:34:40+08:00">2021-05-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">博客写作</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="sever-command"><a href="#sever-command" class="headerlink" title="sever command"></a>sever command</h1><h1 id="服务器命令"><a href="#服务器命令" class="headerlink" title="服务器命令"></a>服务器命令</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo server Hexo  //会监视文件变动并自动更新，您无须重启服务器。</span><br><span class="line">hexo server -s   //静态模式</span><br><span class="line">hexo server -p <span class="number">5000</span>    //更改端口</span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>   //自定义 IP</span><br><span class="line"></span><br><span class="line">hexo clean  //清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo g  //生成静态网页</span><br><span class="line">hexo d  //开始部署</span><br></pre></td></tr></table></figure>
-
-<h1 id="file-watch"><a href="#file-watch" class="headerlink" title="file watch"></a>file watch</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate  //使用 Hexo 生成静态文件快速而且简单</span><br><span class="line">hexo generate --watch  //监视文件变动</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">两个命令的作用是相同的</span><br><span class="line">hexo generate --deploy</span><br><span class="line">hexo deploy --generate</span><br><span class="line"></span><br><span class="line">hexo deploy -g</span><br><span class="line">hexo server -g</span><br></pre></td></tr></table></figure>
-
-<h1 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#source/_posts文件夹会新建paper.md</span></span><br><span class="line">hexo new paper</span><br><span class="line"><span class="comment"># 在source文件夹下创建一个board文件夹，以及board文件夹中的index.md</span></span><br><span class="line">hexo new page board</span><br><span class="line"><span class="comment"># 这样会在source/_draft中新建一个newpage.md文件</span></span><br><span class="line">hexo new draft newpage</span><br><span class="line"><span class="comment"># 这样会在source/_posts/java/文件夹下新建注解.md</span></span><br><span class="line">hexo new page -p java/注解.md</span><br></pre></td></tr></table></figure>
-
-<p>三种layout：</p>
-<table>
-<thead>
-<tr>
-<th>布局</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>post</code></td>
-<td><code>source/_posts</code></td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td><code>source</code></td>
-</tr>
-<tr>
-<td><code>draft</code></td>
-<td><code>source/_drafts</code></td>
-</tr>
-</tbody></table>
-<p>草稿文件写的过程中，想要预览一下，那么可以使用<code>hexo server --draft</code>在本地端口中开启服务预览。</p>
-<p>如果你的草稿文件写完了，想要发表到post中，</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish draft newpage</span><br></pre></td></tr></table></figure>
-
-<p>就会自动把newpage.md发送到post中</p>
-<h1 id="异常解决"><a href="#异常解决" class="headerlink" title="异常解决"></a>异常解决</h1><h2 id="md文档标题为中文时在hexo不能正常跳转"><a href="#md文档标题为中文时在hexo不能正常跳转" class="headerlink" title="md文档标题为中文时在hexo不能正常跳转"></a>md文档标题为中文时在hexo不能正常跳转</h2><p>解决：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/422584701/answer/1491441321">https://www.zhihu.com/question/422584701/answer/1491441321</a></p>
-<h2 id="关于分类、标签等菜单项"><a href="#关于分类、标签等菜单项" class="headerlink" title="关于分类、标签等菜单项"></a>关于分类、标签等菜单项</h2><p>解决：<a target="_blank" rel="noopener" href="https://himmy.blog.csdn.net/article/details/93644533">https://himmy.blog.csdn.net/article/details/93644533</a></p>
-<h2 id="特殊符号转义处理"><a href="#特殊符号转义处理" class="headerlink" title="特殊符号转义处理"></a>特殊符号转义处理</h2><p>解决：<a target="_blank" rel="noopener" href="http://wxnacy.com/2018/01/12/hexo-specific-symbol/">http://wxnacy.com/2018/01/12/hexo-specific-symbol/</a></p>
-<h1 id="官方网址"><a href="#官方网址" class="headerlink" title="官方网址"></a>官方网址</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1283,7 +1246,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1296,7 +1259,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
