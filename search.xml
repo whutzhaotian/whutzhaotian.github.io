@@ -159,9 +159,9 @@
       
         <tags>
             
-            <tag> GROUP_CONCAT() </tag>
-            
             <tag> mysql </tag>
+            
+            <tag> GROUP_CONCAT() </tag>
             
         </tags>
       
