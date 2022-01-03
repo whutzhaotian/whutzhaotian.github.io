@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="安装windows[win10]1.启用虚拟化功能【Hyper-V】  若存在…禁用 需要在bios中开启对虚拟化的支持 2.安装docker安装包【官网下载】 3.启动docker 报错 大概率是因为WSL2未安装 按照链接进行下载安装即可 4.测试 docker run hello-world 先会提示本地未找到镜像，然后会尝试从远程拉取，但是一般会拉不下来因为网络原因，故需要进行docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="https://ztt0tian.github.io/2022/01/01/docker/basic/index.html">
+<meta property="og:site_name" content="不知名TT">
+<meta property="og:description" content="安装windows[win10]1.启用虚拟化功能【Hyper-V】  若存在…禁用 需要在bios中开启对虚拟化的支持 2.安装docker安装包【官网下载】 3.启动docker 报错 大概率是因为WSL2未安装 按照链接进行下载安装即可 4.测试 docker run hello-world 先会提示本地未找到镜像，然后会尝试从远程拉取，但是一般会拉不下来因为网络原因，故需要进行docker">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/01/01/docker/basic/image-20220101174948609.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/01/01/docker/basic/image-20220101195624628.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/01/01/docker/basic/image-20220101201036303.png">
+<meta property="article:published_time" content="2022-01-01T09:07:00.000Z">
+<meta property="article:modified_time" content="2022-01-03T03:51:15.707Z">
+<meta property="article:author" content="zhaotian">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ztt0tian.github.io/2022/01/01/docker/basic/image-20220101174948609.png">
+
+<link rel="canonical" href="https://ztt0tian.github.io/2022/01/01/docker/basic/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>docker | 不知名TT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">不知名TT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个coder的自我修养</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">50</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-java">
+
+    <a href="/categories/java/" rel="section"><i class="fa fa-fw fa-coffee"></i>JAVA</a>
+
+  </li>
+        <li class="menu-item menu-item-db">
+
+    <a href="/categories/database/" rel="section"><i class="fa fa-fw fa-database"></i>DB</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/categories/tools/" rel="section"><i class="fa fa-fw fa-anchor"></i>Tools</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/01/01/docker/basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-01 17:07:00" itemprop="dateCreated datePublished" datetime="2022-01-01T17:07:00+08:00">2022-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-03 11:51:15" itemprop="dateModified" datetime="2022-01-03T11:51:15+08:00">2022-01-03</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="windows-win10"><a href="#windows-win10" class="headerlink" title="windows[win10]"></a>windows[win10]</h2><p>1.启用虚拟化功能【Hyper-V】</p>
+<p><img src="/2022/01/01/docker/basic/image-20220101174948609.png" alt="image-20220101174948609"></p>
+<p>若存在…禁用 需要在bios中开启对虚拟化的支持</p>
+<p>2.安装docker安装包【官网下载】</p>
+<p>3.启动docker</p>
+<p>报错 大概率是因为WSL2未安装 按照链接进行下载安装即可</p>
+<p>4.测试</p>
+<p><code>docker run hello-world</code></p>
+<p>先会提示本地未找到镜像，然后会尝试从远程拉取，但是一般会拉不下来因为网络原因，故需要进行<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-mirror-acceleration.html">docker镜像加速</a></p>
+<p>5.验证测试</p>
+<p>成功标志</p>
+<p><img src="/2022/01/01/docker/basic/image-20220101195624628.png" alt="image-20220101195624628"></p>
+<h1 id="容器使用"><a href="#容器使用" class="headerlink" title="容器使用"></a>容器使用</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu:15.10 /bin/<span class="built_in">echo</span> <span class="string">&quot;Hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo “Hello world”，然后输出结果。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t ubuntu:15.10 /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>-t: 在新容器内指定一个伪终端或终端</p>
+<p>-i: 允许你对容器内的标准输入 (STDIN) 进行交互</p>
+<h2 id="容器启动"><a href="#容器启动" class="headerlink" title="容器启动"></a>容器启动</h2><p>创建一个以进程方式运行的容器：</p>
+<p><code>docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</code></p>
+<p><img src="/2022/01/01/docker/basic/image-20220101201036303.png" alt="image-20220101201036303"></p>
+<p>返回的是容器唯一id<code>332d9db9407cebde55b33a5cd32e5563d36de7297c6015539fb9199f4f7ff749</code></p>
+<blockquote>
+<p>容器状态查询</p>
+</blockquote>
+<p><code>docker ps</code> 只查询在运行的容器 加上<code>-a</code>参数会查询所有容器，包括之前停止的容器</p>
+<p><strong>CONTAINER ID:</strong> 容器 ID。</p>
+<p><strong>IMAGE:</strong> 使用的镜像。</p>
+<p><strong>COMMAND:</strong> 启动容器时运行的命令。</p>
+<p><strong>CREATED:</strong> 容器的创建时间。</p>
+<p><strong>STATUS:</strong> 容器状态。</p>
+<p>状态有7种：</p>
+<ul>
+<li>created（已创建）</li>
+<li>restarting（重启中）</li>
+<li>running 或 Up（运行中）</li>
+<li>removing（迁移中）</li>
+<li>paused（暂停）</li>
+<li>exited（停止）</li>
+<li>dead（死亡）</li>
+</ul>
+<p><strong>PORTS:</strong> 容器的端口信息和使用的连接类型（tcp\udp）。</p>
+<p><strong>NAMES:</strong> 自动分配的容器名称。</p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>容器内部的标准输出</p>
+<p><code>docker logs 332d9db9407c</code>  后为容器id</p>
+<p><code>docker logs magical_dirac</code> 后为容器名称</p>
+<h2 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h2><p><code>docker stop 容器id或者容器名称</code></p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull 镜像名称</code> 从远程拉取</p>
+<h2 id="启动-重启"><a href="#启动-重启" class="headerlink" title="启动/重启"></a>启动/重启</h2><p><code>docker start 容器ID</code> 启动</p>
+<p><code>docker restart 容器ID</code>    重启</p>
+<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p><code>docker attach</code> 退出容器终端后会导致容器停止</p>
+<p><code>docker attach 332d9db9407c</code></p>
+<p><code>docker exec</code>退出容器终端后不会导致容器停止</p>
+<p><code>docker exec 332d9db9407c /bin/bash</code></p>
+<h2 id="导出容器"><a href="#导出容器" class="headerlink" title="导出容器"></a>导出容器</h2><p><code>docker export feb5d9fea6a5 &gt; a.tar</code></p>
+<p>导出容器 332d9db9407c 快照到本地文件 a.tar</p>
+<h2 id="导入容器"><a href="#导入容器" class="headerlink" title="导入容器"></a>导入容器</h2><p><code>cat b.tar | docker import - test/ubuntu:v2</code></p>
+<p>以下实例将快照文件 b.tar 导入到镜像 test/ubuntu:v2</p>
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><p><code> docker rm -f d5599e167569</code> 删除指定容器</p>
+<p><code>docker container prune</code> 清理掉所有处于终止状态的容器</p>
+<h2 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h2><p><code>docker port 容器id或名称</code></p>
+<h2 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h2><p><code>docker top 容器id或名称</code></p>
+<h2 id="应用检查"><a href="#应用检查" class="headerlink" title="应用检查"></a>应用检查</h2><p><code>docker inspect 容器id或名称</code></p>
+<h2 id="关键参数"><a href="#关键参数" class="headerlink" title="关键参数"></a>关键参数</h2><p><code>-d</code>:后台运行</p>
+<p><code>-P</code>:将容器内部使用的网络端口随机映射到我们使用的主机上</p>
+<p><code>-p 5000:5000</code>:设置映射到宿主机上的端口</p>
+<p><code>-i</code>: 交互式操作</p>
+<p><code>-t</code>: 终端</p>
+<p><code>--name</code> :标识来命名容器</p>
+<p><code>-d</code>：参数指定 Docker 网络类型，有 bridge、overlay</p>
+<p><code>--rm</code>：容器退出时自动清理容器内部的文件系统</p>
+<p><code>--dns=IP_ADDRESS</code>： 添加 DNS 服务器到容器的 /etc/resolv.conf 中，让容器用这个服务器来解析所有不在 /etc/hosts 中的主机名</p>
+<p><code>-v</code>: 指定挂载主机目录到容器目录</p>
+<h1 id="镜像使用"><a href="#镜像使用" class="headerlink" title="镜像使用"></a>镜像使用</h1><p>当运行容器时，使用的镜像如果在本地中不存在，docker 就会自动从 docker 镜像仓库中下载，默认是从 Docker Hub 公共镜像源下载</p>
+<h2 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h2><p><code>docker images </code> 本地主机上的镜像</p>
+<h2 id="查询镜像"><a href="#查询镜像" class="headerlink" title="查询镜像"></a>查询镜像</h2><p><code>docker search kw</code> 搜寻指定关键词的镜像</p>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><p><code> docker rmi hello-world</code> 删除 hello-world 镜像</p>
+<h2 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h2><blockquote>
+<p>从已经创建的容器中更新镜像，并且提交这个镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:15.10 /bin/bash</span><br><span class="line">apt-get update</span><br><span class="line">docker commit -m=&quot;has update&quot; -a=&quot;tt&quot; 44f8778a6276 tt/ubuntu:v2</span><br><span class="line">docker images</span><br><span class="line">docker run -t -i tt/ubuntu:v2 /bin/bash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 Dockerfile 指令来创建一个新的镜像 </p>
+</blockquote>
+<p>新建Dockerfile文件</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>    centos:<span class="number">6.7</span></span><br><span class="line"><span class="keyword">MAINTAINER</span>      Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     useradd runoob</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;runoob:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> -e <span class="string">&quot;LANG=\&quot;en_US.UTF-8\&quot;&quot;</span> &gt;/etc/default/<span class="built_in">local</span></span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">22</span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash">     /usr/sbin/sshd -D</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t runoob/centos:6.7 .</span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像标签"><a href="#镜像标签" class="headerlink" title="镜像标签"></a>镜像标签</h2><p><code> docker tag adf047e3db27 tt/ubuntu:v3</code></p>
+<p><code>:</code>后面即使镜像标签</p>
+<h2 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h2><p><code>docker push REPOSITORY:TAG </code></p>
+<p>通过 docker push 命令将自己的镜像推送到 Docker Hub</p>
+<h1 id="容器互联"><a href="#容器互联" class="headerlink" title="容器互联"></a>容器互联</h1><h2 id="两个容器互相ping通"><a href="#两个容器互相ping通" class="headerlink" title="两个容器互相ping通"></a>两个容器互相ping通</h2><blockquote>
+<p>创建一个新的 Docker 网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge test-net</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行一个容器并连接到新建的 test-net 网络:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>再运行一个容器并加入到 test-net 网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h2><p>如果在容器启动时没有指定 <strong>–dns</strong> 和 <strong>–dns-search</strong>，Docker 会默认用宿主主机上的 /etc/resolv.conf 来配置容器的 DNS</p>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
+<p>FROM</p>
+</blockquote>
+<p>定制的镜像都是基于 FROM 的镜像</p>
+<blockquote>
+<p>RUN</p>
+</blockquote>
+<ul>
+<li>RUN &lt;命令行&gt; 等价于在终端操作的 shell 命令</li>
+<li>RUN [“可执行文件”, “参数1”, “参数2”]</li>
+</ul>
+<p><strong>注意</strong>：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，如下面第二种更为合适</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum -y install wget</span><br><span class="line">RUN wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot;</span><br><span class="line">RUN tar -xvf redis.tar.gz</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum -y install wget \</span><br><span class="line">    &amp;&amp; wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot; \</span><br><span class="line">    &amp;&amp; tar -xvf redis.tar.gz</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>COPY</p>
+</blockquote>
+<p>复制指令，从上下文目录中复制文件或者目录到容器里指定路径。</p>
+<p><code>COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</code></p>
+<p>容器内的指定路径【目标路径】，该路径不用事先建好，路径不存在的话，会自动创建。</p>
+<blockquote>
+<p>ADD</p>
+</blockquote>
+<p>与COPY类似 不过在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;</p>
+<blockquote>
+<p>CMD</p>
+</blockquote>
+<p>为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束。CMD 指令指定的程序可被 docker run 命令行参数中指定要运行的程序所覆盖。如果 Dockerfile 中如果存在多个 CMD 指令，仅最后一个生效</p>
+<blockquote>
+<p>ENTRYPOINT</p>
+</blockquote>
+<p>类似于CMD</p>
+<blockquote>
+<p>ENV</p>
+</blockquote>
+<p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">ENV &lt;key1&gt;&#x3D;&lt;value1&gt; &lt;key2&gt;&#x3D;&lt;value2&gt;...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ARG</p>
+</blockquote>
+<p>构建参数，与 ENV 作用一致。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
+<p>构建命令 docker build 中可以用 –build-arg &lt;参数名&gt;=&lt;值&gt; 来覆盖。</p>
+<blockquote>
+<p>VOLUME</p>
+</blockquote>
+<p>定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。</p>
+<p>作用：</p>
+<ul>
+<li>避免重要的数据，因容器重启而丢失，这是非常致命的。</li>
+<li>避免容器不断变大。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]</span><br><span class="line">VOLUME &lt;路径&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>EXPOSE</p>
+</blockquote>
+<p>只是声明端口</p>
+<blockquote>
+<p>WORKDIR</p>
+</blockquote>
+<p>指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在。（WORKDIR 指定的工作目录，必须是提前创建好的）</p>
+<blockquote>
+<p>USER</p>
+</blockquote>
+<p>用于指定执行后续命令的用户和用户组，这边只是切换后续命令执行的用户（用户和用户组必须提前已经存在）</p>
+<h1 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h1><p>先把我们的镜像传到docker仓库中,再由目的地把docker仓库中的镜像拉过去</p>
+<h1 id="Docker网络"><a href="#Docker网络" class="headerlink" title="Docker网络"></a>Docker网络</h1><h2 id="Bridge模式"><a href="#Bridge模式" class="headerlink" title="Bridge模式"></a>Bridge模式</h2><p>默认模式，需要端口映射,docker可以指定你想把容器内的某一个端口可以在容器所在主机上的某一个端口它俩之间做一个映射,当你在访问主机上的端口时,其实就是访问容器里面的端口.</p>
+<h2 id="Host模式"><a href="#Host模式" class="headerlink" title="Host模式"></a>Host模式</h2><p>在启动容器的时候指定使用Host模式,那么这个容器将不会获得一个独立的network namespace,而是和主机共同使用一个,这个时候容器将不会虚拟出自己的网卡,配置出自己的ip.而是使用宿主机上的ip和端口.也就是说在docker上使用网络和在主机上使用网络是一样的</p>
+<h2 id="None模式"><a href="#None模式" class="headerlink" title="None模式"></a>None模式</h2><p>还有一种网络类型是None.也就是没有网络,这种情况docker将不会和外界的任何东西进行通讯</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>生活不易，求打赏~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="zhaotian 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="zhaotian 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/26/vue/basic/" rel="prev" title="vue基础学习">
+      <i class="fa fa-chevron-left"></i> vue基础学习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/03/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/element-ui/basic/" rel="next" title="page">
+      page <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-win10"><span class="nav-number">1.1.</span> <span class="nav-text">windows[win10]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">容器使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">容器启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="nav-number">2.3.</span> <span class="nav-text">查看日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="nav-number">2.4.</span> <span class="nav-text">停止容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">2.5.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-%E9%87%8D%E5%90%AF"><span class="nav-number">2.6.</span> <span class="nav-text">启动&#x2F;重启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="nav-number">2.7.</span> <span class="nav-text">进入容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E5%AE%B9%E5%99%A8"><span class="nav-number">2.8.</span> <span class="nav-text">导出容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="nav-number">2.9.</span> <span class="nav-text">导入容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-number">2.10.</span> <span class="nav-text">删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84"><span class="nav-number">2.11.</span> <span class="nav-text">端口映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="nav-number">2.12.</span> <span class="nav-text">进程信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%A3%80%E6%9F%A5"><span class="nav-number">2.13.</span> <span class="nav-text">应用检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0"><span class="nav-number">2.14.</span> <span class="nav-text">关键参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">镜像使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E5%88%97%E8%A1%A8"><span class="nav-number">3.1.</span> <span class="nav-text">镜像列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E9%95%9C%E5%83%8F"><span class="nav-number">3.2.</span> <span class="nav-text">查询镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F"><span class="nav-number">3.3.</span> <span class="nav-text">删除镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">3.4.</span> <span class="nav-text">创建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E6%A0%87%E7%AD%BE"><span class="nav-number">3.5.</span> <span class="nav-text">镜像标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F"><span class="nav-number">3.6.</span> <span class="nav-text">推送镜像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E4%BA%92%E8%81%94"><span class="nav-number">4.</span> <span class="nav-text">容器互联</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8ping%E9%80%9A"><span class="nav-number">4.1.</span> <span class="nav-text">两个容器互相ping通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEDNS"><span class="nav-number">4.2.</span> <span class="nav-text">设置DNS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dockerfile"><span class="nav-number">5.</span> <span class="nav-text">Dockerfile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E4%BB%93%E5%BA%93"><span class="nav-number">6.</span> <span class="nav-text">Docker仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E7%BD%91%E7%BB%9C"><span class="nav-number">7.</span> <span class="nav-text">Docker网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bridge%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">Bridge模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Host%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">Host模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#None%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.3.</span> <span class="nav-text">None模式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhaotian"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">zhaotian</p>
+  <div class="site-description" itemprop="description">可能不够详细，但会尽量实用</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/whutzhaotian" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;whutzhaotian" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1290507445@qq.com" title="E-Mail → mailto:1290507445@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaotian</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
