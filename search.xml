@@ -156,8 +156,6 @@
       
         <tags>
             
-            <tag> 单元测试 </tag>
-            
             <tag> mybatis集成 </tag>
             
             <tag> mybatisGenerator插件 </tag>
@@ -165,6 +163,8 @@
             <tag> 全局异常处理 </tag>
             
             <tag> 校验配置 </tag>
+            
+            <tag> 单元测试 </tag>
             
             <tag> 全局事务配置 </tag>
             
@@ -177,7 +177,7 @@
     
     
     <entry>
-      <title></title>
+      <title>事务细说</title>
       <link href="/2021/11/07/Spring/%E4%BA%8B%E5%8A%A1/"/>
       <url>/2021/11/07/Spring/%E4%BA%8B%E5%8A%A1/</url>
       
@@ -202,7 +202,7 @@
       <link href="/2021/10/31/java/java8%E6%96%B0%E7%89%B9%E6%80%A7/"/>
       <url>/2021/10/31/java/java8%E6%96%B0%E7%89%B9%E6%80%A7/</url>
       
-        <content type="html"><![CDATA[<h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>语法格式：<code>参数 -&gt; 函数体</code></p><p>Lambda表达式只支持函数式接口 也就是只有一个抽象方法的接口，可以用<code>@FunctionalInterface</code>注解来表示当前接口为函数式接口，如果有多个抽象方法，编译时会报错</p><p>注：<code>参数</code>可以指明参数类型，但一般不需要指定，编译器可以自动推断出</p><p>e.g.1:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">compare</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ICompare&lt;Integer&gt; compare = (integer -&gt; integer &gt; <span class="number">2</span>);</span><br><span class="line">System.out.println(compare.compare(<span class="number">5</span>));<span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>e.g.2:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare2</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T x,T y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ICompare2&lt;Integer&gt; compare2 = Integer::compare;</span><br></pre></td></tr></table></figure><p>疑问：</p><p><a href="https://blog.csdn.net/H_X_P_/article/details/105030682">为什么Comparator接口有两个抽象方法compare和equals，Comparator还是一个函数式接口？</a></p><p>因为抽象方法equals方法在父类Object中已有默认实现，所以它们不是抽象方法。如果一个接口中声明的抽象方法是重写了超类Object类中任意一个public方法，那么这些抽象方法并不会算入接口的抽象方法数量中</p><h1 id="核心函数式接口"><a href="#核心函数式接口" class="headerlink" title="核心函数式接口"></a>核心函数式接口</h1><h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><p>消费型接口：<code>void accept(T t);</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;Long&gt; consumer = System.out::println;</span><br><span class="line">consumer.accept(<span class="number">1000L</span>);</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>语法格式：<code>参数 -&gt; 函数体</code></p><p>Lambda表达式只支持函数式接口 也就是只有一个抽象方法的接口，可以用<code>@FunctionalInterface</code>注解来表示当前接口为函数式接口，如果有多个抽象方法，编译时会报错</p><p>注：<code>参数</code>可以指明参数类型，但一般不需要指定，编译器可以自动推断出</p><p>e.g.1:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">compare</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ICompare&lt;Integer&gt; compare = (integer -&gt; integer &gt; <span class="number">2</span>);</span><br><span class="line">System.out.println(compare.compare(<span class="number">5</span>));<span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>e.g.2:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare2</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T x,T y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ICompare2&lt;Integer&gt; compare2 = Integer::compare;</span><br></pre></td></tr></table></figure><p>疑问：</p><p><a href="https://blog.csdn.net/H_X_P_/article/details/105030682">为什么Comparator接口有两个抽象方法compare和equals，Comparator还是一个函数式接口？</a></p><p>因为抽象方法equals方法在父类Object中已有默认实现，所以它们不是抽象方法。如果一个接口中声明的抽象方法是重写了超类Object类中任意一个public方法，那么这些抽象方法并不会算入接口的抽象方法数量中</p><h1 id="核心函数式接口"><a href="#核心函数式接口" class="headerlink" title="核心函数式接口"></a>核心函数式接口</h1><h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><p>消费型接口：<code>void accept(T t);</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;Long&gt; consumer = System.out::println;</span><br><span class="line">consumer.accept(<span class="number">1000L</span>);</span><br></pre></td></tr></table></figure><h1 id="流操作"><a href="#流操作" class="headerlink" title="流操作"></a>流操作</h1><p>一种用函数式编程方式在集合类上进行复杂操作的工具</p><h2 id="List常用流操作"><a href="#List常用流操作" class="headerlink" title="List常用流操作"></a>List常用流操作</h2><blockquote><p>提取某一属性的集合</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; strings = elements.stream().map(ListElement::getStringElement).collect(Collectors.toList());</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; stringSet = elements.stream().map(ListElement::getStringElement).collect(Collectors.toSet());</span><br></pre></td></tr></table></figure><blockquote><p>List转Map</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, ListElement&gt; listElementMap = elements.stream().collect(Collectors.toMap(ListElement::getStringElement, Function.identity(), (k1, k2) -&gt; k2));</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; listElementMap2 = elements.stream().collect(Collectors.toMap(ListElement::getStringElement, ListElement::getIntElement, (k1, k2) -&gt; k2));</span><br></pre></td></tr></table></figure><p><code>(k1, k2) -&gt; k2</code>指定key重复时的覆盖规则，表示重复时取后者，若不指定key重复时会出现异常</p><p><code>Function.identity()</code> 表示原对象本身</p><blockquote><p>过滤</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; filterElements &#x3D; elements.stream().filter(o -&gt; o.getStringElement().equals(&quot;acb&quot;)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure><blockquote><p>分组 group</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, List&lt;ListElement&gt;&gt; listList = elements.stream().collect(Collectors.groupingBy(ListElement::getIntElement));</span><br></pre></td></tr></table></figure><blockquote><p>排序</p></blockquote><p>单属性 升序或者降序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; sortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement)).collect(Collectors.toList());</span><br><span class="line">List&lt;ListElement&gt; reverseSortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement).reversed()).collect(Collectors.toList());</span><br></pre></td></tr></table></figure><p>reversed()即表示降序排列</p><p>多属性排序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; sortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement).thenComparing(ListElement::getByteElement)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure><blockquote><p>map 和 flatMap</p></blockquote><ul><li>map将流中的元素进行再次加工形成一个新流</li><li>flatMap先提取属性放入一个比较小的流，然后再将所有的流合并为一个流</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ListElement element1 = <span class="keyword">new</span> ListElement(<span class="number">1</span>, (<span class="keyword">byte</span>) <span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br><span class="line">element1.setStrings(Arrays.asList(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;v&quot;</span>));</span><br><span class="line">ListElement element2 = <span class="keyword">new</span> ListElement(<span class="number">2</span>, (<span class="keyword">byte</span>) <span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br><span class="line">element2.setStrings(Arrays.asList(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>));</span><br><span class="line">List&lt;ListElement&gt; elements = Arrays.asList(element1, element2);</span><br><span class="line">List&lt;String&gt; res = elements.stream().flatMap(o -&gt; o.getStrings().stream()).map(String::toUpperCase).distinct().collect(Collectors.toList());<span class="comment">// [A, B, V, C, D]</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -210,26 +210,9 @@
             
             <tag> lambda </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>java8 流操作</title>
-      <link href="/2021/10/27/java/stream/"/>
-      <url>/2021/10/27/java/stream/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-        <tags>
+            <tag> 流操作 </tag>
             
-            <tag> java8 </tag>
-            
-            <tag> stream </tag>
+            <tag> 函数式接口 </tag>
             
         </tags>
       
@@ -309,9 +292,9 @@
       
         <tags>
             
-            <tag> mysql </tag>
-            
             <tag> GROUP_CONCAT() </tag>
+            
+            <tag> mysql </tag>
             
         </tags>
       
