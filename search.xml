@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title>tcp的一些常识</title>
+      <link href="/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/"/>
+      <url>/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/</url>
+      
+        <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>TCP提供一种面向连接的、可靠的字节流服务</p><h1 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h1><p>可参考：<a href="https://blog.csdn.net/qq_32998153/article/details/79680704">https://blog.csdn.net/qq_32998153/article/details/79680704</a></p><p>序列号：</p><ul><li>解决网络包乱序问题</li></ul><p>确认序列号：</p><ul><li>解决不丢包的问题</li></ul><p>窗口值：</p><ul><li>滑动窗口机制中会用到，实现流量控制</li></ul><p>时间戳选项的作用：</p><ul><li>测量RTT</li><li>缓解序列号的快速回绕</li></ul><h1 id="连接与终止"><a href="#连接与终止" class="headerlink" title="连接与终止"></a>连接与终止</h1><p><img src="/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/tcp_open_close.jpg" alt="img"></p><h1 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h1><blockquote><p>TCP的可靠性来源</p></blockquote><p>检验和、序列号、确认应答、重发控制、连接管理、窗口控制</p><blockquote><p>建立连接时的初始序列号特征</p></blockquote><p>随机且唯一，避免旧连接的包被新连接接收。必须使得迟到的TCP报文段的序号不处在新的连接中所使用的序号范围之中</p><blockquote><p>握手为什么需要三次</p></blockquote><p>为了同步两端的初始序列号信息，后续的数据传送都要依据这个初始序列号，是用于确认和排序的关键信息</p><blockquote><p>挥手为什么需要四次</p></blockquote><p>TCP是全双工的，发送方和接收方都需要FIN和ACK</p><blockquote><p>为什么TIME_WAIT的等待时间是2MSL？</p></blockquote><p>1)可靠地实现全双工连接的终止</p><p>2)保证本连接持续的时间所产生的所有分组都从网络中消失，也就是保证新建立一个TCP连接时，来自该连接老的重复分组都已经在网络中消失了</p><blockquote><p>滑动窗口与流量控制</p></blockquote><p>​            可以提高性能，发送端主机在发送一个段之后不要一直等待这个确认应答，而是继续发送（但是要在窗口大小之内），窗口大小即指无需等待确认应答即可继续发送数据的最大值（序列号的最大右偏移），窗口的大小一般都在动态变化，与每次接受应答时对端传来的窗口值相关。这也是实现流量控制的机制，考虑到接收端的处理速度，接收端缓冲区的空闲空间要与发送端要发送的数据量相匹配，否则过多，接收端无法处理。</p><blockquote><p>重发控制</p></blockquote><ul><li><p>超时重发</p><p>发送端发送包后，若在指定时间内（超时时间）未收到来自对端的确认应答则会进行超时重发，超时重发后的超时时间会以指数级增长，发送频率会降下来，但也不会无限制重发，重发一定次数后会关闭连接</p></li><li><p>快速重发</p><p>即发送端收到来自对端的连续三次确认应答均一样，即会对相应缺失数据立即进行重发。一般出现在窗口较大时，发生连续报文段发送时 中间某一报文段丢失的场景，需要注意的是：这种场景下，即使接收端主机收到的包序号并不连续，也不会丢弃而是暂时保存在缓冲区，这样已经发送的缺失段后面的段就不用重传了，待到缺失段接收后，统一返回实际已经接收的最大数据长度ACK</p></li></ul><blockquote><p>拥塞控制</p></blockquote><p>参考：<a href="https://blog.csdn.net/qq_41431406/article/details/97926927">https://blog.csdn.net/qq_41431406/article/details/97926927</a></p><ul><li><p>慢开始</p></li><li><p>拥塞避免</p></li><li><p>拥塞发生</p></li><li><p>快恢复</p></li></ul><p>目的尽可能地提高网络的传输效率</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tcp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker官方文档笔记</title>
+      <link href="/2022/02/17/docker/docker%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/02/17/docker/docker%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CLI参考文档"><a href="#CLI参考文档" class="headerlink" title="CLI参考文档"></a>CLI参考文档</h1><p>tls: 安全传输层协议 SSL3.1</p><h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务官方文档笔记</title>
+      <link href="/2022/02/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1/reference/"/>
+      <url>/2022/02/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1/reference/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Spring-Cloud-Netflix"><a href="#Spring-Cloud-Netflix" class="headerlink" title="Spring Cloud Netflix"></a>Spring Cloud Netflix</h1>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> cloud </tag>
+            
+            <tag> 阅读笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>page</title>
+      <link href="/2022/01/31/%E9%9D%A2%E7%AD%8B/%E7%AE%97%E6%B3%95/"/>
+      <url>/2022/01/31/%E9%9D%A2%E7%AD%8B/%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务基础知识</title>
+      <link href="/2022/01/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1/basic/"/>
+      <url>/2022/01/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1/basic/</url>
+      
+        <content type="html"><![CDATA[<p>Cloud版本<code>2021.0.0</code> Boot版本<code>2.6.3</code></p><h1 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h1><p>服务中心</p><ul><li><p>Eureka Server 提供服务注册和发现</p></li><li><p>Service Provider 服务提供者，供服务消费者调用</p></li><li><p>Service Consumer 服务消费者</p></li></ul><p>注册中心作为关键服务一定要保证高可用的，避免单节点故障影响全局，故通常需要集群部署保证高可用</p><p>可以通过运行多个eureka实例，并进行互相注册的方式来实现高可用的部署</p><h2 id="注册中心搭建"><a href="#注册中心搭建" class="headerlink" title="注册中心搭建"></a>注册中心搭建</h2><blockquote><p>依赖</p></blockquote><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><blockquote><p>启动类注解开启</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableEurekaServer</span></span><br></pre></td></tr></table></figure><blockquote><p>配置(集群)</p></blockquote><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">ztt.eureka</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8001</span></span><br><span class="line"><span class="meta">eureka.instance.hostname</span>=<span class="string">eureka1</span></span><br><span class="line"><span class="meta">eureka.client.register-with-eureka</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.client.fetch-registry</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.instance.prefer-ip-address</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">eureka.client.service-url.defaultZone</span>=<span class="string">http://eureka2:8002/eureka/,http://eureka3:8003/eureka/</span></span><br></pre></td></tr></table></figure><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">ztt.eureka</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8002</span></span><br><span class="line"><span class="meta">eureka.instance.hostname</span>=<span class="string">eureka2</span></span><br><span class="line"><span class="meta">eureka.client.register-with-eureka</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.client.fetch-registry</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.instance.prefer-ip-address</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">eureka.client.service-url.defaultZone</span>=<span class="string">http://eureka1:8001/eureka/,http://eureka3:8003/eureka/</span></span><br></pre></td></tr></table></figure><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">ztt.eureka</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8003</span></span><br><span class="line"><span class="meta">eureka.instance.hostname</span>=<span class="string">eureka3</span></span><br><span class="line"><span class="meta">eureka.client.register-with-eureka</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.client.fetch-registry</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">eureka.instance.prefer-ip-address</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">eureka.client.service-url.defaultZone</span>=<span class="string">http://eureka1:8001/eureka/,http://eureka2:8002/eureka/</span></span><br></pre></td></tr></table></figure><blockquote><p>启动成功界面</p></blockquote><p><img src="/2022/01/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1/basic/image-20220203130626169.png" alt="image-20220203130626169"></p><h2 id="服务提供者搭建"><a href="#服务提供者搭建" class="headerlink" title="服务提供者搭建"></a>服务提供者搭建</h2><blockquote><p>依赖</p></blockquote><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><blockquote><p>启动类注解</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br></pre></td></tr></table></figure><p>项目开启服务注册的功能。启动工程后，就可以在注册中心的页面看到该服务</p><blockquote><p>配置</p></blockquote><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">spring-cloud-provider</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">9000</span></span><br><span class="line"><span class="meta">eureka.client.serviceUrl.defaultZone</span>=<span class="string">http://localhost:8001/eureka/</span></span><br></pre></td></tr></table></figure><blockquote><p>暴露接口</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/index&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(<span class="meta">@RequestParam(value = &quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello,&quot;</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>该接口可在消费者中调用</p><h2 id="服务消费者搭建"><a href="#服务消费者搭建" class="headerlink" title="服务消费者搭建"></a>服务消费者搭建</h2><blockquote><p>依赖</p></blockquote><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><blockquote><p>启动类注解</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span></span><br></pre></td></tr></table></figure><p>@EnableDiscoveryClient :启用服务注册与发现<br>@EnableFeignClients：启用feign进行远程调用</p><blockquote><p>配置</p></blockquote><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.application.name</span>=<span class="string">spring-cloud-invoke</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">9090</span></span><br><span class="line"><span class="meta">eureka.client.serviceUrl.defaultZone</span>=<span class="string">http://localhost:8001/eureka/</span></span><br></pre></td></tr></table></figure><blockquote><p>远程接口封装（Fegin）</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.FeignClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FeignClient(name = &quot;spring-cloud-provider&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IndexRemote</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/index&quot;)</span></span><br><span class="line">    <span class="function">String <span class="title">index</span><span class="params">(<span class="meta">@RequestParam(value = &quot;name&quot;)</span> String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>封装成为一个类似于Service的接口bean，其实现方式为远程服务实现，当前服务要使用时直接将其注入即可，如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.ztt.eurekaserviceinvoke.remote.IndexRemote;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> IndexRemote indexRemote;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IndexController</span><span class="params">(IndexRemote indexRemote)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.indexRemote = indexRemote;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/index/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> indexRemote.index(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><a href="http://127.0.0.1:9000/index?name=adawda">http://127.0.0.1:9000/index?name=adawda</a>  服务提供者本身的url</p><p><a href="http://127.0.0.1:9090/index/ztt">http://127.0.0.1:9090/index/ztt</a> 服务消费者通过远程调用的url</p><p>均可正常访问</p><p><img src="/2022/01/27/%E5%BE%AE%E6%9C%8D%E5%8A%A1/basic/image-20220203163128568.png" alt="image-20220203163128568"></p><p><strong>注：当有多个同名的服务提供者，Fegin会进行负载均衡，即会轮询调用远程服务</strong></p><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><blockquote><p>节点均在unavailable-replicas下</p></blockquote><p>参考：<a href="https://www.amd5.cn/atang_4357.html">https://www.amd5.cn/atang_4357.html</a></p><p>eureka.instance.prefer-ip-address 默认为false表示使用主机名<code>eureka.instance.hostname</code>,可以是主机名、域名等非IP地址</p><p>eureka.instance.prefer-ip-address若配置为true时则一定要使用具体的IP</p><blockquote><p>服务404</p></blockquote><p>OpenFeign FeignException$NotFound: [404]</p><p>原因：服务提供者的接口未被扫描，即本身不存在对应路径映射，调整后解决，可依次排查：先确认服务提供者本身是否可以正常访问：<a href="http://127.0.0.1:9000/index?name=adawda%EF%BC%8C%E5%86%8D%E7%A1%AE%E8%AE%A4%E5%90%84%E9%85%8D%E7%BD%AE%E6%AD%A3%E7%A1%AE%E6%80%A7">http://127.0.0.1:9000/index?name=adawda，再确认各配置正确性</a></p><h1 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h1><p>参考：<a href="https://blog.csdn.net/loushuiyifan/article/details/82702522">https://blog.csdn.net/loushuiyifan/article/details/82702522</a></p><p>wiki: <a href="https://github.com/Netflix/Hystrix/wiki">https://github.com/Netflix/Hystrix/wiki</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 微服务 </tag>
+            
+            <tag> Eureka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>那些问题</title>
       <link href="/2022/01/03/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%BC%82%E5%B8%B8%E8%AE%B0%E5%BD%95/"/>
       <url>/2022/01/03/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/%E5%BC%82%E5%B8%B8%E8%AE%B0%E5%BD%95/</url>
@@ -156,6 +249,8 @@
       
         <tags>
             
+            <tag> 单元测试 </tag>
+            
             <tag> mybatis集成 </tag>
             
             <tag> mybatisGenerator插件 </tag>
@@ -163,8 +258,6 @@
             <tag> 全局异常处理 </tag>
             
             <tag> 校验配置 </tag>
-            
-            <tag> 单元测试 </tag>
             
             <tag> 全局事务配置 </tag>
             
@@ -253,27 +346,6 @@
             <tag> mysql </tag>
             
             <tag> select into outfile </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>MQ平滑升级</title>
-      <link href="/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/"/>
-      <url>/2021/08/29/MQ/mq%E5%B9%B3%E6%BB%91%E5%8D%87%E7%BA%A7%E6%88%96%E8%BF%81%E7%A7%BB%E6%96%B9%E6%A1%88/</url>
-      
-        <content type="html"><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>生产环境上的MQ版本过低，因某些安全漏洞需要升级MQ的版本；</p><p>因某些因素需要更换MQ服务器；</p><p>同时要求不中断MQ服务</p><h1 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h1><p>消费者 双向订阅（旧MQ和新MQ）</p><p>生产者升级为新MQ</p><p>消费者下线旧MQ</p><p>参考：<a href="https://www.zhihu.com/question/330522940/answer/723077536">https://www.zhihu.com/question/330522940/answer/723077536</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> MQ </tag>
-            
-            <tag> 平滑升级 </tag>
             
         </tags>
       
