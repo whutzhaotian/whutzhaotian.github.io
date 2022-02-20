@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">54</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,196 +193,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/24/Spring/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">自定义注解+拦截器实现权限控制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-24 22:48:58" itemprop="dateCreated datePublished" datetime="2021-05-24T22:48:58+08:00">2021-05-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-29 11:20:13" itemprop="dateModified" datetime="2021-08-29T11:20:13+08:00">2021-08-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>大致思路：</p>
-<p>自定义注解+定义定制拦截器+配置拦截器+在需要的方法体上加上注解</p>
-<p>以实现角色权限控制为例：</p>
-<h1 id="定义注解"><a href="#定义注解" class="headerlink" title="定义注解"></a>定义注解</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RequireRoles &#123;</span><br><span class="line">    String[] value(); <span class="comment">// 存放需要角色的String数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>关于注解的<a href="../../java/%E6%B3%A8%E8%A7%A3/">更多介绍</a></p>
-<h1 id="定制拦截器"><a href="#定制拦截器" class="headerlink" title="定制拦截器"></a>定制拦截器</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RolesPermissionInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (handler.getClass().isAssignableFrom(HandlerMethod.class)) &#123;</span><br><span class="line">            HandlerMethod handlerMethod = (HandlerMethod) handler;</span><br><span class="line">            RequireRoles requireRoles = handlerMethod.getMethodAnnotation(RequireRoles.class);</span><br><span class="line">            <span class="comment">// 没有相应注解表示无需角色验证</span></span><br><span class="line">            <span class="keyword">if</span> (requireRoles == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            String[] needRoles = requireRoles.value();</span><br><span class="line">            <span class="comment">// 角色的权限验证业务</span></span><br><span class="line">            <span class="keyword">if</span> (!checkRolesPermisson(needRoles, request)) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> PermissionException(<span class="string">&quot;No Permission of the roles:&quot;</span> + CollUtil.newArrayList(needRoles));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>关于在Spring中自定义拦截器的<a href="../%E6%8B%A6%E6%88%AA%E5%99%A8/">更多介绍</a></p>
-<h1 id="配置拦截器"><a href="#配置拦截器" class="headerlink" title="配置拦截器"></a>配置拦截器</h1><p>一般在spring-web.xml中配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">&quot;/**&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">&quot;/static/**&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.ztt.web.interceptor.RolesPermissionInterceptor&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h1><p>在暴露的接口方法上使用注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/xxx&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequireRoles(&#123;&quot;root&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">xxxxMethod</span><span class="params">(XXXX xxxx)</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/" class="post-title-link" itemprop="url">Spring传参方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-24 22:43:59 / 修改时间：23:22:14" itemprop="dateCreated datePublished" datetime="2021-05-24T22:43:59+08:00">2021-05-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="非表单传参"><a href="#非表单传参" class="headerlink" title="非表单传参"></a>非表单传参</h1><h2 id="参数名一致"><a href="#参数名一致" class="headerlink" title="参数名一致"></a>参数名一致</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/regist&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m3</span><span class="params">(String username, String password, String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> + username + <span class="string">&quot;,&quot;</span> + password + <span class="string">&quot;,&quot;</span> + address;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/regist?username=zt&amp;password=psw&amp;address=hangzhou</span></span><br></pre></td></tr></table></figure>
-
-<p>不传的话 参数就为null</p>
-<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h2><p> 只能接收 URL 路径里的参数 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m1</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/path/idxxx</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;/&#123;key&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m2</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String idx,<span class="meta">@PathVariable(&quot;key&quot;)</span> String keyx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idx+<span class="string">&quot;=========&quot;</span>+keyx;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/path/idK/idV</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h2><p>RequestParam可以接受简单类型的属性，也可以接受对象类型。</p>
-<p>@RequestParam有三个配置参数：</p>
-<ul>
-<li>required 表示是否必须，默认为 true，必须，不提供时会报错。</li>
-<li>defaultValue 可设置请求参数的默认值。</li>
-<li>value 为接收url的参数名（相当于key值）</li>
-</ul>
-<p><code>@RequestParam</code>用来处理 <code>Content-Type</code> 为 <code>application/x-www-form-urlencoded </code>编码的内容，<code>Content-Type</code>默认为该属性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/regist2&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestParam(defaultValue = &quot;default username&quot;)</span> String username,<span class="meta">@RequestParam(defaultValue = &quot;default password&quot;)</span> String password,<span class="meta">@RequestParam(defaultValue = &quot;default address&quot;)</span> String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> + username + <span class="string">&quot;,&quot;</span> + password + <span class="string">&quot;,&quot;</span> + address;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/regist2?username=zt&amp;password=psw&amp;address=hangzhou</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h2><p>详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/justry_deng/article/details/80972817">https://blog.csdn.net/justry_deng/article/details/80972817</a></p>
-<p>只能接收请求体中的参数，也就是只能是 POST 请求才有请求体，GET 请求没有请求体</p>
-<p>使用封装的 bean 或者 JSONObject 接收（非常常用）  前端必须使用 JSON 格式的数据，Content-Type 必须为 application/json</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/regist3&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> +user.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/regist4&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject jsonObject)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> +jsonObject.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="comment">// ... getter setter</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/image-20210524164758021.png" alt="image-20210524164758021"></p>
-<h1 id="表单（FORM）传参"><a href="#表单（FORM）传参" class="headerlink" title="表单（FORM）传参"></a>表单（FORM）传参</h1><h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><p> 表单发出的 GET 请求直接通过注解 @RequestParam 进行参数接收即可 </p>
-<h2 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h2><p> form 表单使用 post 方法的时候，Content type 的值默认为<code> application/x-www-form-urlencoded;charset=UTF-8</code>。所以后台接收代码需要指定<code> consumes</code> 属性(用于指定处理请求的提交内容类型)</p>
-<p><code>@RequestMapping(value = &quot;/test&quot;, method = RequestMethod.POST, consumes = &quot;application/x-www-form-urlencoded;charset=UTF-8&quot;)</code></p>
-<p>FORM 表单发出的 POST 请求可以直接通过注解<code>@RequestParam</code>进行参数接收，</p>
-<p>也可以使用字段对应封装的 Java Bean 对象来接收参数。注意 Java Bean 对象上不需要注解。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -974,7 +784,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -987,7 +797,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
