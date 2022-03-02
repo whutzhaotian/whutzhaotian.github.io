@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">58</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,67 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/02/%E7%BF%BB%E8%AF%91/%E7%9F%A5%E5%90%8D%E8%8B%B1%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/02/%E7%BF%BB%E8%AF%91/%E7%9F%A5%E5%90%8D%E8%8B%B1%E6%96%87/" class="post-title-link" itemprop="url">知名英文</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-02 22:25:44 / 修改时间：22:28:35" itemprop="dateCreated datePublished" datetime="2022-03-02T22:25:44+08:00">2022-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>dormant</code>:休眠的；暂时不活动的；（线程休眠）</p>
+<p><code>erroneous use</code>:错误使用</p>
+<p><code>in such circumstances</code>:在这种情形下</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -426,7 +487,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-28 23:53:53" itemprop="dateModified" datetime="2022-02-28T23:53:53+08:00">2022-02-28</time>
+                <time title="修改时间：2022-03-02 23:56:05" itemprop="dateModified" datetime="2022-03-02T23:56:05+08:00">2022-03-02</time>
               </span>
 
           
@@ -515,6 +576,21 @@
 <p>使用限流器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RRateLimiter rRateLimiter = redissonClient.getRateLimiter(<span class="string">&quot;limiter&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">60</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">// 需要1个令牌</span></span><br><span class="line">            <span class="keyword">if</span> (rRateLimiter.tryAcquire(<span class="number">1</span>)) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;获得令牌：&quot;</span> + i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="分布式锁和同步器"><a href="#分布式锁和同步器" class="headerlink" title="分布式锁和同步器"></a>分布式锁和同步器</h1><h2 id="分布式可重入锁-RLock"><a href="#分布式可重入锁-RLock" class="headerlink" title="分布式可重入锁[RLock ]"></a>分布式可重入锁[RLock ]</h2><p>属于非公平锁</p>
+<blockquote>
+<p>未主动设置过期时间</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getLock(<span class="string">&quot;lock-key&quot;</span>);</span><br><span class="line">      <span class="comment">// 这里即在获取锁,若获取不到则一直阻塞在此直至获取 (默认的过期时间30s)</span></span><br><span class="line">      lock.lock();</span><br><span class="line">      System.out.println(<span class="string">&quot;获取锁成功&quot;</span> + Thread.currentThread());</span><br><span class="line">      lock.lock();</span><br><span class="line">      System.out.println(<span class="string">&quot;重新获取锁成功[重入锁]&quot;</span> + Thread.currentThread());</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">          Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">          lock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>主动设置过期时间</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getLock(<span class="string">&quot;lock-expire-key&quot;</span>);</span><br><span class="line">      <span class="comment">// 10s后自动释放</span></span><br><span class="line">      lock.lock(<span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line">      System.out.println(<span class="string">&quot;获取锁时间：&quot;</span> + DateUtil.formatDateTime(<span class="keyword">new</span> Date()));</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 此时不会进行自动续期 若设置的锁自动过期时间小于业务执行时间 则锁会提前释放 实际生产中应当避免</span></span><br><span class="line">          Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 手动释放锁 避免多余的锁占用</span></span><br><span class="line">          lock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h2><p>保证了当多个Redisson客户端线程同时请求加锁时，优先分配给先发出请求的线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getFairLock(<span class="string">&quot;fair-lock-key&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其它操作与上一节的操作类似</p>
 
       
     </div>
@@ -1320,71 +1396,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/12/26/vue/basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/26/vue/basic/" class="post-title-link" itemprop="url">vue基础学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-26 20:57:58" itemprop="dateCreated datePublished" datetime="2021-12-26T20:57:58+08:00">2021-12-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-03 20:48:51" itemprop="dateModified" datetime="2022-01-03T20:48:51+08:00">2022-01-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>只有当实例被创建时就已经存在于 <code>data</code> 中的 property 才是<strong>响应式</strong>的</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1455,7 +1466,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1468,7 +1479,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
