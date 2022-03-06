@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,253 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/01/01/docker/basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/01/docker/basic/" class="post-title-link" itemprop="url">docker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-01 17:07:00" itemprop="dateCreated datePublished" datetime="2022-01-01T17:07:00+08:00">2022-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-03 11:51:15" itemprop="dateModified" datetime="2022-01-03T11:51:15+08:00">2022-01-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="windows-win10"><a href="#windows-win10" class="headerlink" title="windows[win10]"></a>windows[win10]</h2><p>1.启用虚拟化功能【Hyper-V】</p>
+<p><img src="/2022/01/01/docker/basic/image-20220101174948609.png" alt="image-20220101174948609"></p>
+<p>若存在…禁用 需要在bios中开启对虚拟化的支持</p>
+<p>2.安装docker安装包【官网下载】</p>
+<p>3.启动docker</p>
+<p>报错 大概率是因为WSL2未安装 按照链接进行下载安装即可</p>
+<p>4.测试</p>
+<p><code>docker run hello-world</code></p>
+<p>先会提示本地未找到镜像，然后会尝试从远程拉取，但是一般会拉不下来因为网络原因，故需要进行<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-mirror-acceleration.html">docker镜像加速</a></p>
+<p>5.验证测试</p>
+<p>成功标志</p>
+<p><img src="/2022/01/01/docker/basic/image-20220101195624628.png" alt="image-20220101195624628"></p>
+<h1 id="容器使用"><a href="#容器使用" class="headerlink" title="容器使用"></a>容器使用</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu:15.10 /bin/<span class="built_in">echo</span> <span class="string">&quot;Hello world&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo “Hello world”，然后输出结果。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t ubuntu:15.10 /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>-t: 在新容器内指定一个伪终端或终端</p>
+<p>-i: 允许你对容器内的标准输入 (STDIN) 进行交互</p>
+<h2 id="容器启动"><a href="#容器启动" class="headerlink" title="容器启动"></a>容器启动</h2><p>创建一个以进程方式运行的容器：</p>
+<p><code>docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</code></p>
+<p><img src="/2022/01/01/docker/basic/image-20220101201036303.png" alt="image-20220101201036303"></p>
+<p>返回的是容器唯一id<code>332d9db9407cebde55b33a5cd32e5563d36de7297c6015539fb9199f4f7ff749</code></p>
+<blockquote>
+<p>容器状态查询</p>
+</blockquote>
+<p><code>docker ps</code> 只查询在运行的容器 加上<code>-a</code>参数会查询所有容器，包括之前停止的容器</p>
+<p><strong>CONTAINER ID:</strong> 容器 ID。</p>
+<p><strong>IMAGE:</strong> 使用的镜像。</p>
+<p><strong>COMMAND:</strong> 启动容器时运行的命令。</p>
+<p><strong>CREATED:</strong> 容器的创建时间。</p>
+<p><strong>STATUS:</strong> 容器状态。</p>
+<p>状态有7种：</p>
+<ul>
+<li>created（已创建）</li>
+<li>restarting（重启中）</li>
+<li>running 或 Up（运行中）</li>
+<li>removing（迁移中）</li>
+<li>paused（暂停）</li>
+<li>exited（停止）</li>
+<li>dead（死亡）</li>
+</ul>
+<p><strong>PORTS:</strong> 容器的端口信息和使用的连接类型（tcp\udp）。</p>
+<p><strong>NAMES:</strong> 自动分配的容器名称。</p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>容器内部的标准输出</p>
+<p><code>docker logs 332d9db9407c</code>  后为容器id</p>
+<p><code>docker logs magical_dirac</code> 后为容器名称</p>
+<h2 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h2><p><code>docker stop 容器id或者容器名称</code></p>
+<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p><code>docker pull 镜像名称</code> 从远程拉取</p>
+<h2 id="启动-重启"><a href="#启动-重启" class="headerlink" title="启动/重启"></a>启动/重启</h2><p><code>docker start 容器ID</code> 启动</p>
+<p><code>docker restart 容器ID</code>    重启</p>
+<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p><code>docker attach</code> 退出容器终端后会导致容器停止</p>
+<p><code>docker attach 332d9db9407c</code></p>
+<p><code>docker exec</code>退出容器终端后不会导致容器停止</p>
+<p><code>docker exec 332d9db9407c /bin/bash</code></p>
+<h2 id="导出容器"><a href="#导出容器" class="headerlink" title="导出容器"></a>导出容器</h2><p><code>docker export feb5d9fea6a5 &gt; a.tar</code></p>
+<p>导出容器 332d9db9407c 快照到本地文件 a.tar</p>
+<h2 id="导入容器"><a href="#导入容器" class="headerlink" title="导入容器"></a>导入容器</h2><p><code>cat b.tar | docker import - test/ubuntu:v2</code></p>
+<p>以下实例将快照文件 b.tar 导入到镜像 test/ubuntu:v2</p>
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><p><code> docker rm -f d5599e167569</code> 删除指定容器</p>
+<p><code>docker container prune</code> 清理掉所有处于终止状态的容器</p>
+<h2 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h2><p><code>docker port 容器id或名称</code></p>
+<h2 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h2><p><code>docker top 容器id或名称</code></p>
+<h2 id="应用检查"><a href="#应用检查" class="headerlink" title="应用检查"></a>应用检查</h2><p><code>docker inspect 容器id或名称</code></p>
+<h2 id="关键参数"><a href="#关键参数" class="headerlink" title="关键参数"></a>关键参数</h2><p><code>-d</code>:后台运行</p>
+<p><code>-P</code>:将容器内部使用的网络端口随机映射到我们使用的主机上</p>
+<p><code>-p 5000:5000</code>:设置映射到宿主机上的端口</p>
+<p><code>-i</code>: 交互式操作</p>
+<p><code>-t</code>: 终端</p>
+<p><code>--name</code> :标识来命名容器</p>
+<p><code>-d</code>：参数指定 Docker 网络类型，有 bridge、overlay</p>
+<p><code>--rm</code>：容器退出时自动清理容器内部的文件系统</p>
+<p><code>--dns=IP_ADDRESS</code>： 添加 DNS 服务器到容器的 /etc/resolv.conf 中，让容器用这个服务器来解析所有不在 /etc/hosts 中的主机名</p>
+<p><code>-v</code>: 指定挂载主机目录到容器目录</p>
+<h1 id="镜像使用"><a href="#镜像使用" class="headerlink" title="镜像使用"></a>镜像使用</h1><p>当运行容器时，使用的镜像如果在本地中不存在，docker 就会自动从 docker 镜像仓库中下载，默认是从 Docker Hub 公共镜像源下载</p>
+<h2 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h2><p><code>docker images </code> 本地主机上的镜像</p>
+<h2 id="查询镜像"><a href="#查询镜像" class="headerlink" title="查询镜像"></a>查询镜像</h2><p><code>docker search kw</code> 搜寻指定关键词的镜像</p>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><p><code> docker rmi hello-world</code> 删除 hello-world 镜像</p>
+<h2 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h2><blockquote>
+<p>从已经创建的容器中更新镜像，并且提交这个镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -t -i ubuntu:15.10 /bin/bash</span><br><span class="line">apt-get update</span><br><span class="line">docker commit -m=&quot;has update&quot; -a=&quot;tt&quot; 44f8778a6276 tt/ubuntu:v2</span><br><span class="line">docker images</span><br><span class="line">docker run -t -i tt/ubuntu:v2 /bin/bash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 Dockerfile 指令来创建一个新的镜像 </p>
+</blockquote>
+<p>新建Dockerfile文件</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>    centos:<span class="number">6.7</span></span><br><span class="line"><span class="keyword">MAINTAINER</span>      Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     useradd runoob</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;runoob:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> -e <span class="string">&quot;LANG=\&quot;en_US.UTF-8\&quot;&quot;</span> &gt;/etc/default/<span class="built_in">local</span></span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">22</span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash">     /usr/sbin/sshd -D</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t runoob/centos:6.7 .</span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像标签"><a href="#镜像标签" class="headerlink" title="镜像标签"></a>镜像标签</h2><p><code> docker tag adf047e3db27 tt/ubuntu:v3</code></p>
+<p><code>:</code>后面即使镜像标签</p>
+<h2 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h2><p><code>docker push REPOSITORY:TAG </code></p>
+<p>通过 docker push 命令将自己的镜像推送到 Docker Hub</p>
+<h1 id="容器互联"><a href="#容器互联" class="headerlink" title="容器互联"></a>容器互联</h1><h2 id="两个容器互相ping通"><a href="#两个容器互相ping通" class="headerlink" title="两个容器互相ping通"></a>两个容器互相ping通</h2><blockquote>
+<p>创建一个新的 Docker 网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge test-net</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行一个容器并连接到新建的 test-net 网络:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>再运行一个容器并加入到 test-net 网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h2><p>如果在容器启动时没有指定 <strong>–dns</strong> 和 <strong>–dns-search</strong>，Docker 会默认用宿主主机上的 /etc/resolv.conf 来配置容器的 DNS</p>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
+<p>FROM</p>
+</blockquote>
+<p>定制的镜像都是基于 FROM 的镜像</p>
+<blockquote>
+<p>RUN</p>
+</blockquote>
+<ul>
+<li>RUN &lt;命令行&gt; 等价于在终端操作的 shell 命令</li>
+<li>RUN [“可执行文件”, “参数1”, “参数2”]</li>
+</ul>
+<p><strong>注意</strong>：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大，如下面第二种更为合适</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum -y install wget</span><br><span class="line">RUN wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot;</span><br><span class="line">RUN tar -xvf redis.tar.gz</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum -y install wget \</span><br><span class="line">    &amp;&amp; wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot; \</span><br><span class="line">    &amp;&amp; tar -xvf redis.tar.gz</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>COPY</p>
+</blockquote>
+<p>复制指令，从上下文目录中复制文件或者目录到容器里指定路径。</p>
+<p><code>COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</code></p>
+<p>容器内的指定路径【目标路径】，该路径不用事先建好，路径不存在的话，会自动创建。</p>
+<blockquote>
+<p>ADD</p>
+</blockquote>
+<p>与COPY类似 不过在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;</p>
+<blockquote>
+<p>CMD</p>
+</blockquote>
+<p>为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束。CMD 指令指定的程序可被 docker run 命令行参数中指定要运行的程序所覆盖。如果 Dockerfile 中如果存在多个 CMD 指令，仅最后一个生效</p>
+<blockquote>
+<p>ENTRYPOINT</p>
+</blockquote>
+<p>类似于CMD</p>
+<blockquote>
+<p>ENV</p>
+</blockquote>
+<p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">ENV &lt;key1&gt;&#x3D;&lt;value1&gt; &lt;key2&gt;&#x3D;&lt;value2&gt;...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>ARG</p>
+</blockquote>
+<p>构建参数，与 ENV 作用一致。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
+<p>构建命令 docker build 中可以用 –build-arg &lt;参数名&gt;=&lt;值&gt; 来覆盖。</p>
+<blockquote>
+<p>VOLUME</p>
+</blockquote>
+<p>定义匿名数据卷。在启动容器时忘记挂载数据卷，会自动挂载到匿名卷。</p>
+<p>作用：</p>
+<ul>
+<li>避免重要的数据，因容器重启而丢失，这是非常致命的。</li>
+<li>避免容器不断变大。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]</span><br><span class="line">VOLUME &lt;路径&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>EXPOSE</p>
+</blockquote>
+<p>只是声明端口</p>
+<blockquote>
+<p>WORKDIR</p>
+</blockquote>
+<p>指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在。（WORKDIR 指定的工作目录，必须是提前创建好的）</p>
+<blockquote>
+<p>USER</p>
+</blockquote>
+<p>用于指定执行后续命令的用户和用户组，这边只是切换后续命令执行的用户（用户和用户组必须提前已经存在）</p>
+<h1 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h1><p>先把我们的镜像传到docker仓库中,再由目的地把docker仓库中的镜像拉过去</p>
+<h1 id="Docker网络"><a href="#Docker网络" class="headerlink" title="Docker网络"></a>Docker网络</h1><h2 id="Bridge模式"><a href="#Bridge模式" class="headerlink" title="Bridge模式"></a>Bridge模式</h2><p>默认模式，需要端口映射,docker可以指定你想把容器内的某一个端口可以在容器所在主机上的某一个端口它俩之间做一个映射,当你在访问主机上的端口时,其实就是访问容器里面的端口.</p>
+<h2 id="Host模式"><a href="#Host模式" class="headerlink" title="Host模式"></a>Host模式</h2><p>在启动容器的时候指定使用Host模式,那么这个容器将不会获得一个独立的network namespace,而是和主机共同使用一个,这个时候容器将不会虚拟出自己的网卡,配置出自己的ip.而是使用宿主机上的ip和端口.也就是说在docker上使用网络和在主机上使用网络是一样的</p>
+<h2 id="None模式"><a href="#None模式" class="headerlink" title="None模式"></a>None模式</h2><p>还有一种网络类型是None.也就是没有网络,这种情况docker将不会和外界的任何东西进行通讯</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1100,98 +1347,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/09/01/mysql/mysql%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%88%90csv%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/01/mysql/mysql%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%88%90csv%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">表格数据导出方案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-01 22:15:13 / 修改时间：23:19:39" itemprop="dateCreated datePublished" datetime="2021-09-01T22:15:13+08:00">2021-09-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="select-into-outfile方式"><a href="#select-into-outfile方式" class="headerlink" title="select into outfile方式"></a>select into outfile方式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sys_user INTO OUTFILE &#39;D:&#x2F;&#x2F;sys_user.csv&#39;</span><br><span class="line">FIELDS TERMINATED BY &#39;,&#39; OPTIONALLY ENCLOSED BY &#39;&quot;&#39;</span><br><span class="line">LINES TERMINATED BY &#39;\r\n&#39;;</span><br></pre></td></tr></table></figure>
-
-<p><code>&#39;D://sys_user.csv&#39;</code> 指定的导出csv文件路径（仅限在mysql服务器上）</p>
-<p><code>FIELDS TERMINATED BY &#39;,&#39;</code>导出的字段间的分隔符为’,’</p>
-<p><code>OPTIONALLY ENCLOSED BY &#39;&quot;&#39;</code> 导出的字段用“””包裹 这个可以解决字段中包含“,”时 导致CSV产生多列</p>
-<p><code>LINES TERMINATED BY &#39;\r\n&#39;</code> 指定换行</p>
-<blockquote>
-<p>缺点</p>
-</blockquote>
-<ul>
-<li><code>--secure-file-priv</code>问题</li>
-</ul>
-<p>show global variables like ‘%secure_file_priv%’;</p>
-<p>secure_file_priv需要配置值 （一个目录或者是空 但不能为NULL）</p>
-<p>上面指定导出文件的路径时需要在secure_file_privp配置的目录下，否则无法导出</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dazhan/p/9815194.html">https://www.cnblogs.com/dazhan/p/9815194.html</a></p>
-<ul>
-<li>局限</li>
-</ul>
-<p>导出的文件路径范围只限于数据库服务器中</p>
-<h1 id="mysql-e-跨服务器导出"><a href="#mysql-e-跨服务器导出" class="headerlink" title="mysql -e 跨服务器导出"></a>mysql -e 跨服务器导出</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysql -u<span class="string">&quot;root&quot;</span> -p<span class="string">&quot;123456&quot;</span>  -e <span class="string">&quot;</span></span></span><br><span class="line">select sch_name,sch_addr,sch_profession from all_university;</span><br><span class="line">quit&quot; | awk &#x27;&#123;print $1&quot;,&quot;,$2&quot;,&quot;$3&#125;&#x27; &gt; log.csv</span><br></pre></td></tr></table></figure>
-
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/092a6c260c2f">https://www.jianshu.com/p/092a6c260c2f</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xsj_blog/article/details/52617199">https://blog.csdn.net/xsj_blog/article/details/52617199</a></p>
-<h1 id="mysqldump方式"><a href="#mysqldump方式" class="headerlink" title="mysqldump方式"></a>mysqldump方式</h1><p>基本和into outfile一致，mysqldump导出csv格式只能在本地进行，无法远程操作</p>
-<h1 id="一点tips"><a href="#一点tips" class="headerlink" title="一点tips"></a>一点tips</h1><blockquote>
-<p>导出字段自动被科学计数显示</p>
-</blockquote>
-<p>在导出字段时，有些字段字符串比较长且又都是数字，导出CSV打开后会自动转成科学计数，可能末尾的一些字符全部都置为0了，可以在输出字段值时使用concat(xxx,’\t’);</p>
-<blockquote>
-<p>一些NULL值字段导出后显示为\N</p>
-</blockquote>
-<p>导出的字段可能为NULL时，select时使用ifnull(xxx,’’);</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1262,7 +1417,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1275,7 +1430,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
