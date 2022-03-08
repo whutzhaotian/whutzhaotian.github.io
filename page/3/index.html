@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">60</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">63</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -193,6 +193,232 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/10/31/java/java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/31/java/java8%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">java8新特性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-31 11:29:11" itemprop="dateCreated datePublished" datetime="2021-10-31T11:29:11+08:00">2021-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-22 16:57:07" itemprop="dateModified" datetime="2022-01-22T16:57:07+08:00">2022-01-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><p>语法格式：<code>参数 -&gt; 函数体</code></p>
+<p>Lambda表达式只支持函数式接口 也就是只有一个抽象方法的接口，可以用<code>@FunctionalInterface</code>注解来表示当前接口为函数式接口，如果有多个抽象方法，编译时会报错</p>
+<p>注：<code>参数</code>可以指明参数类型，但一般不需要指定，编译器可以自动推断出</p>
+<p>e.g.1:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">compare</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ICompare&lt;Integer&gt; compare = (integer -&gt; integer &gt; <span class="number">2</span>);</span><br><span class="line">System.out.println(compare.compare(<span class="number">5</span>));<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>e.g.2:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICompare2</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T x,T y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ICompare2&lt;Integer&gt; compare2 = Integer::compare;</span><br></pre></td></tr></table></figure>
+
+<p>疑问：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/H_X_P_/article/details/105030682">为什么Comparator接口有两个抽象方法compare和equals，Comparator还是一个函数式接口？</a></p>
+<p>因为抽象方法equals方法在父类Object中已有默认实现，所以它们不是抽象方法。如果一个接口中声明的抽象方法是重写了超类Object类中任意一个public方法，那么这些抽象方法并不会算入接口的抽象方法数量中</p>
+<h1 id="核心函数式接口"><a href="#核心函数式接口" class="headerlink" title="核心函数式接口"></a>核心函数式接口</h1><h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><p>消费型接口：<code>void accept(T t);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;Long&gt; consumer = System.out::println;</span><br><span class="line">consumer.accept(<span class="number">1000L</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="流操作"><a href="#流操作" class="headerlink" title="流操作"></a>流操作</h1><p>一种用函数式编程方式在集合类上进行复杂操作的工具</p>
+<h2 id="List常用流操作"><a href="#List常用流操作" class="headerlink" title="List常用流操作"></a>List常用流操作</h2><blockquote>
+<p>提取某一属性的集合</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; strings = elements.stream().map(ListElement::getStringElement).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; stringSet = elements.stream().map(ListElement::getStringElement).collect(Collectors.toSet());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>List转Map</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, ListElement&gt; listElementMap = elements.stream().collect(Collectors.toMap(ListElement::getStringElement, Function.identity(), (k1, k2) -&gt; k2));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; listElementMap2 = elements.stream().collect(Collectors.toMap(ListElement::getStringElement, ListElement::getIntElement, (k1, k2) -&gt; k2));</span><br></pre></td></tr></table></figure>
+
+<p><code>(k1, k2) -&gt; k2</code>指定key重复时的覆盖规则，表示重复时取后者，若不指定key重复时会出现异常</p>
+<p><code>Function.identity()</code> 表示原对象本身</p>
+<blockquote>
+<p>过滤</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; filterElements &#x3D; elements.stream().filter(o -&gt; o.getStringElement().equals(&quot;acb&quot;)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>分组 group</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, List&lt;ListElement&gt;&gt; listList = elements.stream().collect(Collectors.groupingBy(ListElement::getIntElement));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>排序</p>
+</blockquote>
+<p>单属性 升序或者降序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; sortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement)).collect(Collectors.toList());</span><br><span class="line">List&lt;ListElement&gt; reverseSortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement).reversed()).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p>reversed()即表示降序排列</p>
+<p>多属性排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ListElement&gt; sortList = elements.stream().sorted(Comparator.comparing(ListElement::getIntElement).thenComparing(ListElement::getByteElement)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>map 和 flatMap</p>
+</blockquote>
+<ul>
+<li>map将流中的元素进行再次加工形成一个新流</li>
+<li>flatMap先提取属性放入一个比较小的流，然后再将所有的流合并为一个流</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ListElement element1 = <span class="keyword">new</span> ListElement(<span class="number">1</span>, (<span class="keyword">byte</span>) <span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br><span class="line">element1.setStrings(Arrays.asList(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;v&quot;</span>));</span><br><span class="line">ListElement element2 = <span class="keyword">new</span> ListElement(<span class="number">2</span>, (<span class="keyword">byte</span>) <span class="number">1</span>, <span class="string">&quot;abc&quot;</span>);</span><br><span class="line">element2.setStrings(Arrays.asList(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>));</span><br><span class="line">List&lt;ListElement&gt; elements = Arrays.asList(element1, element2);</span><br><span class="line">List&lt;String&gt; res = elements.stream().flatMap(o -&gt; o.getStrings().stream()).map(String::toUpperCase).distinct().collect(Collectors.toList());<span class="comment">// [A, B, V, C, D]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/10/10/java/lombok/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/10/java/lombok/" class="post-title-link" itemprop="url">lombok使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-10 22:43:09 / 修改时间：23:24:20" itemprop="dateCreated datePublished" datetime="2021-10-10T22:43:09+08:00">2021-10-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>lombok主要用来自动生成（编译阶段）一些方法代码，如getter、setter、构造函数、toString方法等等，使用前需要在IDE上安装lombok的插件</p>
+<h1 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h1><h2 id="Data"><a href="#Data" class="headerlink" title="@Data"></a>@Data</h2><p>作用在类上，会为类的所有属性自动生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法</p>
+<h2 id="Getter-Setter"><a href="#Getter-Setter" class="headerlink" title="@Getter/@Setter"></a>@Getter/@Setter</h2><p>即可作用在类上，为类中所有属性生成getter/setter方法；</p>
+<p>也可单用在某一属性上，为某一特定属性生成getter/setter方法；</p>
+<h2 id="ToString"><a href="#ToString" class="headerlink" title="@ToString"></a>@ToString</h2><p>作用于类，覆盖默认的toString()方法，可以通过of属性限定显示某些字段，通过exclude属性排除某些字段。</p>
+<h2 id="AllArgsConstructor"><a href="#AllArgsConstructor" class="headerlink" title="@AllArgsConstructor"></a>@AllArgsConstructor</h2><p>作用于类，生成类的全参构造函数</p>
+<h2 id="NoArgsConstructor"><a href="#NoArgsConstructor" class="headerlink" title="@NoArgsConstructor"></a>@NoArgsConstructor</h2><p>作用于类，生成类的无参构造函数</p>
+<h2 id="Builder"><a href="#Builder" class="headerlink" title="@Builder"></a>@Builder</h2><p>作用于类，将类转变为建造者模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpDto</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer param1;</span><br><span class="line">    <span class="keyword">private</span> Integer param2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HttpDto dto = HttpDto.builder().param1(<span class="number">1</span>).param2(<span class="number">2</span>).build();</span><br></pre></td></tr></table></figure>
+
+<h2 id="RequiredArgsConstructor"><a href="#RequiredArgsConstructor" class="headerlink" title="@RequiredArgsConstructor"></a>@RequiredArgsConstructor</h2><p>作用于类，生成包含final和@NonNull注解的成员变量的构造器</p>
+<h2 id="CleanUp"><a href="#CleanUp" class="headerlink" title="@CleanUp"></a>@CleanUp</h2><p>自动关闭资源，针对实现了java.io.Closeable接口的对象有效，如：典型的IO流对象</p>
+<h2 id="NonNull"><a href="#NonNull" class="headerlink" title="@NonNull"></a>@NonNull</h2><p>主要作用于成员变量和参数中，标识不能为空，否则抛出空指针异常</p>
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><blockquote>
+<p>优势</p>
+</blockquote>
+<p>一定程度提高了开发效率</p>
+<p>代码更加简洁</p>
+<p>属性修改时不用特意去维护getter setter方法</p>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>不支持多种参数构造器的重载</p>
+<p>大大降低了源代码的可读性和完整性，降低了阅读源代码的舒适度</p>
+<p>如果我们定义的一个jar包中使用了Lombok，那么就要求所有依赖这个jar包的所有应用都必须安装插件，这种侵入性是很高的</p>
+<p>代码可读性，可调试性低</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heyonggang/p/8638374.html">https://www.cnblogs.com/heyonggang/p/8638374.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2543c71a8e45">https://www.jianshu.com/p/2543c71a8e45</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1589073">https://cloud.tencent.com/developer/article/1589073</a></p>
+<p><strong>综上，个人认为正式的生产项目还是不要使用lombok了</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -701,7 +927,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-06 23:35:47" itemprop="dateModified" datetime="2022-03-06T23:35:47+08:00">2022-03-06</time>
+                <time title="修改时间：2022-03-07 21:23:38" itemprop="dateModified" datetime="2022-03-07T21:23:38+08:00">2022-03-07</time>
               </span>
 
           
@@ -882,168 +1108,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">maven命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-25 22:53:35 / 修改时间：23:16:42" itemprop="dateCreated datePublished" datetime="2021-05-25T22:53:35+08:00">2021-05-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="清空构建产物"><a href="#清空构建产物" class="headerlink" title="清空构建产物"></a>清空构建产物</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure>
-
-<h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hiver/p/7850954.html">https://www.cnblogs.com/hiver/p/7850954.html</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Dmaven.test.skip -pl parentModule.childModule -am -Pcustom_profile</span><br></pre></td></tr></table></figure>
-
-<p><code>-Dmaven.test.skip</code> 跳过测试代码</p>
-<p><code>-pl XXX.xxx </code>  选择指定模块  父模块.子模块</p>
-<p><code>-am</code>  同时处理选定模块所依赖的模块 </p>
-<p><code>-Pxxxx</code> 选定构建的profile环境</p>
-<h1 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h1><p>完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库</p>
-<h1 id="mvn-deploy"><a href="#mvn-deploy" class="headerlink" title="mvn deploy"></a>mvn deploy</h1><p>deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">编码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-24 23:02:04 / 修改时间：23:02:56" itemprop="dateCreated datePublished" datetime="2021-05-24T23:02:04+08:00">2021-05-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html</a></p>
-<p>1.按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”</p>
-<p>2.字符，抽象的最小文本单位， 仅仅代表一个符号 ，是一个英文字母也可能是汉字亦或是一个特殊符号</p>
-<p>3.字符集，某个符号和某个数字映射关系的一个表，不同的表有不同的映射关系</p>
-<p>4.字符编码方式，决定一个字符的表示方式</p>
-<h2 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h2><p>American Standard Code for Information Interchange，美国信息互换标准代码</p>
-<p>使用指定的7 位或8 位二进制数组合来表示128 或256 种可能的字符</p>
-<p>标准 ASCII码一共规定了128个字符的编码，只占用了一个字节的后面7位，最前面的1位统一规定为0</p>
-<h2 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h2><p>对 ASCII 的中文扩展</p>
-<h2 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h2><p>包括了 GB2312 的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。</p>
-<h2 id="GB18030"><a href="#GB18030" class="headerlink" title="GB18030"></a>GB18030</h2><p>又加了几千个新的少数民族的字，GBK 扩成了 GB18030</p>
-<h2 id="UNICODE"><a href="#UNICODE" class="headerlink" title="UNICODE"></a>UNICODE</h2><p>包括了地球上所有文化、所有字母和符号的编码;在UNICODE 中，一个字符就是两个字节，不论是英文字符还是汉字，前三种支持中文的编码方式都是使用双字节表示汉字，用单字节表示英文字符</p>
-<p>存在的问题：</p>
-<p>第一个问题是，如何才能区别unicode和ascii？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hongsong673150343/article/details/88584753">https://blog.csdn.net/hongsong673150343/article/details/88584753</a></p>
-<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是Unicode的实现方式之一</p>
-<p>是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</p>
-<p>UTF-8的编码规则很简单，只有二条：</p>
-<p>1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</p>
-<p>2）对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</p>
-<h2 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h2><p>一种字符代码，对于英文文件是ASCII编码，对于简体中文文件是GB2312编码（只针对Windows简体中文版，如果是繁体中文版会采用Big5码）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1110,7 +1178,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1123,7 +1191,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
