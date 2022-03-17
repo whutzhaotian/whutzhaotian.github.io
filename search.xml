@@ -352,8 +352,6 @@
       
         <tags>
             
-            <tag> 单元测试 </tag>
-            
             <tag> mybatis集成 </tag>
             
             <tag> mybatisGenerator插件 </tag>
@@ -361,6 +359,8 @@
             <tag> 全局异常处理 </tag>
             
             <tag> 校验配置 </tag>
+            
+            <tag> 单元测试 </tag>
             
             <tag> 全局事务配置 </tag>
             
