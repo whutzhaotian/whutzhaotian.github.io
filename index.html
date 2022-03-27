@@ -120,12 +120,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">66</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">14</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-java">
@@ -197,6 +197,291 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/22/%E6%BA%90%E7%A0%81/jdk%E6%BA%90%E7%A0%81/ConcurrentHashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/22/%E6%BA%90%E7%A0%81/jdk%E6%BA%90%E7%A0%81/ConcurrentHashMap/" class="post-title-link" itemprop="url">concurrentHashMap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-22 23:20:31" itemprop="dateCreated datePublished" datetime="2022-03-22T23:20:31+08:00">2022-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-23 23:03:10" itemprop="dateModified" datetime="2022-03-23T23:03:10+08:00">2022-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jdk%E6%BA%90%E7%A0%81/" itemprop="url" rel="index"><span itemprop="name">jdk源码</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="类注释"><a href="#类注释" class="headerlink" title="类注释"></a>类注释</h1><p>检索操作不会受并发导致阻塞，对于一些聚合操作(putAll/clear)，并发访问可能只会反应出一部分的更新效果。</p>
+<p>迭代器中的修改不会发生<code>ConcurrentModificationException</code>，但是某个特定时刻只会允许一个线程去修改。一些聚合状态的方法<code>size</code>、<code>isEmpty</code>、<code>containsValue</code>只有当不存在受其它线程的并发更新影响时才有用。其结果只能反映瞬时状态，但是对于监控或评估足够了，但不适合程序控制。在构造对象实例时提供一个预估的size是个好的选择，避免过多的resize和rehash（相对比较耗时的操作）</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/21/DevOps/k8s/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/21/DevOps/k8s/" class="post-title-link" itemprop="url">k8s</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-21 21:53:02" itemprop="dateCreated datePublished" datetime="2022-03-21T21:53:02+08:00">2022-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 11:23:16" itemprop="dateModified" datetime="2022-03-27T11:23:16+08:00">2022-03-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Kubernetes(k8s)就是按照用户的期望的样子来运行部署应用程序</p>
+<h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/cloud_computing/">云计算</a></p>
+<h2 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h2><h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><h1 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h1><h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><h1 id="HELM"><a href="#HELM" class="headerlink" title="HELM"></a>HELM</h1><p>k8s搭建</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/spll/p/10033316.html">https://www.cnblogs.com/spll/p/10033316.html</a></p>
+<p>问题解决：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mwtsai/p/15102016.html">https://www.cnblogs.com/mwtsai/p/15102016.html</a></p>
+<p>failed to retrieve network config: client: etcd cluster is unavailable or misconfigured; error #0: dial tcp 172.17.0.4:2379: getsockopt: no route to host  关掉防火墙即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">page</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-17 21:20:24 / 修改时间：21:20:55" itemprop="dateCreated datePublished" datetime="2022-03-17T21:20:24+08:00">2022-03-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归之后得到一个当时翻转的那个节点的引用</span></span><br><span class="line">    ListNode newNode = reverseList(head.next);</span><br><span class="line">    <span class="comment">// 将第n-1次递归的入参节点尾插到第n次递归的尾结点之后</span></span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// 这里每次返回的都是最后的那个节点的引用（每次递归返回都会增加其长度）</span></span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList2</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line">    ListNode pre = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">        head = head.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/17/CodeTop/LRU/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/17/CodeTop/LRU/" class="post-title-link" itemprop="url">CodeTop</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-17 19:52:19 / 修改时间：19:56:45" itemprop="dateCreated datePublished" datetime="2022-03-17T19:52:19+08:00">2022-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>map(缓存容器)+双链表(维护缓存顺序)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    Map&lt;Integer, Node&gt; cacheMap;</span><br><span class="line">    Node head;</span><br><span class="line">    Node tail;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> key;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        Node pre;</span><br><span class="line">        Node next;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.cacheMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cacheMap.containsKey(key)) &#123;</span><br><span class="line">            Node node = cacheMap.get(key);</span><br><span class="line">            afterAccessNode(node);</span><br><span class="line">            <span class="keyword">return</span> node.val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问某个节点后将其放置在双链表的最后（表示缓存最新）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> node</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">afterAccessNode</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        Node last = tail;</span><br><span class="line">        <span class="comment">// 访问非尾结点 才需要调整顺序</span></span><br><span class="line">        <span class="keyword">if</span> (node != last) &#123;</span><br><span class="line">            Node p = node, thePre = p.pre, theNext = p.next;</span><br><span class="line">            <span class="comment">// 当前节点最后是要成为尾结点的 故后置节点必须置空</span></span><br><span class="line">            p.next = <span class="keyword">null</span>;</span><br><span class="line">            <span class="comment">// 前节点的处理</span></span><br><span class="line">            <span class="keyword">if</span> (thePre == <span class="keyword">null</span>) &#123;</span><br><span class="line">                head = theNext;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                thePre.next = theNext;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 后节点的处理(其实不可能为空)</span></span><br><span class="line">            theNext.pre = thePre;</span><br><span class="line">            <span class="comment">// last节点（原尾结点）处理</span></span><br><span class="line">            <span class="keyword">if</span> (last == <span class="keyword">null</span>) &#123;</span><br><span class="line">                head = p;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                last.next = p;</span><br><span class="line">                p.pre = last;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 尾结点指向p</span></span><br><span class="line">            tail = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cacheMap.containsKey(key)) &#123;</span><br><span class="line">            Node node = cacheMap.get(key);</span><br><span class="line">            node.val = value;</span><br><span class="line">            <span class="comment">// put 已有key 更新其值 调用一次访问调整</span></span><br><span class="line">            afterAccessNode(node);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Node node = <span class="keyword">new</span> Node(key, value);</span><br><span class="line">            addNodeLast(node);</span><br><span class="line">            <span class="comment">// 判断是否超过缓存阈值</span></span><br><span class="line">            <span class="keyword">if</span> (size &gt; capacity) &#123;</span><br><span class="line">                removeHeadNode();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除头结点（最旧的缓存）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeHeadNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Node h = head, hnext = head.next;</span><br><span class="line">        cacheMap.remove(h.key);</span><br><span class="line">        size -= <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 头结点冲双链表中移除</span></span><br><span class="line">        h.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 其后置节点（未来的头结点）的前置节点置空</span></span><br><span class="line">        <span class="keyword">if</span> (hnext != <span class="keyword">null</span>) &#123;</span><br><span class="line">            hnext.pre = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        head = hnext;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加节点（尾插法）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> node</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addNodeLast</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        cacheMap.put(node.key, node);</span><br><span class="line">        size += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">            head = tail = node;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Node last = tail;</span><br><span class="line">            last.next = node;</span><br><span class="line">            node.pre = last;</span><br><span class="line">            tail = node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/13/docker/%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85%E5%90%AF%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +513,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-17 19:21:15" itemprop="dateModified" datetime="2022-03-17T19:21:15+08:00">2022-03-17</time>
+                <time title="修改时间：2022-03-27 16:32:02" itemprop="dateModified" datetime="2022-03-27T16:32:02+08:00">2022-03-27</time>
               </span>
 
           
@@ -256,6 +541,9 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull rabbitmq:3.7.7-management</span><br><span class="line">docker run -d --name rabbitmq3.7.7 -p 5672:5672 -p 15672:15672 -v D:/data:/var/lib/rabbitmq --hostname myRabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost  -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin 镜像ID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>访问：<a target="_blank" rel="noopener" href="http://localhost:15672/">http://localhost:15672/</a></p>
+<h1 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker search activemq</span><br><span class="line">docker pull webcenter/activemq</span><br><span class="line">docker run --name=activemq -itd -p 8161:8161 -p 61616:61616 -e ACTIVEMQ_ADMIN_LOGIN=admin -e ACTIVEMQ_ADMIN_PASSWORD=Abc12345 --restart=always -v D:/mountdir/activeMq:/data/activemq -v D:/mountdir/activeMq/<span class="built_in">log</span>:/var/<span class="built_in">log</span>/activemq webcenter/activemq:latest</span><br></pre></td></tr></table></figure>
+
+<p>访问:<a target="_blank" rel="noopener" href="http://localhost:8161/">http://localhost:8161/</a></p>
 <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yufeng218/p/9452621.html">https://www.cnblogs.com/yufeng218/p/9452621.html</a></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br><span class="line">docker pull mysql</span><br><span class="line">docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure>
 
@@ -685,7 +973,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-13 22:49:04" itemprop="dateModified" datetime="2022-03-13T22:49:04+08:00">2022-03-13</time>
+                <time title="修改时间：2022-03-23 23:17:37" itemprop="dateModified" datetime="2022-03-23T23:17:37+08:00">2022-03-23</time>
               </span>
 
           
@@ -705,6 +993,17 @@
 <p><code>chaotic</code>: 混乱的</p>
 <p><code>incurring</code>:招致</p>
 <p><code>derived from</code>:来源于</p>
+<p><code>retrieval</code>: n.检索</p>
+<p><code>obey</code>: v.遵从</p>
+<p><code>entail</code>: v.涉及; 需要; 牵涉; 使必要;</p>
+<p><code>aggregate operation</code>: 聚合操作</p>
+<p><code>Bear in mind that</code>: 记住</p>
+<p><code>adequate</code>: 足够的 适当的 充足 充分的</p>
+<p><code>collision</code>: n.碰撞 冲突</p>
+<p><code>modulo</code>: 以…为模</p>
+<p><code>density</code>: 密度 稠密度</p>
+<p><code>compatibility</code>: 兼容性</p>
+<p><code>ameliorate</code>: 改善</p>
 
       
     </div>
@@ -918,438 +1217,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/02/20/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/Redis%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/20/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/Redis%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">Redis的最佳实践---Redisson</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-20 21:19:56" itemprop="dateCreated datePublished" datetime="2022-02-20T21:19:56+08:00">2022-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-06 13:52:29" itemprop="dateModified" datetime="2022-03-06T13:52:29+08:00">2022-03-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>参考：<a target="_blank" rel="noopener" href="https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95">https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95</a></p>
-<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.redisson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>redisson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>单节点为例：</p>
-<p>redis-single.yml</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">singleServerConfig:</span></span><br><span class="line">  <span class="attr">idleConnectionTimeout:</span> <span class="number">10000</span></span><br><span class="line">  <span class="attr">connectTimeout:</span> <span class="number">10000</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">3000</span></span><br><span class="line">  <span class="attr">retryAttempts:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">retryInterval:</span> <span class="number">1500</span></span><br><span class="line">  <span class="attr">password:</span> <span class="literal">null</span></span><br><span class="line">  <span class="attr">subscriptionsPerConnection:</span> <span class="number">5</span></span><br><span class="line">  <span class="attr">clientName:</span> <span class="literal">null</span></span><br><span class="line">  <span class="attr">address:</span> <span class="string">&quot;redis://127.0.0.1:6379&quot;</span></span><br><span class="line">  <span class="attr">subscriptionConnectionMinimumIdleSize:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">subscriptionConnectionPoolSize:</span> <span class="number">50</span></span><br><span class="line">  <span class="attr">connectionMinimumIdleSize:</span> <span class="number">32</span></span><br><span class="line">  <span class="attr">connectionPoolSize:</span> <span class="number">64</span></span><br><span class="line">  <span class="attr">database:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">dnsMonitoringInterval:</span> <span class="number">5000</span></span><br><span class="line"><span class="attr">threads:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">nettyThreads:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">codec:</span> <span class="type">!&lt;org.redisson.codec.JsonJacksonCodec&gt;</span> &#123;&#125;</span><br><span class="line"><span class="attr">transportMode:</span> <span class="string">&quot;NIO&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>bean配置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> RedissonClient <span class="title">getSingleClient</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Config config = Config.fromYAML(<span class="keyword">new</span> ClassPathResource(<span class="string">&quot;config/redis-single.yml&quot;</span>).getInputStream());</span><br><span class="line">        config.useSingleServer();</span><br><span class="line">        <span class="keyword">return</span> Redisson.create(config);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="常规使用"><a href="#常规使用" class="headerlink" title="常规使用"></a>常规使用</h1><blockquote>
-<p>set缓存</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RBucket&lt;String&gt; stringRBucket = redissonClient.getBucket(key);</span><br><span class="line">        stringRBucket.set(val);</span><br><span class="line">        stringRBucket.set(val, <span class="number">300L</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>del缓存</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RMap map = redissonClient.getMap(key);</span><br><span class="line">map.delete();</span><br></pre></td></tr></table></figure>
-
-<h1 id="分布式对象"><a href="#分布式对象" class="headerlink" title="分布式对象"></a>分布式对象</h1><blockquote>
-<p>RBinaryStream</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">RBinaryStream stream = redissonClient.getBinaryStream(streamName);</span><br><span class="line">        OutputStream writeStream = stream.getOutputStream();</span><br><span class="line">        <span class="keyword">byte</span>[] contentToWrite = <span class="string">&quot;hello,I am ztt&quot;</span>.getBytes();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 往redis中写入 （多次写入 会在其后附加append）</span></span><br><span class="line">            writeStream.write(contentToWrite);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        InputStream is = stream.getInputStream();</span><br><span class="line">        <span class="keyword">byte</span>[] readBuf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 从redis中读出</span></span><br><span class="line">            is.read(readBuf);</span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(readBuf));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RGeo</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取对应key关联的地理空间成员</span></span><br><span class="line">      RGeo&lt;String&gt; geo = redissonClient.getGeo(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">      <span class="comment">// 添加地理空间成员</span></span><br><span class="line">      geo.add(<span class="keyword">new</span> GeoEntry(<span class="number">13.361389</span>, <span class="number">38.115556</span>, <span class="string">&quot;Palermo&quot;</span>),</span><br><span class="line">              <span class="keyword">new</span> GeoEntry(<span class="number">15.087269</span>, <span class="number">37.502669</span>, <span class="string">&quot;Catania&quot;</span>));</span><br><span class="line">      <span class="comment">// 异步添加地理空间成员</span></span><br><span class="line">      geo.addAsync(<span class="number">37.618423</span>, <span class="number">55.751244</span>, <span class="string">&quot;Moscow&quot;</span>);</span><br><span class="line">      <span class="comment">// 两个成员间的距离</span></span><br><span class="line">      Double distance = geo.dist(<span class="string">&quot;Palermo&quot;</span>, <span class="string">&quot;Catania&quot;</span>, GeoUnit.METERS);</span><br><span class="line">      <span class="comment">// 异步哈希</span></span><br><span class="line">      geo.hashAsync(<span class="string">&quot;Palermo&quot;</span>, <span class="string">&quot;Catania&quot;</span>);</span><br><span class="line">      <span class="comment">// 获取指定成员的地理空间映射</span></span><br><span class="line">      Map&lt;String, GeoPosition&gt; positions = geo.pos(<span class="string">&quot;test2&quot;</span>, <span class="string">&quot;Palermo&quot;</span>, <span class="string">&quot;test3&quot;</span>, <span class="string">&quot;Catania&quot;</span>, <span class="string">&quot;test1&quot;</span>);</span><br><span class="line">      <span class="comment">// 指定位置的指定半径范围内的地理空间成员</span></span><br><span class="line">      List&lt;String&gt; cities = geo.radius(<span class="number">15</span>, <span class="number">37</span>, <span class="number">200</span>, GeoUnit.KILOMETERS);</span><br><span class="line">      <span class="comment">// 指定位置的指定半径范围内的地理空间成员映射</span></span><br><span class="line">      Map&lt;String, GeoPosition&gt; citiesWithPositions = geo.radiusWithPosition(<span class="number">15</span>, <span class="number">37</span>, <span class="number">200</span>, GeoUnit.KILOMETERS);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RAtomicLong</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RAtomicLong rAtomicLong = redissonClient.getAtomicLong(<span class="string">&quot;long-key&quot;</span>);</span><br><span class="line">        rAtomicLong.set(<span class="number">123L</span>);</span><br><span class="line">        rAtomicLong.incrementAndGet();</span><br><span class="line">        System.out.println(rAtomicLong.get());</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RTopic</p>
-</blockquote>
-<p>话题（订阅分发） 与MQ的在该功能上的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dengguangxue/p/11537466.html"><em>对比</em></a></p>
-<p>可用于实现及时性，且可靠性低的功能</p>
-<p>订阅</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">optForSetTopic</span><span class="params">(String topic)</span> </span>&#123;</span><br><span class="line">        RTopic&lt;String&gt; rTopic = redissonClient.getTopic(topic);</span><br><span class="line">        rTopic.addListener((channel, msg) -&gt;</span><br><span class="line">                System.out.println(String.format(<span class="string">&quot;监听到主题：%s,消息：%s&quot;</span>, topic, msg)));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>发布</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">optForPubTopic</span><span class="params">(String topic, String msg)</span> </span>&#123;</span><br><span class="line">        RTopic&lt;String&gt; rTopic = redissonClient.getTopic(topic);</span><br><span class="line">        rTopic.publish(msg);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RBloomFilter</p>
-</blockquote>
-<p>布隆过滤器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RBloomFilter&lt;String&gt; bloomFilter = redissonClient.getBloomFilter(<span class="string">&quot;bloomKey&quot;</span>);</span><br><span class="line">        <span class="comment">// 参数1：期望插入的元素总数 参数2：误识别率</span></span><br><span class="line">        bloomFilter.tryInit(<span class="number">1000000</span>, <span class="number">0.03</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">1000000</span> ; i++) &#123;</span><br><span class="line">            bloomFilter.add(IdUtil.fastSimpleUUID());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">// 这里输出9次false 1次true（当然这不是绝对的 有一次错误说明是存在误识别的）</span></span><br><span class="line"> System.out.println(bloomFilter.contains(IdUtil.fastSimpleUUID()));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RHyperLogLog</p>
-</blockquote>
-<p>基数估计算法，基数：不同的总数。</p>
-<p>应用：给定一个含有重复元素的有限集合，计算其不重复元素的个数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RHyperLogLog&lt;String&gt; stringRHyperLogLog = redissonClient.getHyperLogLog(<span class="string">&quot;hyperLog&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;d&quot;</span>);</span><br><span class="line">        stringRHyperLogLog.add(<span class="string">&quot;d&quot;</span>);</span><br><span class="line">        System.out.println(stringRHyperLogLog.count());<span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>LongAdder</p>
-</blockquote>
-<p>与<code>java.util.concurrent.atomic.LongAdder</code>类似的接口，为分布式环境下递增和递减操作提供了很高得性能</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RLongAdder longAdder = redissonClient.getLongAdder(<span class="string">&quot;myLongAdder&quot;</span>);</span><br><span class="line">        <span class="comment">// 初始值</span></span><br><span class="line">        longAdder.add(<span class="number">1L</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">100000</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// +1</span></span><br><span class="line">            longAdder.increment();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 累计和</span></span><br><span class="line">        System.out.println(longAdder.sum());</span><br><span class="line">        <span class="comment">// 不使用时最好手动销毁</span></span><br><span class="line">        longAdder.destroy();</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RRateLimiter</p>
-</blockquote>
-<p>分布式限流器</p>
-<p>定义限流器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RRateLimiter rRateLimiter = redissonClient.getRateLimiter(<span class="string">&quot;limiter&quot;</span>);</span><br><span class="line">        <span class="comment">// 每10s产生30个令牌</span></span><br><span class="line">        rRateLimiter.trySetRate(RateType.OVERALL, <span class="number">30</span>, <span class="number">60</span>, RateIntervalUnit.SECONDS);</span><br></pre></td></tr></table></figure>
-
-<p>使用限流器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RRateLimiter rRateLimiter = redissonClient.getRateLimiter(<span class="string">&quot;limiter&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">60</span> ; i++) &#123;</span><br><span class="line">            <span class="comment">// 需要1个令牌</span></span><br><span class="line">            <span class="keyword">if</span> (rRateLimiter.tryAcquire(<span class="number">1</span>)) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;获得令牌：&quot;</span> + i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="分布式锁和同步器"><a href="#分布式锁和同步器" class="headerlink" title="分布式锁和同步器"></a>分布式锁和同步器</h1><h2 id="分布式可重入锁-RLock"><a href="#分布式可重入锁-RLock" class="headerlink" title="分布式可重入锁[RLock ]"></a>分布式可重入锁[RLock ]</h2><p>属于非公平锁</p>
-<blockquote>
-<p>未主动设置过期时间</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getLock(<span class="string">&quot;lock-key&quot;</span>);</span><br><span class="line">      <span class="comment">// 这里即在获取锁,若获取不到则一直阻塞在此直至获取 (默认的过期时间30s)</span></span><br><span class="line">      lock.lock();</span><br><span class="line">      System.out.println(<span class="string">&quot;获取锁成功&quot;</span> + Thread.currentThread());</span><br><span class="line">      lock.lock();</span><br><span class="line">      System.out.println(<span class="string">&quot;重新获取锁成功[重入锁]&quot;</span> + Thread.currentThread());</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">          Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">          lock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>主动设置过期时间</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getLock(<span class="string">&quot;lock-expire-key&quot;</span>);</span><br><span class="line">      <span class="comment">// 10s后自动释放</span></span><br><span class="line">      lock.lock(<span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line">      System.out.println(<span class="string">&quot;获取锁时间：&quot;</span> + DateUtil.formatDateTime(<span class="keyword">new</span> Date()));</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 此时不会进行自动续期 若设置的锁自动过期时间小于业务执行时间 则锁会提前释放 实际生产中应当避免</span></span><br><span class="line">          Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 手动释放锁 避免多余的锁占用</span></span><br><span class="line">          lock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h2><p>保证了当多个Redisson客户端线程同时请求加锁时，优先分配给先发出请求的线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RLock lock = redissonClient.getFairLock(<span class="string">&quot;fair-lock-key&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>其它操作与上一节的操作类似</p>
-<h2 id="联锁（MultiLock）"><a href="#联锁（MultiLock）" class="headerlink" title="联锁（MultiLock）"></a>联锁（MultiLock）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可来自不同的redisson实例</span></span><br><span class="line">      RLock lock1 = redissonClient.getLock(<span class="string">&quot;multi-lock-1&quot;</span>);</span><br><span class="line">      RLock lock2 = redissonClient.getLock(<span class="string">&quot;multi-lock-2&quot;</span>);</span><br><span class="line">      RLock lock3 = redissonClient.getLock(<span class="string">&quot;multi-lock-3&quot;</span>);</span><br><span class="line">      RedissonMultiLock multiLock = <span class="keyword">new</span> RedissonMultiLock(lock1, lock2, lock3);</span><br><span class="line">      <span class="comment">// 同时所有锁都成功才算加锁成功</span></span><br><span class="line">      multiLock.lock();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">          Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">          multiLock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="红锁-RedissonRedLock"><a href="#红锁-RedissonRedLock" class="headerlink" title="红锁(RedissonRedLock)"></a>红锁(RedissonRedLock)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可来自不同的redisson实例</span></span><br><span class="line">      RLock lock1 = redissonClient.getLock(<span class="string">&quot;multi-lock-1&quot;</span>);</span><br><span class="line">      RLock lock2 = redissonClient.getLock(<span class="string">&quot;multi-lock-2&quot;</span>);</span><br><span class="line">      RLock lock3 = redissonClient.getLock(<span class="string">&quot;multi-lock-3&quot;</span>);</span><br><span class="line">      RedissonRedLock redLock = <span class="keyword">new</span> RedissonRedLock(lock1, lock2, lock3);</span><br><span class="line">      <span class="comment">// 红锁在大部分节点上加锁成功就算成功</span></span><br><span class="line">      redLock.lock();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">          Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">          log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">      &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">          redLock.unlock();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="读写锁-RReadWriteLock"><a href="#读写锁-RReadWriteLock" class="headerlink" title="读写锁(RReadWriteLock)"></a>读写锁(RReadWriteLock)</h2><blockquote>
-<p>读锁</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RReadWriteLock lock = redissonClient.getReadWriteLock(<span class="string">&quot;read-write-lock&quot;</span>);</span><br><span class="line">        lock.readLock().lock();</span><br><span class="line">        System.out.println(<span class="string">&quot;获取读锁成功&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">            Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">            lock.readLock().unlock();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>写锁</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RReadWriteLock lock = redissonClient.getReadWriteLock(<span class="string">&quot;read-write-lock&quot;</span>);</span><br><span class="line">        lock.writeLock().lock();</span><br><span class="line">        System.out.println(<span class="string">&quot;获取写锁成功&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 模拟业务执行时间 每隔10s会进行锁续期 续至30s 不会因为业务时间过长导致锁被提前释放</span></span><br><span class="line">            Thread.sleep(<span class="number">40000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;业务异常&quot;</span>, e);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 最后一定需要手动解锁 否则看门狗会一直进行锁续期</span></span><br><span class="line">            lock.writeLock().unlock();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>当读写锁是写加锁状态时, 在这个锁被解锁之前, 所有试图对这个锁加锁的线程都会被阻塞；当读写锁在读加锁状态时, 所有试图以读模式对它进行加锁的线程都可以得到访问权, 但是如果线程希望以写模式对此锁进行加锁, 它必须直到所有的线程释放锁.</p>
-<p>读写锁适合于对数据结构的读次数比写次数多得多的情况</p>
-<h2 id="信号量-RSemaphore"><a href="#信号量-RSemaphore" class="headerlink" title="信号量(RSemaphore)"></a>信号量(RSemaphore)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">RSemaphore semaphore = redissonClient.getSemaphore(<span class="string">&quot;sema-count&quot;</span>);</span><br><span class="line">        <span class="comment">// 设置10个许可</span></span><br><span class="line">        semaphore.trySetPermits(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">30</span> ; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 消耗1个许可 若无许可 则一直阻塞</span></span><br><span class="line">                semaphore.acquire();</span><br><span class="line">                <span class="comment">// 消耗1个许可 若无许可 则直接返回false</span></span><br><span class="line"><span class="comment">//                boolean res = semaphore.tryAcquire();</span></span><br><span class="line">                <span class="comment">// 消耗1个许可 若无许可 阻塞10s 若仍无直接返回false</span></span><br><span class="line"><span class="comment">//                boolean res = semaphore.tryAcquire(10, TimeUnit.SECONDS);</span></span><br><span class="line">                System.out.println(<span class="string">&quot;获取信号量&quot;</span> + i + <span class="string">&quot;:&quot;</span>+DateUtil.formatDateTime(<span class="keyword">new</span> Date()));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="带过期时间的信号量"><a href="#带过期时间的信号量" class="headerlink" title="带过期时间的信号量"></a>带过期时间的信号量</h2><p>在<code>RSemaphore</code>对象的基础上，为每个信号增加了一个过期时间。每个信号可以通过独立的ID来辨识，释放时只能通过提交这个ID才能释放</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RPermitExpirableSemaphore semaphore = redissonClient.getPermitExpirableSemaphore(<span class="string">&quot;expire-sema&quot;</span>);</span><br><span class="line">        semaphore.trySetPermits(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">30</span> ; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 许可有效期3秒钟</span></span><br><span class="line">                String permitId = semaphore.acquire(<span class="number">3</span>, TimeUnit.SECONDS);</span><br><span class="line">                System.out.println(<span class="string">&quot;获取信号量&quot;</span> + i + <span class="string">&quot;:&quot;</span>+DateUtil.formatDateTime(<span class="keyword">new</span> Date()));</span><br><span class="line">                <span class="keyword">if</span> (i % <span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// 释放许可需要获取许可时的id</span></span><br><span class="line">                    semaphore.release(permitId);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="闭锁"><a href="#闭锁" class="headerlink" title="闭锁"></a>闭锁</h2><p>使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，计数器的值就-1，当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了</p>
-<p>等待线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RCountDownLatch countDownLatch = redissonClient.getCountDownLatch(<span class="string">&quot;latch&quot;</span>);</span><br><span class="line">        countDownLatch.trySetCount(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;等待其它线程先执行&quot;</span>);</span><br><span class="line">            <span class="comment">// 在计数器的值未减至0前一直阻塞</span></span><br><span class="line">            countDownLatch.await();</span><br><span class="line">            System.out.println(<span class="string">&quot;其它线程均已执行，执行当前线程：&quot;</span>+Thread.currentThread());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其它前置任务执行完执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">countDownLatch.countDown();<span class="comment">// 计数器减1</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/02/20/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/RabbitMq%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/20/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/RabbitMq%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">RabbitMq的最佳实践</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-20 21:19:36 / 修改时间：21:21:13" itemprop="dateCreated datePublished" datetime="2022-02-20T21:19:36+08:00">2022-02-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/" class="post-title-link" itemprop="url">tcp的一些常识</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-19 14:32:38" itemprop="dateCreated datePublished" datetime="2022-02-19T14:32:38+08:00">2022-02-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-20 21:06:39" itemprop="dateModified" datetime="2022-02-20T21:06:39+08:00">2022-02-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>TCP提供一种面向连接的、可靠的字节流服务</p>
-<h1 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h1><p>可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32998153/article/details/79680704">https://blog.csdn.net/qq_32998153/article/details/79680704</a></p>
-<p>序列号：</p>
-<ul>
-<li>解决网络包乱序问题</li>
-</ul>
-<p>确认序列号：</p>
-<ul>
-<li>解决不丢包的问题</li>
-</ul>
-<p>窗口值：</p>
-<ul>
-<li>滑动窗口机制中会用到，实现流量控制</li>
-</ul>
-<p>时间戳选项的作用：</p>
-<ul>
-<li>测量RTT</li>
-<li>缓解序列号的快速回绕</li>
-</ul>
-<h1 id="连接与终止"><a href="#连接与终止" class="headerlink" title="连接与终止"></a>连接与终止</h1><p><img src="/2022/02/19/%E5%B8%B8%E8%AF%86/tcp/tcp_open_close.jpg" alt="img"></p>
-<h1 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h1><blockquote>
-<p>TCP的可靠性来源</p>
-</blockquote>
-<p>检验和、序列号、确认应答、重发控制、连接管理、窗口控制</p>
-<blockquote>
-<p>建立连接时的初始序列号特征</p>
-</blockquote>
-<p>随机且唯一，避免旧连接的包被新连接接收。必须使得迟到的TCP报文段的序号不处在新的连接中所使用的序号范围之中</p>
-<blockquote>
-<p>握手为什么需要三次</p>
-</blockquote>
-<p>为了同步两端的初始序列号信息，后续的数据传送都要依据这个初始序列号，是用于确认和排序的关键信息</p>
-<blockquote>
-<p>挥手为什么需要四次</p>
-</blockquote>
-<p>TCP是全双工的，发送方和接收方都需要FIN和ACK</p>
-<blockquote>
-<p>为什么TIME_WAIT的等待时间是2MSL？</p>
-</blockquote>
-<p>1)可靠地实现全双工连接的终止</p>
-<p>2)保证本连接持续的时间所产生的所有分组都从网络中消失，也就是保证新建立一个TCP连接时，来自该连接老的重复分组都已经在网络中消失了</p>
-<blockquote>
-<p>滑动窗口与流量控制</p>
-</blockquote>
-<p>​            可以提高性能，发送端主机在发送一个段之后不要一直等待这个确认应答，而是继续发送（但是要在窗口大小之内），窗口大小即指无需等待确认应答即可继续发送数据的最大值（序列号的最大右偏移），窗口的大小一般都在动态变化，与每次接受应答时对端传来的窗口值相关。这也是实现流量控制的机制，考虑到接收端的处理速度，接收端缓冲区的空闲空间要与发送端要发送的数据量相匹配，否则过多，接收端无法处理。</p>
-<blockquote>
-<p>重发控制</p>
-</blockquote>
-<ul>
-<li><p>超时重发</p>
-<p>发送端发送包后，若在指定时间内（超时时间）未收到来自对端的确认应答则会进行超时重发，超时重发后的超时时间会以指数级增长，发送频率会降下来，但也不会无限制重发，重发一定次数后会关闭连接</p>
-</li>
-<li><p>快速重发</p>
-<p>即发送端收到来自对端的连续三次确认应答均一样，即会对相应缺失数据立即进行重发。一般出现在窗口较大时，发生连续报文段发送时 中间某一报文段丢失的场景，需要注意的是：这种场景下，即使接收端主机收到的包序号并不连续，也不会丢弃而是暂时保存在缓冲区，这样已经发送的缺失段后面的段就不用重传了，待到缺失段接收后，统一返回实际已经接收的最大数据长度ACK</p>
-</li>
-</ul>
-<blockquote>
-<p>拥塞控制</p>
-</blockquote>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41431406/article/details/97926927">https://blog.csdn.net/qq_41431406/article/details/97926927</a></p>
-<ul>
-<li><p>慢开始</p>
-</li>
-<li><p>拥塞避免</p>
-</li>
-<li><p>拥塞发生</p>
-</li>
-<li><p>快恢复</p>
-</li>
-</ul>
-<p>目的尽可能地提高网络的传输效率</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/01/31/%E9%9D%A2%E7%AD%8B/%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/31/%E9%9D%A2%E7%AD%8B/%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">page</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-31 15:09:10" itemprop="dateCreated datePublished" datetime="2022-01-31T15:09:10+08:00">2022-01-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1420,20 +1287,20 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
