@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="可能不够详细，但会尽量实用">
+<meta property="og:type" content="website">
+<meta property="og:title" content="不知名TT">
+<meta property="og:url" content="https://ztt0tian.github.io/index.html">
+<meta property="og:site_name" content="不知名TT">
+<meta property="og:description" content="可能不够详细，但会尽量实用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zhaotian">
+<meta property="article:tag" content="java,mysql,markdown,redis,spring,rabbitmq">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ztt0tian.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>不知名TT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">不知名TT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个coder的自我修养</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-java">
+
+    <a href="/categories/java/" rel="section"><i class="fa fa-fw fa-coffee"></i>JAVA</a>
+
+  </li>
+        <li class="menu-item menu-item-db">
+
+    <a href="/categories/database/" rel="section"><i class="fa fa-fw fa-database"></i>DB</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/categories/tools/" rel="section"><i class="fa fa-fw fa-anchor"></i>Tools</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/10/16/git/git%E5%AE%9E%E6%93%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/16/git/git%E5%AE%9E%E6%93%8D/" class="post-title-link" itemprop="url">git实操</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-16 17:07:09 / 修改时间：22:13:58" itemprop="dateCreated datePublished" datetime="2022-10-16T17:07:09+08:00">2022-10-16</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p><img src="/2022/10/16/git/git%E5%AE%9E%E6%93%8D/a.png" alt="img"></p>
+<p>workspace 当前的目录–工作区</p>
+<p>Remote 远程仓库</p>
+<p>Repository 本地仓库（本地的git项目）</p>
+<p>Index 暂存区</p>
+<p>pull 拉变更</p>
+<p>push 推变更到远程仓库</p>
+<blockquote>
+<p>git clone</p>
+</blockquote>
+<p><code>git clone 仓库地址</code></p>
+<p>clone项目到本地</p>
+<blockquote>
+<p>git status</p>
+</blockquote>
+<p>查看当前的状态：当前的文档变更状态（新增 修改 untrunk等）</p>
+<blockquote>
+<p>git add</p>
+</blockquote>
+<p>添加一个或多个文件到暂存区</p>
+<p><code>git add 1.txt 2.txt</code>  添加特定文件</p>
+<p> <code>git add .</code> 添加当前目录下的所有变更</p>
+<blockquote>
+<p>git commit</p>
+</blockquote>
+<p>提交暂存区的内容到本地仓库</p>
+<p><code> git commit -m &quot;提交说明&quot;</code></p>
+<blockquote>
+<p>git log</p>
+</blockquote>
+<p>当前分支的历史提交记录，不包括已经被删除的 commit 记录和reset的操作</p>
+<p><code>git log --pretty=online</code> 只会显示版本号和提交时的备注信息</p>
+<blockquote>
+<p>git blame</p>
+</blockquote>
+<p>以列表形式查看指定文件的历史修改记录</p>
+<p><code>git blame [file]</code> </p>
+<blockquote>
+<p>git push</p>
+</blockquote>
+<p>提交本地仓库变更到远程仓库</p>
+<p><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code></p>
+<p><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;</code> 本地分支与远程分支同名，可以这样操作</p>
+<blockquote>
+<p>git reset</p>
+</blockquote>
+<p><code>git reset [&lt;mode&gt;] [&lt;commit&gt;]</code></p>
+<p>mode:（一些不常用的后期再完善）</p>
+<ul>
+<li>–soft</li>
+</ul>
+<p><code> git reset --soft HEAD^</code></p>
+<p>回退时保留工作区，并把回退带来的差异add至暂存区（add了但是没commit）</p>
+<ul>
+<li>–mixed</li>
+</ul>
+<p><code> git reset --mixed HEAD^</code></p>
+<p>回退时清空暂存区并保留工作区（没有add）</p>
+<ul>
+<li>–hard</li>
+</ul>
+<p><code> git reset --soft HEAD^</code></p>
+<p>回退的同时重置暂存区和工作区（清空回退带来的变更）</p>
+<ul>
+<li>–merge</li>
+<li>–keep</li>
+<li>–[no-]recurse-submodules</li>
+</ul>
+<p><code> git reset --hard HEAD^</code></p>
+<p>版本说明：</p>
+<p>HEAD   当前版本</p>
+<p>HEAD^ 上一版本</p>
+<p>HEAD^^ 上上一版本</p>
+<p>…以此类推</p>
+<p>HEAD~0   当前版本</p>
+<p>HEAD~1上一版本</p>
+<p>HEAD~2 上上一版本</p>
+<p>…以此类推</p>
+<blockquote>
+<p>git pull</p>
+</blockquote>
+<p><code>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code></p>
+<p>将远程的代码拉取到本地并合并</p>
+<blockquote>
+<p>git reflog</p>
+</blockquote>
+<p>可以查看所有分支的所有操作记录信息（包括已经被删除的 commit 记录和 reset 的操作记录）</p>
+<h1 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h1><blockquote>
+<p>git checkout</p>
+</blockquote>
+<p>切换分支或者恢复工作区文件（当工作区文件被删除时可以从暂存区恢复到工作区）</p>
+<p><code>git checkout file</code> 恢复暂存区中file文件至工作区</p>
+<p><code>git checkout branch-name</code> 切换到特定分支</p>
+<p><code>git checkout -b branch-name</code> 创建然后切换到特定分支</p>
+<blockquote>
+<p>git branch</p>
+</blockquote>
+<p><code>git branch new-branch</code> 创建本地新分支</p>
+<p><code>git branch -a</code> 查看所有分支(含远程分支)</p>
+<p><code>git branch</code> 查看本地分支、</p>
+<p><code>git branch -d branch-name</code> 删除本地分支(-D也可以)</p>
+<p><code>git push origin --delete branch-name</code> 删除远程分支</p>
+<blockquote>
+<p>git merge</p>
+</blockquote>
+<p>分支合并</p>
+<p><code>git merge branch-name</code> 把其它分支的变更合并到当前分支</p>
+<p><code>git merge --abort</code> 合并后如果有冲突则取消合并</p>
+<h1 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a>分支策略</h1><p>Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。 </p>
+<p>master分支是最稳定的，只能用于发布新版本，平时不能在上面进行开发，要在新建的分支上进行开发，比如dev，这时dev是不稳定的，到产品1.0发布时，将dev分支和master分支合并，在master分支上发布1.0版本。</p>
+<h1 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h1><blockquote>
+<p>git stash</p>
+</blockquote>
+<p>将本地没提交的内容(git commit的内容不会被缓存 但git add的内容会被缓存)进行缓存并从当前分支移除，缓存的数据结构为堆栈，先进后出</p>
+<p><code>git stash list</code> 返回缓存的列表</p>
+<p><code>git stash pop</code> 将堆栈中的最新内容应用到当前分支，并删除缓存堆栈中的记录</p>
+<blockquote>
+<p>git remote</p>
+</blockquote>
+<p><code>git remote</code> 远程库的信息</p>
+<p><code>git remote -v</code> 远程库的详细信息</p>
+<blockquote>
+<p>git rebase</p>
+</blockquote>
+<p><code>rebase</code> 命令其实关键在于理解「基」，<code>git rebase &lt;基分支&gt;</code>，就是将当前基分支与当前分支的差异提交获取到，然后在「基分支」最新提交点后面将差异提交逐个再次提交，最后将当前分支的 HEAD 指针指向最新的提交点</p>
+<p>慎用</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/" class="post-title-link" itemprop="url">docker实操</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-20 10:51:55" itemprop="dateCreated datePublished" datetime="2022-08-20T10:51:55+08:00">2022-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-21 23:41:46" itemprop="dateModified" datetime="2022-08-21T23:41:46+08:00">2022-08-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="部署jar包"><a href="#部署jar包" class="headerlink" title="部署jar包"></a>部署jar包</h1><h2 id="直接部署"><a href="#直接部署" class="headerlink" title="直接部署"></a>直接部署</h2><ol>
+<li><p>编写Dockerfile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8</span><br><span class="line">LABEL maintainer=&quot;tt&quot;</span><br><span class="line">COPY /target/dockerdemo.jar /app/dockerdemo.jar</span><br><span class="line">WORKDIR /app/</span><br><span class="line">EXPOSE 8080</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;dockerdemo.jar&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像</p>
+<p><code>docker bulid -t 镜像名:镜像tag .</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t demoimage:v1 .    </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行容器</p>
+<p><code>docker run -d -p 主机端口:容器端口 --name 容器名称 镜像名:镜像tag</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8085:8080 --name demo demoimage:v1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="IDEA-docker插件"><a href="#IDEA-docker插件" class="headerlink" title="IDEA docker插件"></a>IDEA docker插件</h2><p><img src="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/image-20220820162202937.png" alt="image-20220820162202937"></p>
+<p> <img src="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/image-20220820162314496.png" alt="image-20220820162314496"></p>
+<p><img src="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/image-20220820162742480.png" alt="image-20220820162742480"></p>
+<h2 id="docker-maven插件"><a href="#docker-maven插件" class="headerlink" title="docker-maven插件"></a>docker-maven插件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>dockerdemo<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http://localhost:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span></span><br><span class="line">                        dockermavendemo</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">baseImage</span>&gt;</span></span><br><span class="line">                        java:8</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">baseImage</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">maintainer</span>&gt;</span>tt<span class="tag">&lt;/<span class="name">maintainer</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">workdir</span>&gt;</span>/app<span class="tag">&lt;/<span class="name">workdir</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">entryPoint</span>&gt;</span>[&quot;java&quot;,&quot;-jar&quot;,&quot;$&#123;project.build.finalName&#125;.jar&quot;]<span class="tag">&lt;/<span class="name">entryPoint</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/app<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>package打包后，执行镜像构建</p>
+<p><img src="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/image-20220820163809326.png" alt="image-20220820163809326"></p>
+<h1 id="部署Redis环境"><a href="#部署Redis环境" class="headerlink" title="部署Redis环境"></a>部署Redis环境</h1><h2 id="单机"><a href="#单机" class="headerlink" title="单机"></a>单机</h2><ol>
+<li><p>配置网络</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 6379:6379 --name singleRedis redis</span><br></pre></td></tr></table></figure>
+
+<p>确保节点，网络互通</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver bridge --subnet 172.38.0.0/16 --gateway 172.38.0.1 redisnet</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>redis基础镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><h2 id="哨兵"><a href="#哨兵" class="headerlink" title="哨兵"></a>哨兵</h2></li>
+</ol>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 停止所有正在运行的容器（不适用windows cmd）</span></span><br><span class="line">docker stop $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有容器（不适用windows cmd）</span></span><br><span class="line">docker rm $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有镜像（不适用windows cmd）</span></span><br><span class="line">docker rmi $(docker images -a -q)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/07/03/docker/docker-compose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/03/docker/docker-compose/" class="post-title-link" itemprop="url">docker-compose</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-03 22:00:41 / 修改时间：22:09:31" itemprop="dateCreated datePublished" datetime="2022-07-03T22:00:41+08:00">2022-07-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/05/30/java/%E5%87%A0%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/30/java/%E5%87%A0%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="post-title-link" itemprop="url">序列化&反序列化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-30 21:48:29 / 修改时间：22:27:36" itemprop="dateCreated datePublished" datetime="2022-05-30T21:48:29+08:00">2022-05-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h1><h2 id="全局ObjectMapper"><a href="#全局ObjectMapper" class="headerlink" title="全局ObjectMapper"></a>全局ObjectMapper</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.DeserializationFeature;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.<span class="keyword">module</span>.SimpleModule;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ser.std.ToStringSerializer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JacksonConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ObjectMapper <span class="title">getJacksonObjectMapper</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> </span>&#123;</span><br><span class="line">        ObjectMapper objectMapper = builder.createXmlMapper(<span class="keyword">false</span>).build();</span><br><span class="line">        SimpleModule simpleModule = <span class="keyword">new</span> SimpleModule();</span><br><span class="line">        <span class="comment">// 序列化时将所有的long变成string.因为js中得数字类型不能包含所有的java long值，超过16位后会出现精度丢失</span></span><br><span class="line">        simpleModule.addSerializer(Long.class, ToStringSerializer.instance);</span><br><span class="line">        simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);</span><br><span class="line">        objectMapper.registerModule(simpleModule);</span><br><span class="line">        objectMapper.findAndRegisterModules();</span><br><span class="line">        <span class="comment">//反序列化的时候如果多了其他属性,不抛出异常</span></span><br><span class="line">        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="keyword">false</span>);</span><br><span class="line">        objectMapper.setDateFormat(<span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> objectMapper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义序列化和反序列化"><a href="#自定义序列化和反序列化" class="headerlink" title="自定义序列化和反序列化"></a>自定义序列化和反序列化</h2><p><code>@JsonSerialize</code>  <code>@JsonDeserialize</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/04/14/springBoot/%E5%90%84%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E4%B8%8E%E6%8E%A5%E6%94%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/14/springBoot/%E5%90%84%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E4%B8%8E%E6%8E%A5%E6%94%B6/" class="post-title-link" itemprop="url">参数传递</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 22:12:17" itemprop="dateCreated datePublished" datetime="2022-04-14T22:12:17+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-15 00:16:43" itemprop="dateModified" datetime="2022-04-15T00:16:43+08:00">2022-04-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BC%A0%E5%8F%82/" itemprop="url" rel="index"><span itemprop="name">传参</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h1><h2 id="无注解形式"><a href="#无注解形式" class="headerlink" title="无注解形式"></a>无注解形式</h2><h3 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h3><p>后端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/getString&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetString</span><span class="params">(String requestData)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ApiResponseDto.success(requestData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请求</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET http://localhost:8080/api/getString?requestData=test</span><br><span class="line">Accept: application/json</span><br><span class="line"></span><br><span class="line">### 无报错 返回 &quot;data&quot;: &quot;test&quot;</span><br><span class="line"></span><br><span class="line">GET http://localhost:8080/api/getString?xxxx=test</span><br><span class="line">Accept: application/json</span><br><span class="line"></span><br><span class="line">### 无报错 返回 &quot;data&quot;: null</span><br></pre></td></tr></table></figure>
+
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestDto</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String a1;</span><br><span class="line">    <span class="keyword">private</span> String b1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/getDto&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetDto</span><span class="params">(RequestDto dto)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ApiResponseDto.success(dto);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET http:&#x2F;&#x2F;localhost:8080&#x2F;api&#x2F;getDto?a1&#x3D;111&amp;b1&#x3D;222</span><br><span class="line">Accept: application&#x2F;json</span><br><span class="line"></span><br><span class="line">-- 返回</span><br><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: &quot;200&quot;,</span><br><span class="line">  &quot;msg&quot;: &quot;成功&quot;,</span><br><span class="line">  &quot;data&quot;: &#123;</span><br><span class="line">    &quot;a1&quot;: &quot;111&quot;,</span><br><span class="line">    &quot;b1&quot;: &quot;222&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h2><h3 id="普通参数-1"><a href="#普通参数-1" class="headerlink" title="普通参数"></a>普通参数</h3><p>后端 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/getString&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetString</span><span class="params">(<span class="meta">@RequestParam</span> String requestData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ApiResponseDto.success(requestData);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET http:&#x2F;&#x2F;localhost:8080&#x2F;api&#x2F;getString?requestData&#x3D;test</span><br><span class="line">Accept: application&#x2F;json</span><br><span class="line"></span><br><span class="line">### 无报错 返回 &quot;data&quot;: &quot;test&quot;</span><br><span class="line"></span><br><span class="line">GET http:&#x2F;&#x2F;localhost:8080&#x2F;api&#x2F;getString?requestData&#x3D;test</span><br><span class="line">Accept: application&#x2F;json</span><br><span class="line"></span><br><span class="line">### 报错 必须提供参数</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>该<code>@RequestParam</code>注解有四个属性配置：</p>
+<p><code>name</code>/<code>value</code>：修改绑定key</p>
+<p><code>required</code>：是否必填，默认为true</p>
+<p><code>defaultValue</code>：默认值，若没提供参数值或者参数为空 则会用默认值替代，若设置该值也就默认设置了<code>required</code>为<code>false</code></p>
+<p>注：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">defaultValue</span><span class="params">()</span> <span class="keyword">default</span> ValueConstants.DEFAULT_NONE</span>;</span><br><span class="line"></span><br><span class="line">String DEFAULT_NONE = <span class="string">&quot;\n\t\t\n\t\t\n\uE000\uE001\uE002\n\t\t\t\t\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>因为注解的属性不能使用<code>null</code>，属性值必须是常量，故用一个无意义的字符串来替代<code>null</code></p>
+<h3 id="对象-1"><a href="#对象-1" class="headerlink" title="对象"></a>对象</h3><p>不存在 <code>@RequestParam</code> 作用到<code>Dto</code>的说法，会出现类型转换错误</p>
+<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h2><h3 id="普通参数-2"><a href="#普通参数-2" class="headerlink" title="普通参数"></a>普通参数</h3><p>后端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/getPathVar/&#123;p1&#125;/&#123;p2&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetPathVar</span><span class="params">(<span class="meta">@PathVariable</span> String p1,<span class="meta">@PathVariable</span> String p2)</span> </span>&#123;</span><br><span class="line">        RequestDto dto = <span class="keyword">new</span> RequestDto();</span><br><span class="line">        dto.setP1(p1);</span><br><span class="line">        dto.setP2(p2);</span><br><span class="line">        <span class="keyword">return</span> ApiResponseDto.success(dto);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以成功接收参数</p>
+<p><code>@PathVariable</code>属性：</p>
+<p><code>name</code>/<code>value</code>: 修改绑定key</p>
+<p><code>require</code>: 是否必填，默认为<code>true</code></p>
+<p>特殊配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&#123;&quot;/getPathVar/&#123;p1&#125;/&#123;p2&#125;&quot;,&quot;/getPathVar/&#123;p2&#125;&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetPathVar</span><span class="params">(<span class="meta">@PathVariable(required = false)</span> String p1,<span class="meta">@PathVariable</span> String p2)</span> </span>&#123;</span><br><span class="line">        RequestDto dto = <span class="keyword">new</span> RequestDto();</span><br><span class="line">        dto.setP1(p1);</span><br><span class="line">        dto.setP2(p2);</span><br><span class="line">        <span class="keyword">return</span> ApiResponseDto.success(dto);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>正常返回无报错</p>
+<h3 id="对象-2"><a href="#对象-2" class="headerlink" title="对象"></a>对象</h3><p>后端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/getPathVar/&#123;a1&#125;/&#123;a2&#125;&quot;)</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> ApiResponseDto <span class="title">getRetPathVar</span><span class="params">(RequestDto dto)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> ApiResponseDto.success(dto);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以成功接收参数</p>
+<h1 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h1><h2 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a>application/x-www-form-urlencoded</h2><p>表单post提交</p>
+<h2 id="application-json"><a href="#application-json" class="headerlink" title="application/json"></a>application/json</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/04/04/%E5%BF%85%E8%A6%81%E7%B2%BE%E9%80%9A%E4%BA%8B%E9%A1%B9/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/04/%E5%BF%85%E8%A6%81%E7%B2%BE%E9%80%9A%E4%BA%8B%E9%A1%B9/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-04 14:38:42" itemprop="dateCreated datePublished" datetime="2022-04-04T14:38:42+08:00">2022-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-01 11:34:13" itemprop="dateModified" datetime="2022-05-01T11:34:13+08:00">2022-05-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/27/Linux/%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/Linux/%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">基本命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-27 10:12:04" itemprop="dateCreated datePublished" datetime="2022-03-27T10:12:04+08:00">2022-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-16 22:07:30" itemprop="dateModified" datetime="2022-10-16T22:07:30+08:00">2022-10-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux%E6%93%8D%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">linux操作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html">https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316661.html</a></p>
+<p>用于显示各种网络相关信息</p>
+<blockquote>
+<p>参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-a (all)显示所有选项，默认不显示LISTEN相关</span><br><span class="line">-t (tcp)仅显示tcp相关选项</span><br><span class="line">-u (udp)仅显示udp相关选项</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br><span class="line">-p 显示建立相关链接的程序名</span><br><span class="line">-r 显示路由信息，路由表</span><br><span class="line">-e 显示扩展信息，例如uid等</span><br><span class="line">-s 按各个协议进行统计</span><br><span class="line">-c 每隔一个固定时间，执行该netstat命令</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常用命令</p>
+</blockquote>
+<p><code>netstat -nultp</code>  </p>
+<p><img src="/2022/03/27/Linux/%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/image-20220327104105851.png" alt="image-20220327104105851"></p>
+<p>列出正在监听的Socket，配合<code>grep 端口号</code> 筛选出指定端口的应用监听是否启动成功</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37556444/article/details/83000553">各列的几个说明</a>：</p>
+<ul>
+<li><p>0.0.0.0:22 表示监听服务器上所有ip地址的22端口(0.0.0.0表示本地所有ip)</p>
+</li>
+<li><p>:::22 这个也表示监听本地所有ip的22端口，跟上面的区别是这里表示的是IPv6地址，上面的0.0.0.0表示的是本地所有IPv4地址</p>
+</li>
+<li><p>Local Adress分为0.0.0.0所有ip都可访问，127.0.0.1只有本机可访问</p>
+</li>
+</ul>
+<h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h1><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/51linux/archive/2012/05/23/2515299.html">https://www.cnblogs.com/51linux/archive/2012/05/23/2515299.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/51linux/archive/2012/05/23/2515299.html">sort</a>将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将他们按升序输出。</p>
+<blockquote>
+<p>参数</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-n 依照数值的大小排序</span><br><span class="line">-u 去重</span><br><span class="line">-r 逆序</span><br><span class="line">-o 排序结果输出到文件</span><br><span class="line">-k 指定以某列排序</span><br><span class="line">-t 设定列与列之间的间隔符</span><br></pre></td></tr></table></figure>
+
+<p><code>awk &#39;&#123;print $1&#125;&#39; access.log |sort|uniq -c|sort -nr|head -10</code></p>
+<p>access.log访问量前十的ip</p>
+<h1 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h1><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/delav/p/9953330.html">https://www.cnblogs.com/delav/p/9953330.html</a></p>
+<p><strong>当重复的行不相邻时，uniq 命令是不起作用的</strong>故经常需要跟 sort 命令一起使用</p>
+<blockquote>
+<p>参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-c 在每列旁边显示该行重复出现的次数</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/22/%E6%BA%90%E7%A0%81/jdk%E6%BA%90%E7%A0%81/ConcurrentHashMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/22/%E6%BA%90%E7%A0%81/jdk%E6%BA%90%E7%A0%81/ConcurrentHashMap/" class="post-title-link" itemprop="url">concurrentHashMap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-22 23:20:31" itemprop="dateCreated datePublished" datetime="2022-03-22T23:20:31+08:00">2022-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-23 23:03:10" itemprop="dateModified" datetime="2022-03-23T23:03:10+08:00">2022-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jdk%E6%BA%90%E7%A0%81/" itemprop="url" rel="index"><span itemprop="name">jdk源码</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="类注释"><a href="#类注释" class="headerlink" title="类注释"></a>类注释</h1><p>检索操作不会受并发导致阻塞，对于一些聚合操作(putAll/clear)，并发访问可能只会反应出一部分的更新效果。</p>
+<p>迭代器中的修改不会发生<code>ConcurrentModificationException</code>，但是某个特定时刻只会允许一个线程去修改。一些聚合状态的方法<code>size</code>、<code>isEmpty</code>、<code>containsValue</code>只有当不存在受其它线程的并发更新影响时才有用。其结果只能反映瞬时状态，但是对于监控或评估足够了，但不适合程序控制。在构造对象实例时提供一个预估的size是个好的选择，避免过多的resize和rehash（相对比较耗时的操作）</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/21/DevOps/k8s/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/21/DevOps/k8s/" class="post-title-link" itemprop="url">k8s</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-21 21:53:02" itemprop="dateCreated datePublished" datetime="2022-03-21T21:53:02+08:00">2022-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-04 17:14:00" itemprop="dateModified" datetime="2022-04-04T17:14:00+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Kubernetes(k8s)就是按照用户的期望的样子来运行部署应用程序</p>
+<h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/cloud_computing/">云计算</a></p>
+<h2 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h2><h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><h1 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h1><h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><h1 id="HELM"><a href="#HELM" class="headerlink" title="HELM"></a>HELM</h1><p>k8s搭建</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/spll/p/10033316.html">https://www.cnblogs.com/spll/p/10033316.html</a></p>
+<p>问题解决：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mwtsai/p/15102016.html">https://www.cnblogs.com/mwtsai/p/15102016.html</a></p>
+<p>failed to retrieve network config: client: etcd cluster is unavailable or misconfigured; error #0: dial tcp 172.17.0.4:2379: getsockopt: no route to host  关掉防火墙即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">page</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-17 21:20:24 / 修改时间：21:20:55" itemprop="dateCreated datePublished" datetime="2022-03-17T21:20:24+08:00">2022-03-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归之后得到一个当时翻转的那个节点的引用</span></span><br><span class="line">    ListNode newNode = reverseList(head.next);</span><br><span class="line">    <span class="comment">// 将第n-1次递归的入参节点尾插到第n次递归的尾结点之后</span></span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// 这里每次返回的都是最后的那个节点的引用（每次递归返回都会增加其长度）</span></span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList2</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line">    ListNode pre = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">        head = head.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhaotian"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">zhaotian</p>
+  <div class="site-description" itemprop="description">可能不够详细，但会尽量实用</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/whutzhaotian" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;whutzhaotian" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1290507445@qq.com" title="E-Mail → mailto:1290507445@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaotian</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="可能不够详细，但会尽量实用">
+<meta property="og:type" content="website">
+<meta property="og:title" content="不知名TT">
+<meta property="og:url" content="https://ztt0tian.github.io/page/5/index.html">
+<meta property="og:site_name" content="不知名TT">
+<meta property="og:description" content="可能不够详细，但会尽量实用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zhaotian">
+<meta property="article:tag" content="java,mysql,markdown,redis,spring,rabbitmq">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ztt0tian.github.io/page/5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>不知名TT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">不知名TT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个coder的自我修养</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-java">
+
+    <a href="/categories/java/" rel="section"><i class="fa fa-fw fa-coffee"></i>JAVA</a>
+
+  </li>
+        <li class="menu-item menu-item-db">
+
+    <a href="/categories/database/" rel="section"><i class="fa fa-fw fa-database"></i>DB</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/categories/tools/" rel="section"><i class="fa fa-fw fa-anchor"></i>Tools</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/25/maven/maven%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">maven命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-25 22:53:35 / 修改时间：23:16:42" itemprop="dateCreated datePublished" datetime="2021-05-25T22:53:35+08:00">2021-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="清空构建产物"><a href="#清空构建产物" class="headerlink" title="清空构建产物"></a>清空构建产物</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean</span><br></pre></td></tr></table></figure>
+
+<h1 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h1><p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hiver/p/7850954.html">https://www.cnblogs.com/hiver/p/7850954.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Dmaven.test.skip -pl parentModule.childModule -am -Pcustom_profile</span><br></pre></td></tr></table></figure>
+
+<p><code>-Dmaven.test.skip</code> 跳过测试代码</p>
+<p><code>-pl XXX.xxx </code>  选择指定模块  父模块.子模块</p>
+<p><code>-am</code>  同时处理选定模块所依赖的模块 </p>
+<p><code>-Pxxxx</code> 选定构建的profile环境</p>
+<h1 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h1><p>完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库</p>
+<h1 id="mvn-deploy"><a href="#mvn-deploy" class="headerlink" title="mvn deploy"></a>mvn deploy</h1><p>deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/%E5%85%B6%E4%BB%96/%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">编码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 23:02:04 / 修改时间：23:02:56" itemprop="dateCreated datePublished" datetime="2021-05-24T23:02:04+08:00">2021-05-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html">https://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html</a></p>
+<p>1.按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”</p>
+<p>2.字符，抽象的最小文本单位， 仅仅代表一个符号 ，是一个英文字母也可能是汉字亦或是一个特殊符号</p>
+<p>3.字符集，某个符号和某个数字映射关系的一个表，不同的表有不同的映射关系</p>
+<p>4.字符编码方式，决定一个字符的表示方式</p>
+<h2 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h2><p>American Standard Code for Information Interchange，美国信息互换标准代码</p>
+<p>使用指定的7 位或8 位二进制数组合来表示128 或256 种可能的字符</p>
+<p>标准 ASCII码一共规定了128个字符的编码，只占用了一个字节的后面7位，最前面的1位统一规定为0</p>
+<h2 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h2><p>对 ASCII 的中文扩展</p>
+<h2 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h2><p>包括了 GB2312 的所有内容，同时又增加了近20000个新的汉字（包括繁体字）和符号。</p>
+<h2 id="GB18030"><a href="#GB18030" class="headerlink" title="GB18030"></a>GB18030</h2><p>又加了几千个新的少数民族的字，GBK 扩成了 GB18030</p>
+<h2 id="UNICODE"><a href="#UNICODE" class="headerlink" title="UNICODE"></a>UNICODE</h2><p>包括了地球上所有文化、所有字母和符号的编码;在UNICODE 中，一个字符就是两个字节，不论是英文字符还是汉字，前三种支持中文的编码方式都是使用双字节表示汉字，用单字节表示英文字符</p>
+<p>存在的问题：</p>
+<p>第一个问题是，如何才能区别unicode和ascii？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hongsong673150343/article/details/88584753">https://blog.csdn.net/hongsong673150343/article/details/88584753</a></p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是Unicode的实现方式之一</p>
+<p>是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</p>
+<p>UTF-8的编码规则很简单，只有二条：</p>
+<p>1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。</p>
+<p>2）对于n字节的符号（n&gt;1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。</p>
+<h2 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h2><p>一种字符代码，对于英文文件是ASCII编码，对于简体中文文件是GB2312编码（只针对Windows简体中文版，如果是繁体中文版会采用Big5码）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Spring/%E6%8B%A6%E6%88%AA%E5%99%A8/" class="post-title-link" itemprop="url">拦截器实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:57:17 / 修改时间：23:14:07" itemprop="dateCreated datePublished" datetime="2021-05-24T22:57:17+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>用于对请求进行拦截处理</p>
+<p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bear7/p/13390202.html">https://www.cnblogs.com/bear7/p/13390202.html</a></p>
+<h1 id="自定义实现方式"><a href="#自定义实现方式" class="headerlink" title="自定义实现方式"></a>自定义实现方式</h1><p>HandlerInterceptor</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements HandlerInterceptor</span><br></pre></td></tr></table></figure>
+
+<p>HandlerInterceptorAdapter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extends HandlerInterceptorAdapter</span><br></pre></td></tr></table></figure>
+
+<p>重写 <strong>preHandler()**、 **postHandler()</strong> 、 **afterCompletion():**方法</p>
+<h1 id="过滤器VS拦截器"><a href="#过滤器VS拦截器" class="headerlink" title="过滤器VS拦截器"></a>过滤器VS拦截器</h1><p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/panxuejun/p/7715917.html">https://www.cnblogs.com/panxuejun/p/7715917.html</a></p>
+<p>过滤器属于sevlert规范（要早于拦截器执行）</p>
+<p>拦截器属于Spring框架所支持的</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Web/web%E5%AE%89%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Web/web%E5%AE%89%E5%85%A8/" class="post-title-link" itemprop="url">web安全问题及解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:54:21 / 修改时间：22:56:47" itemprop="dateCreated datePublished" datetime="2021-05-24T22:54:21+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">web安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="路径穿越攻击"><a href="#路径穿越攻击" class="headerlink" title="路径穿越攻击"></a>路径穿越攻击</h1><p>利用平台暴露的文件下载接口，加上“上层目录符号../  ..”跳至父目录，该漏洞可下载服务器上的任意文件（越权）</p>
+<p>修复方案：</p>
+<p>1）最终的下载路径特殊符号（.. ../等）过滤，防止跨目录下载，另项目提供的下载文件资源 最好设置一个相对独立的父目录，父目录不要设置为”/“ “/root”等</p>
+<p>2）换文件下载策略，通过id和文件路径的对应关系来表征文件下载路径，不直接暴露文件下载的接口</p>
+<h1 id="权限问题"><a href="#权限问题" class="headerlink" title="权限问题"></a>权限问题</h1><p>不能仅在前端的菜单项作权限，后端接口同样需要作权限校验，否则可通过接口工具(postman等)直接越过前端直接执行接口业务，造成意料之外的结果</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Web/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Web/ajax/" class="post-title-link" itemprop="url">ajax属性配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:50:13 / 修改时间：22:52:44" itemprop="dateCreated datePublished" datetime="2021-05-24T22:50:13+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ajax/" itemprop="url" rel="index"><span itemprop="name">ajax</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>详细参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tylerdonet/p/3520862.html">https://www.cnblogs.com/tylerdonet/p/3520862.html</a></p>
+<p>列举几个比较常用的属性：</p>
+<h1 id="url"><a href="#url" class="headerlink" title="url"></a>url</h1><p>String类型，请求地址url</p>
+<h1 id="type"><a href="#type" class="headerlink" title="type"></a>type</h1><p>String类型，请求方式（post或get）默认为get。注意其他http请求方法，例如put和delete也可以使用，但仅部分浏览器支持。</p>
+<h1 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h1><p>Boolean类型，默认为true（当dataType为script时，默认为false），设置为false将不会从浏览器缓存中加载请求信息。</p>
+<h1 id="data"><a href="#data" class="headerlink" title="data"></a>data</h1><p>Object或String类型，发送到服务器的数据</p>
+<h1 id="contentType"><a href="#contentType" class="headerlink" title="contentType"></a>contentType</h1><p>String类型，发送数据到服务器时的内容编码类型， 内容编码类型默认为”application/x-www-form-urlencoded” </p>
+<p>更多参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tugenhua0707/p/8975121.html">https://www.cnblogs.com/tugenhua0707/p/8975121.html</a></p>
+<h1 id="dataType"><a href="#dataType" class="headerlink" title="dataType"></a>dataType</h1><p>String类型，预期服务器返回的数据类型。如果不指定，JQuery将自动根据http包mime信息返回responseXML或responseText，并作为回调函数参数传递。可用的类型如下：<br>xml：返回XML文档，可用JQuery处理。<br>html：返回纯文本HTML信息；包含的script标签会在插入DOM时执行。<br>script：返回纯文本JavaScript代码。不会自动缓存结果。除非设置了cache参数。注意在远程请求时（不在同一个域下），所有post请求都将转为get请求。<br>json：返回JSON数据。<br>jsonp：JSONP格式。使用SONP形式调用函数时，例如myurl?callback=?，JQuery将自动替换后一个“?”为正确的函数名，以执行回调函数。<br>text：返回纯文本字符串。</p>
+<h1 id="success"><a href="#success" class="headerlink" title="success"></a>success</h1><p>请求成功后调用的回调函数，有两个参数。<br>         (1)由服务器返回，并根据dataType参数进行处理后的数据。<br>         (2)描述状态的字符串。</p>
+<h1 id="error"><a href="#error" class="headerlink" title="error"></a>error</h1><p>请求失败时被调用的函数。该函数有3个参数，即XMLHttpRequest对象、错误信息、捕获的错误对象</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Spring/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3+%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">自定义注解+拦截器实现权限控制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-24 22:48:58" itemprop="dateCreated datePublished" datetime="2021-05-24T22:48:58+08:00">2021-05-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-29 11:20:13" itemprop="dateModified" datetime="2021-08-29T11:20:13+08:00">2021-08-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>大致思路：</p>
+<p>自定义注解+定义定制拦截器+配置拦截器+在需要的方法体上加上注解</p>
+<p>以实现角色权限控制为例：</p>
+<h1 id="定义注解"><a href="#定义注解" class="headerlink" title="定义注解"></a>定义注解</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RequireRoles &#123;</span><br><span class="line">    String[] value(); <span class="comment">// 存放需要角色的String数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于注解的<a href="../../java/%E6%B3%A8%E8%A7%A3/">更多介绍</a></p>
+<h1 id="定制拦截器"><a href="#定制拦截器" class="headerlink" title="定制拦截器"></a>定制拦截器</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RolesPermissionInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (handler.getClass().isAssignableFrom(HandlerMethod.class)) &#123;</span><br><span class="line">            HandlerMethod handlerMethod = (HandlerMethod) handler;</span><br><span class="line">            RequireRoles requireRoles = handlerMethod.getMethodAnnotation(RequireRoles.class);</span><br><span class="line">            <span class="comment">// 没有相应注解表示无需角色验证</span></span><br><span class="line">            <span class="keyword">if</span> (requireRoles == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            String[] needRoles = requireRoles.value();</span><br><span class="line">            <span class="comment">// 角色的权限验证业务</span></span><br><span class="line">            <span class="keyword">if</span> (!checkRolesPermisson(needRoles, request)) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> PermissionException(<span class="string">&quot;No Permission of the roles:&quot;</span> + CollUtil.newArrayList(needRoles));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于在Spring中自定义拦截器的<a href="../%E6%8B%A6%E6%88%AA%E5%99%A8/">更多介绍</a></p>
+<h1 id="配置拦截器"><a href="#配置拦截器" class="headerlink" title="配置拦截器"></a>配置拦截器</h1><p>一般在spring-web.xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">&quot;/**&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">&quot;/static/**&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.ztt.web.interceptor.RolesPermissionInterceptor&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h1><p>在暴露的接口方法上使用注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/xxx&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequireRoles(&#123;&quot;root&quot;&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">xxxxMethod</span><span class="params">(XXXX xxxx)</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/" class="post-title-link" itemprop="url">Spring传参方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:43:59 / 修改时间：23:22:14" itemprop="dateCreated datePublished" datetime="2021-05-24T22:43:59+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="非表单传参"><a href="#非表单传参" class="headerlink" title="非表单传参"></a>非表单传参</h1><h2 id="参数名一致"><a href="#参数名一致" class="headerlink" title="参数名一致"></a>参数名一致</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/regist&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m3</span><span class="params">(String username, String password, String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> + username + <span class="string">&quot;,&quot;</span> + password + <span class="string">&quot;,&quot;</span> + address;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/regist?username=zt&amp;password=psw&amp;address=hangzhou</span></span><br></pre></td></tr></table></figure>
+
+<p>不传的话 参数就为null</p>
+<h2 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h2><p> 只能接收 URL 路径里的参数 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m1</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/path/idxxx</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/path/&#123;id&#125;/&#123;key&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m2</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String idx,<span class="meta">@PathVariable(&quot;key&quot;)</span> String keyx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> idx+<span class="string">&quot;=========&quot;</span>+keyx;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/path/idK/idV</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h2><p>RequestParam可以接受简单类型的属性，也可以接受对象类型。</p>
+<p>@RequestParam有三个配置参数：</p>
+<ul>
+<li>required 表示是否必须，默认为 true，必须，不提供时会报错。</li>
+<li>defaultValue 可设置请求参数的默认值。</li>
+<li>value 为接收url的参数名（相当于key值）</li>
+</ul>
+<p><code>@RequestParam</code>用来处理 <code>Content-Type</code> 为 <code>application/x-www-form-urlencoded </code>编码的内容，<code>Content-Type</code>默认为该属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/regist2&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestParam(defaultValue = &quot;default username&quot;)</span> String username,<span class="meta">@RequestParam(defaultValue = &quot;default password&quot;)</span> String password,<span class="meta">@RequestParam(defaultValue = &quot;default address&quot;)</span> String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> + username + <span class="string">&quot;,&quot;</span> + password + <span class="string">&quot;,&quot;</span> + address;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// http://localhost:8080/regist2?username=zt&amp;password=psw&amp;address=hangzhou</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h2><p>详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/justry_deng/article/details/80972817">https://blog.csdn.net/justry_deng/article/details/80972817</a></p>
+<p>只能接收请求体中的参数，也就是只能是 POST 请求才有请求体，GET 请求没有请求体</p>
+<p>使用封装的 bean 或者 JSONObject 接收（非常常用）  前端必须使用 JSON 格式的数据，Content-Type 必须为 application/json</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/regist3&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> +user.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/regist4&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">m4</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject jsonObject)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;注册信息：&quot;</span> +jsonObject.toString();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="comment">// ... getter setter</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/24/Spring/%E4%BC%A0%E5%8F%82/image-20210524164758021.png" alt="image-20210524164758021"></p>
+<h1 id="表单（FORM）传参"><a href="#表单（FORM）传参" class="headerlink" title="表单（FORM）传参"></a>表单（FORM）传参</h1><h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><p> 表单发出的 GET 请求直接通过注解 @RequestParam 进行参数接收即可 </p>
+<h2 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h2><p> form 表单使用 post 方法的时候，Content type 的值默认为<code> application/x-www-form-urlencoded;charset=UTF-8</code>。所以后台接收代码需要指定<code> consumes</code> 属性(用于指定处理请求的提交内容类型)</p>
+<p><code>@RequestMapping(value = &quot;/test&quot;, method = RequestMethod.POST, consumes = &quot;application/x-www-form-urlencoded;charset=UTF-8&quot;)</code></p>
+<p>FORM 表单发出的 POST 请求可以直接通过注解<code>@RequestParam</code>进行参数接收，</p>
+<p>也可以使用字段对应封装的 Java Bean 对象来接收参数。注意 Java Bean 对象上不需要注解。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/24/java/%E6%B3%A8%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/24/java/%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">注解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-24 22:40:04 / 修改时间：22:42:58" itemprop="dateCreated datePublished" datetime="2021-05-24T22:40:04+08:00">2021-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>@Target(…) 指明注解的作用范围（类、方法…)</p>
+<p>@Target(ElementType.TYPE) 作用接口、类、枚举、注解<br>@Target(ElementType.FIELD) 作用属性字段、枚举的常量<br>@Target(ElementType.METHOD) 作用方法<br>@Target(ElementType.PARAMETER) 作用方法参数<br>@Target(ElementType.CONSTRUCTOR) 作用构造函数<br>@Target(ElementType.LOCAL_VARIABLE)作用局部变量<br>@Target(ElementType.ANNOTATION_TYPE)作用于注解（@Retention注解中就使用该属性）<br>@Target(ElementType.PACKAGE) 作用于包<br>@Target(ElementType.TYPE_PARAMETER) 作用于类型泛型，即泛型方法、泛型类、泛型接口 （jdk1.8加入）<br>@Target(ElementType.TYPE_USE) 类型使用.可以用于标注任意类型除了 class （jdk1.8加入）</p>
+<p>一般比较常用的是<code>ElementType.TYPE ElementType.METHOD</code>类型</p>
+<p>@Retention(…) 表示注解存在阶段（生命周期）是保留在源码（编译期），字节码（类加载）或者运行期（JVM中运行） </p>
+<p>一般用的多的：<code>@Retention(RetentionPolicy.RUNTIME)</code></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9471d6bcf4cf">https://www.jianshu.com/p/9471d6bcf4cf</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/claram/article/details/90717270">https://blog.csdn.net/claram/article/details/90717270</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39919527/article/details/80383292">https://blog.csdn.net/weixin_39919527/article/details/80383292</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2021/05/23/Linux/awk-sed-grep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/23/Linux/awk-sed-grep/" class="post-title-link" itemprop="url">三剑客——(awk、sed、grep)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-23 17:10:10" itemprop="dateCreated datePublished" datetime="2021-05-23T17:10:10+08:00">2021-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-24 22:53:49" itemprop="dateModified" datetime="2021-05-24T22:53:49+08:00">2021-05-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/awk/" itemprop="url" rel="index"><span itemprop="name">awk</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/sed/" itemprop="url" rel="index"><span itemprop="name">sed</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/grep/" itemprop="url" rel="index"><span itemprop="name">grep</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/vanvan_/article/details/91397655">https://blog.csdn.net/vanvan_/article/details/91397655</a></p>
+<p><code>grep</code>擅长查找功能，<code>sed</code>擅长取行和替换。<code>awk</code>擅长取列。</p>
+<h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a><code>awk</code></h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lukabruce/article/details/86692471">https://blog.csdn.net/lukabruce/article/details/86692471</a></p>
+<p><code>awk</code>就是把文件逐行的读入，以空格为默认分隔符（可以自定义设置）将每行切片，切开的部分再进行各种分析处理</p>
+<p>如果文件是格式化的，即由分隔符分为多个域的，优先使用<code>awk</code>，适合按列（域）操作</p>
+<p><code>&lt;模式/表达式&gt; &#123; &lt;动作&gt; &#125;</code> 如果匹配到了模式，就会执行后面的动作。如果省略动作，awk 默认会打印（print）输入</p>
+<p><code>awk &#39;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&#39;</code><br>第一步：运行<code>BEGIN&#123; commands &#125;</code>语句块中的语句。</p>
+<p>第二步：从文件或标准输入(stdin)读取一行。然后运行<code>pattern&#123; commands</code> }语句块，它逐行扫描文件，从第一行到最后一行反复这个过程。直到文件所有被读取完成。</p>
+<p>第三步：当读至输入流末尾时。运行<code>END&#123; commands &#125;</code>语句块。</p>
+<p>BEGIN语句块在awk開始从输入流中读取行之前被运行，这是一个可选的语句块，比方变量初始化、打印输出表格的表头等语句通常能够写在BEGIN语句块中。</p>
+<p>END语句块在awk从输入流中读取全然部的行之后即被运行。比方打印全部行的分析结果这类信息汇总都是在END语句块中完毕，它也是一个可选语句块。</p>
+<p>pattern语句块中的通用命令是最重要的部分，它也是可选的。假设没有提供pattern语句块，则默认运行{ print }，即打印每个读取到的行。awk读取的每一行都会运行该语句块。</p>
+<p>这三个部分缺少任何一部分都可以。</p>
+<p><code>ls -lh | awk &#39;&#123;print $1&#125;&#39;</code>  列出当前目录和文件 打印第一列</p>
+<ul>
+<li><code>$0</code> 当前记录（这个变量中存放着整个行的内容）</li>
+<li><code>$1~$n</code> 当前记录的第n个字段，字段间由FS分隔</li>
+<li><code>FS</code> 输入字段分隔符 默认是空格或Tab</li>
+<li><code>NF</code> 当前记录中的字段个数，就是有多少列</li>
+<li><code>NR</code> 已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</li>
+<li><code>FNR</code> 当前记录数，与NR不同的是，这个值会是各个文件自己的行号</li>
+<li><code>RS</code> 输入的记录分隔符， 默认为换行符</li>
+<li><code>OFS</code> 输出字段分隔符， 默认也是空格</li>
+<li><code>ORS</code> 输出的记录分隔符，默认为换行符</li>
+<li><code>FILENAME</code> 当前输入文件的名字</li>
+</ul>
+<p><code>ls -l | awk &#39;&#123;sum += $5&#125; END &#123;print sum&#125;&#39;</code> 统计当前目录下所有文件大小之和</p>
+<p>tt.txt</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name    class    score</span><br><span class="line">a    c1    70</span><br><span class="line">b    c2    75</span><br><span class="line">c    c3    80</span><br><span class="line">d    c4    70</span><br><span class="line">e    c2    90</span><br><span class="line">f    c3    75</span><br><span class="line">g    c2    80</span><br></pre></td></tr></table></figure>
+
+<p><code>awk &#39;&#123;sum[$2]+=1&#125; END &#123;for( i in sum)if(i!=&quot;class&quot;)print i&quot;\t&quot; sum[i]&#125;&#39; tt.txt</code></p>
+<p><code>awk &#39;NR!=1&#123;sum[$3]+=1&#125; END &#123;for( i in sum) print i&quot;\t&quot; sum[i]&#125;&#39; tt.txt</code></p>
+<p>统计每个class有多少行记录(去除首行)</p>
+<p>要点：</p>
+<p><code>\t</code>       制表符</p>
+<p><code>\n</code>      换行符</p>
+<p><code>~</code>        匹配，与==相比不是精确比较</p>
+<p><code>!~</code>      不匹配，不精确比较</p>
+<p><code>==</code>      等于，必须全部相等，精确比较</p>
+<p><code>!=</code>      不等于，精确比较</p>
+<p><code>&amp;&amp;</code>　  逻辑与</p>
+<p><code>||</code>      逻辑或</p>
+<p><code>+</code>        匹配时表示1个或1个以上</p>
+<p><code>/[0-9][0-9]+/</code>   两个或两个以上数字</p>
+<p><code>/[0-9][0-9]*/</code>    一个或一个以上数字</p>
+<p><code>-F&#39;[:#/]&#39;</code>   定义三个分隔符</p>
+<blockquote>
+<p>去除重复行 保留原有顺序</p>
+</blockquote>
+<p><code>awk &#39;!visited[$0]++&#39; your_file &gt; deduplicated_file</code></p>
+<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a><code>sed</code></h1><p><a target="_blank" rel="noopener" href="https://linux.cn/article-10232-1.html">https://linux.cn/article-10232-1.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liwei0526vip/p/5644163.html">https://www.cnblogs.com/liwei0526vip/p/5644163.html</a></p>
+<p><code>sed</code>主要以行为单位进行处理，可以将数据行进行替换、删除、新增、选取等特定工作</p>
+<p>命令格式：</p>
+<p><code>sed [options] &#123;sed-commands&#125; &#123;input-file&#125;;</code></p>
+<p>选项options</p>
+<ul>
+<li><code>-n</code>  等价于<code>--quiet</code>,<code>--silent</code> 使用静默模式,只打印模式匹配的行 </li>
+<li><code>-e</code> 需要用sed对文本内容进行多种操作，则需要执行多条子命令来进行操作 </li>
+</ul>
+<p><code>echo -e &#39;hello world&#39; | sed -e &#39;s/hello/A/&#39; -e &#39;s/world/B/&#39;</code></p>
+<p>等价于<code>echo -e &#39;hello world&#39; | sed &#39;s/hello/A/;s/world/B/&#39;</code> 用分号表示有多个指令</p>
+<ul>
+<li><code>-i</code> sed所做的修改会作用在原文件中；sed默认会把输入行读取到模式空间，简单理解就是一个内存缓冲区，sed子命令处理的内容是模式空间中的内容，而非直接处理文件内容。因此在sed修改模式空间内容之后，并非直接写入修改输入文件，而是打印输出到标准输出。如果需要修改输入文件，那么就可以指定-i选项。</li>
+<li><code>-f</code>指定脚本文件 如果命令操作比较多的时候就会比较麻烦，这时候把多个子命令操作写入脚本文件，然后使用 <code>-f</code> 选项来指定该脚本</li>
+<li><code>-r</code> sed命令的匹配模式支持正则表达式的，默认只能支持基本正则表达式，如果需要支持扩展正则表达式，那么需要添加-r选项。</li>
+</ul>
+<p><code>echo &quot;hello world&quot; | sed -r &#39;s/(hello)|(world)/A/g&#39;</code></p>
+<blockquote>
+<p>定址操作</p>
+</blockquote>
+<p>数字定址：</p>
+<p><code>sed -i &#39;4s/hello/A/&#39; filename</code>   将第4行中hello字符串替换为A，其它行如果有hello也不会被替换</p>
+<p><code>sed -i &#39;2-4s/hello/A/&#39; filename</code>    将第2-4行中hello字符串替换为A，其它行如果有hello也不会被替换</p>
+<p><code>sed -i &#39;2,+4s/hello/A/&#39; filename</code> 从第2行开始，再接着往下数4行，也就是2-6行，这些行会把hello字符替换为A</p>
+<p><code>sed -i &#39;2,~3s/hello/A/&#39; filename</code>  第4行开始，到第6行。解释6的由来，”4,~3”表示从4行开始到下一个3的倍数，这里从4开始算，那就是6了，当然9就不是了，因为是要求3的第一个超过前边数字4的倍数 </p>
+<p><code>sed -i &#39;1~2s/hello/A/&#39; filename</code>   从第1行开始，每隔2行就把hello替换为A</p>
+<p><code>sed -i &#39;$s/hello/A/&#39; filename</code>   把最后一行的hello替换为A</p>
+<p><code>sed -i &#39;$!s/hello/A/&#39; filename</code>   把除了最后一行的hello替换为A 上述其他均可使用!取反</p>
+<p>正则定址:</p>
+<p><code>sed -i &#39;/A/d&#39; hello.txt</code> 将匹配到<code>A</code>的行删除</p>
+<p><code>sed -i &#39;/^$/d&#39; hello.txt</code> 将空白行删除</p>
+<p><code>sed -i &#39;/^begin/,/^end/d&#39; hello.txt</code> 匹配以begin开头的行到end开头的行之间的行，把匹配到的这些行删除</p>
+<p>数字定址和正则定址混用：</p>
+<p><code>sed -i &#39;1,/^end/d&#39; hello.txt</code> 匹配第1行到end开头的行之间的行，把匹配到的这些行删除 （只会删除到第一次匹配的地方而不是最后一次匹配）</p>
+<p><code>sed -i &#39;1,/^BJ/&#123;s/BJ/BeiJing/;s/SH/ShangHai/&#125;&#39; hello.txt</code>匹配第1行到BJ开头的行之间的行，把匹配到的这些行中的BJ替换成BeiJing，SH替换成ShangHai</p>
+<blockquote>
+<p>基本子命令</p>
+</blockquote>
+<ul>
+<li>a   表示在指定行下边插入指定行的内容 </li>
+</ul>
+<p><code>sed -i &#39;a append&#39; hello.txt</code> 每一行下方插入<code>append</code></p>
+<ul>
+<li>i   表示在指定行上边插入指定行的内容 </li>
+</ul>
+<p><code>sed -i &#39;i append&#39; hello.txt</code> 每一行上方插入<code>append</code></p>
+<ul>
+<li>c  替换行内容</li>
+</ul>
+<p><code>sed -i &#39;c replace&#39; hello.txt</code> 每一行替换为<code>replace</code></p>
+<ul>
+<li>d  删除行</li>
+</ul>
+<p><code>sed -i &#39;d&#39; hello.txt</code> 删除所有行</p>
+<ul>
+<li>y  字符替换</li>
+<li>=  将行号打印出来</li>
+<li>r  将指定文件内容附加在后面 类似于a</li>
+<li><strong>s  替换子命令</strong> 用的最多</li>
+</ul>
+<p>基本语法：<br>[address]s/pattern/replacement/flags</p>
+<p>replacement部分用下列字符会有特殊含义</p>
+<p><code>&amp;</code>：用正则表达式匹配的内容进行替换</p>
+<p><code>\n</code>：回调参数</p>
+<p><code>\(\)</code>：保存被匹配的字符以备反向引用\n时使用，最多9个标签，标签书序从左到右</p>
+<p>flags:</p>
+<p><code>n</code>：可以是1-512，表示第n次出现的情况进行替换</p>
+<p><code>g</code>：全局更改</p>
+<p><code>p</code>：打印模式空间的内容</p>
+<p><code>w file</code>：写入到一个文件file中</p>
+<p><code>sed -i &#39;s/.*/111&amp;222/&#39; hello.txt</code> 每行首尾分别加上111 、222</p>
+<h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a><code>grep</code></h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/flyor/p/6411140.html">https://www.cnblogs.com/flyor/p/6411140.html</a></p>
+<p>选项：</p>
+<ul>
+<li><code>-E</code> : 开启扩展正则表达式</li>
+<li><code>-i</code>:  忽略大小写</li>
+<li><code>-v</code>:  反过来，只打印没有匹配的，而匹配的反而不打印</li>
+<li><code>-n</code>: 显示行号 </li>
+<li><code>-w</code>:  被匹配的文本只能是单词，而不能是单词中的某一部分，如文本中有liker，而我搜寻的只是like，就可以使用-w选项来避免匹配liker </li>
+<li><code>-c</code>: 显示总共多少行被匹配 行数</li>
+<li><code>-o</code>: 只显示匹配的内容</li>
+<li><code>-A n</code>: 显示匹配到的字符串所在的行及其后n行，after</li>
+<li><code>-B n</code>: 显示匹配到的字符串所在的行及其前n行，before </li>
+<li><code>-C n</code>: 显示匹配到的字符串所在的行及其前后各n行，context</li>
+</ul>
+<p>基本命令格式：</p>
+<p> grep [选项] [匹配规则]  文件名</p>
+<p>e.g:</p>
+<p><code>grep -A 1 g$ grep.txt</code> </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2020/08/04/next%E4%B8%BB%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/04/next%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">next主题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-04 23:49:30" itemprop="dateCreated datePublished" datetime="2020-08-04T23:49:30+08:00">2020-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-25 00:30:53" itemprop="dateModified" datetime="2021-05-25T00:30:53+08:00">2021-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">博客写作</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/Next/" itemprop="url" rel="index"><span itemprop="name">Next</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="修改布局风格"><a href="#修改布局风格" class="headerlink" title="修改布局风格"></a>修改布局风格</h1><p>themes/next/_config.yml 中可以修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Scheme Settings</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改menu目录-待完善"><a href="#修改menu目录-待完善" class="headerlink" title="修改menu目录(待完善)"></a>修改menu目录(待完善)</h1><p>themes/next/_config.yml 中可以修改</p>
+<h1 id="设置头像图片"><a href="#设置头像图片" class="headerlink" title="设置头像图片"></a>设置头像图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: &#x2F;images&#x2F;head.jpg</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
+
+<p>路径\themes\next\source\images下要有对应图片</p>
+<h1 id="添加社交账号"><a href="#添加社交账号" class="headerlink" title="添加社交账号"></a>添加社交账号</h1><p><code>themes/next/_config.yml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  GitHub: https:&#x2F;&#x2F;github.com&#x2F;ztt0tian || github</span><br><span class="line">  E-Mail: whutzhaotian@gmail.com || envelope</span><br><span class="line">  #Weibo: https:&#x2F;&#x2F;weibo.com&#x2F;yourname || weibo</span><br><span class="line">  #Google: https:&#x2F;&#x2F;plus.google.com&#x2F;yourname || google</span><br><span class="line">  #Twitter: https:&#x2F;&#x2F;twitter.com&#x2F;yourname || twitter</span><br><span class="line">  #FB Page: https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname || facebook</span><br><span class="line">  #StackOverflow: https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname || stack-overflow</span><br><span class="line">  #YouTube: https:&#x2F;&#x2F;youtube.com&#x2F;yourname || youtube</span><br><span class="line">  #Instagram: https:&#x2F;&#x2F;instagram.com&#x2F;yourname || instagram</span><br><span class="line">  #Skype: skype:yourname?call|chat || skype</span><br></pre></td></tr></table></figure>
+
+<h1 id="文章字数统计-待完善"><a href="#文章字数统计-待完善" class="headerlink" title="文章字数统计(待完善)"></a>文章字数统计(待完善)</h1><p>安插件：npm i –save hexo-wordcount</p>
+<p>在<code>themes/next/_config.yml</code>中修改配置</p>
+<h1 id="增加站内搜索-待完善"><a href="#增加站内搜索-待完善" class="headerlink" title="增加站内搜索(待完善)"></a>增加站内搜索(待完善)</h1><p>安插件：npm install hexo-generator-search –save</p>
+<p>在<code>themes/next/_config.yml</code>中修改配置</p>
+<h1 id="添加打赏功能"><a href="#添加打赏功能" class="headerlink" title="添加打赏功能"></a>添加打赏功能</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reward (Donate)</span></span><br><span class="line"><span class="comment"># Front-matter variable (unsupport animation).</span></span><br><span class="line"><span class="attr">reward_settings:</span></span><br><span class="line">  <span class="comment"># If true, reward will be displayed in every article by default.</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">animation:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">comment:</span> <span class="string">生活不易，求打赏~</span></span><br><span class="line"></span><br><span class="line"><span class="attr">reward:</span></span><br><span class="line">  <span class="attr">wechatpay:</span> <span class="string">/images/wechatpay.png</span></span><br><span class="line">  <span class="attr">alipay:</span> <span class="string">/images/alipay.jpg</span></span><br><span class="line">  <span class="comment">#paypal: /images/paypal.png</span></span><br><span class="line">  <span class="comment">#bitcoin: /images/bitcoin.png</span></span><br></pre></td></tr></table></figure>
+
+<p>在next/source/images中有对应图片即可</p>
+<h1 id="访问统计"><a href="#访问统计" class="headerlink" title="访问统计"></a>访问统计</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_34310405/article/details/102665373">https://blog.csdn.net/baidu_34310405/article/details/102665373</a></p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a05351a37dc">https://www.jianshu.com/p/3a05351a37dc</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhaotian"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">zhaotian</p>
+  <div class="site-description" itemprop="description">可能不够详细，但会尽量实用</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/whutzhaotian" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;whutzhaotian" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1290507445@qq.com" title="E-Mail → mailto:1290507445@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaotian</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
