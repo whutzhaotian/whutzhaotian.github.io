@@ -20,20 +20,31 @@
     var CONFIG = {"hostname":"ztt0tian.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="可能不够详细，但会尽量实用">
+  <meta name="description" content="ECR构建镜像推送到ecr并在ecs进行部署 Security credentials创建IAM用户  创建IAM用户拿到凭证信息     aws cli配置   1aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 444734374699.dkr.ecr.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker-compose">
-<meta property="og:url" content="https://ztt0tian.github.io/2022/07/03/docker/docker-compose/index.html">
+<meta property="og:title" content="asw容器">
+<meta property="og:url" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/index.html">
 <meta property="og:site_name" content="不知名TT">
-<meta property="og:description" content="可能不够详细，但会尽量实用">
+<meta property="og:description" content="ECR构建镜像推送到ecr并在ecs进行部署 Security credentials创建IAM用户  创建IAM用户拿到凭证信息     aws cli配置   1aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 444734374699.dkr.ecr.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-03T14:00:41.000Z">
-<meta property="article:modified_time" content="2022-07-03T14:09:31.873Z">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193345322.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193443262.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193542262.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195237588.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195450218.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195655702.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030203327055.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201710749.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201908359.png">
+<meta property="og:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201936360.png">
+<meta property="article:published_time" content="2022-10-28T12:41:58.000Z">
+<meta property="article:modified_time" content="2022-10-30T15:03:58.810Z">
 <meta property="article:author" content="zhaotian">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="ECR">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193345322.png">
 
-<link rel="canonical" href="https://ztt0tian.github.io/2022/07/03/docker/docker-compose/">
+<link rel="canonical" href="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -46,7 +57,7 @@
   };
 </script>
 
-  <title>docker-compose | 不知名TT</title>
+  <title>asw容器 | 不知名TT</title>
   
 
 
@@ -122,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">72</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -200,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/07/03/docker/docker-compose/">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -213,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          docker-compose
+          asw容器
         </h1>
 
         <div class="post-meta">
@@ -222,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-03 22:00:41 / 修改时间：22:09:31" itemprop="dateCreated datePublished" datetime="2022-07-03T22:00:41+08:00">2022-07-03</time>
+              <time title="创建时间：2022-10-28 20:41:58" itemprop="dateCreated datePublished" datetime="2022-10-28T20:41:58+08:00">2022-10-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-30 23:03:58" itemprop="dateModified" datetime="2022-10-30T23:03:58+08:00">2022-10-30</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -245,7 +262,59 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="ECR"><a href="#ECR" class="headerlink" title="ECR"></a>ECR</h1><h1 id="构建镜像推送到ecr并在ecs进行部署"><a href="#构建镜像推送到ecr并在ecs进行部署" class="headerlink" title="构建镜像推送到ecr并在ecs进行部署"></a>构建镜像推送到ecr并在ecs进行部署</h1><blockquote>
+<p>Security credentials创建IAM用户</p>
+</blockquote>
+<p>创建IAM用户拿到凭证信息</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193345322.png" alt="image-20221030193345322"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193443262.png" alt="image-20221030193443262"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193542262.png" alt="image-20221030193542262"></p>
+<blockquote>
+<p>aws cli配置</p>
+</blockquote>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195237588.png" alt="image-20221030195237588"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 444734374699.dkr.ecr.eu-central-1.amazonaws.com</span><br></pre></td></tr></table></figure>
+
+<p>Q:</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195450218.png" alt="image-20221030195450218"></p>
+<p>A:</p>
+<p>为此IAM用户添加<code>AmazonEC2ContainerRegistryFullAccess</code>权限</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195655702.png" alt="image-20221030195655702"></p>
+<blockquote>
+<p>创建存储库（远程aws的dockerhub）</p>
+</blockquote>
+<p>CLI命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ecr create-repository --repository-name dockerdemo-repository --image-scanning-configuration scanOnPush=true --region eu-central-1</span><br></pre></td></tr></table></figure>
+
+<p>创建的仓库信息：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;repository&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;repositoryArn&quot;</span>: <span class="string">&quot;arn:aws:ecr:eu-central-1:444734374699:repository/dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;registryId&quot;</span>: <span class="string">&quot;444734374699&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;repositoryName&quot;</span>: <span class="string">&quot;dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;repositoryUri&quot;</span>: <span class="string">&quot;444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;createdAt&quot;</span>: <span class="string">&quot;2022-10-30T20:00:57+08:00&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageTagMutability&quot;</span>: <span class="string">&quot;MUTABLE&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageScanningConfiguration&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;scanOnPush&quot;</span>: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;encryptionConfiguration&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;encryptionType&quot;</span>: <span class="string">&quot;AES256&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>存储库策略配置：</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030203327055.png" alt="image-20221030203327055"></p>
+<blockquote>
+<p>本地镜像构建和推送</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t dockerdemo .</span><br><span class="line">docker tag dockerdemo:latest 444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository</span><br><span class="line">docker push 444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201710749.png" alt="image-20221030201710749"></p>
+<p>可能会出现的问题（大概率是相关权限的问题）：</p>
+<p>Q:推送时出现“no basic auth credentials”</p>
+<p>A:参考<a target="_blank" rel="noopener" href="https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403%E8%A7%A3%E5%86%B3">https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403解决</a></p>
+<blockquote>
+<p>容器部署</p>
+</blockquote>
+<p>建议直接用根用户去部署，权限充分</p>
+<p>容器-ECS-集群-开始使用</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201908359.png" alt="image-20221030201908359"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201936360.png" alt="image-20221030201936360"></p>
+<p>简单的一些配置 然后就是一直下一步下一步，端口映射设置8080，是因为这个镜像就是应该简单的java-web项目，其监听端口为8080</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.manongdao.com/article-2148671.html">https://www.manongdao.com/article-2148671.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AmazonECR/latest/userguide/what-is-ecr.html">https://docs.aws.amazon.com/zh_cn/AmazonECR/latest/userguide/what-is-ecr.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-configure.html">https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-configure.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403">https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403</a></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/premiumsupport/knowledge-center/ecs-fargate-tasks-pending-state/?nc1=h_ls">https://aws.amazon.com/cn/premiumsupport/knowledge-center/ecs-fargate-tasks-pending-state/?nc1=h_ls</a></p>
+
     </div>
 
     
@@ -274,7 +343,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/docker/" rel="tag"># docker</a>
+              <a href="/tags/ECR/" rel="tag"># ECR</a>
           </div>
 
         
@@ -283,13 +352,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/30/java/%E5%87%A0%E7%A7%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="prev" title="序列化&反序列化">
-      <i class="fa fa-chevron-left"></i> 序列化&反序列化
+    <a href="/2022/10/22/docker/%E5%AE%9E%E6%93%8D/" rel="prev" title="docker实操">
+      <i class="fa fa-chevron-left"></i> docker实操
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/20/docker/docker%E5%AE%9E%E6%93%8D/" rel="next" title="docker实操">
-      docker实操 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -348,6 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECR"><span class="nav-number">1.</span> <span class="nav-text">ECR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E6%8E%A8%E9%80%81%E5%88%B0ecr%E5%B9%B6%E5%9C%A8ecs%E8%BF%9B%E8%A1%8C%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">构建镜像推送到ecr并在ecs进行部署</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -362,7 +429,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -375,7 +442,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

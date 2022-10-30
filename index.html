@@ -120,7 +120,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">71</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">72</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -197,6 +197,180 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/10/28/asw/%E5%AE%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">asw容器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-28 20:41:58" itemprop="dateCreated datePublished" datetime="2022-10-28T20:41:58+08:00">2022-10-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-30 23:03:58" itemprop="dateModified" datetime="2022-10-30T23:03:58+08:00">2022-10-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ECR"><a href="#ECR" class="headerlink" title="ECR"></a>ECR</h1><h1 id="构建镜像推送到ecr并在ecs进行部署"><a href="#构建镜像推送到ecr并在ecs进行部署" class="headerlink" title="构建镜像推送到ecr并在ecs进行部署"></a>构建镜像推送到ecr并在ecs进行部署</h1><blockquote>
+<p>Security credentials创建IAM用户</p>
+</blockquote>
+<p>创建IAM用户拿到凭证信息</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193345322.png" alt="image-20221030193345322"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193443262.png" alt="image-20221030193443262"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030193542262.png" alt="image-20221030193542262"></p>
+<blockquote>
+<p>aws cli配置</p>
+</blockquote>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195237588.png" alt="image-20221030195237588"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 444734374699.dkr.ecr.eu-central-1.amazonaws.com</span><br></pre></td></tr></table></figure>
+
+<p>Q:</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195450218.png" alt="image-20221030195450218"></p>
+<p>A:</p>
+<p>为此IAM用户添加<code>AmazonEC2ContainerRegistryFullAccess</code>权限</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030195655702.png" alt="image-20221030195655702"></p>
+<blockquote>
+<p>创建存储库（远程aws的dockerhub）</p>
+</blockquote>
+<p>CLI命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ecr create-repository --repository-name dockerdemo-repository --image-scanning-configuration scanOnPush=true --region eu-central-1</span><br></pre></td></tr></table></figure>
+
+<p>创建的仓库信息：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;repository&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;repositoryArn&quot;</span>: <span class="string">&quot;arn:aws:ecr:eu-central-1:444734374699:repository/dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;registryId&quot;</span>: <span class="string">&quot;444734374699&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;repositoryName&quot;</span>: <span class="string">&quot;dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;repositoryUri&quot;</span>: <span class="string">&quot;444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;createdAt&quot;</span>: <span class="string">&quot;2022-10-30T20:00:57+08:00&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageTagMutability&quot;</span>: <span class="string">&quot;MUTABLE&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;imageScanningConfiguration&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;scanOnPush&quot;</span>: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">&quot;encryptionConfiguration&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;encryptionType&quot;</span>: <span class="string">&quot;AES256&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>存储库策略配置：</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030203327055.png" alt="image-20221030203327055"></p>
+<blockquote>
+<p>本地镜像构建和推送</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t dockerdemo .</span><br><span class="line">docker tag dockerdemo:latest 444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository</span><br><span class="line">docker push 444734374699.dkr.ecr.eu-central-1.amazonaws.com/dockerdemo-repository</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201710749.png" alt="image-20221030201710749"></p>
+<p>可能会出现的问题（大概率是相关权限的问题）：</p>
+<p>Q:推送时出现“no basic auth credentials”</p>
+<p>A:参考<a target="_blank" rel="noopener" href="https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403%E8%A7%A3%E5%86%B3">https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403解决</a></p>
+<blockquote>
+<p>容器部署</p>
+</blockquote>
+<p>建议直接用根用户去部署，权限充分</p>
+<p>容器-ECS-集群-开始使用</p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201908359.png" alt="image-20221030201908359"></p>
+<p><img src="/2022/10/28/asw/%E5%AE%B9%E5%99%A8/image-20221030201936360.png" alt="image-20221030201936360"></p>
+<p>简单的一些配置 然后就是一直下一步下一步，端口映射设置8080，是因为这个镜像就是应该简单的java-web项目，其监听端口为8080</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.manongdao.com/article-2148671.html">https://www.manongdao.com/article-2148671.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AmazonECR/latest/userguide/what-is-ecr.html">https://docs.aws.amazon.com/zh_cn/AmazonECR/latest/userguide/what-is-ecr.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-configure.html">https://docs.aws.amazon.com/zh_cn/cli/latest/userguide/cli-chap-configure.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403">https://docs.amazonaws.cn/AmazonECR/latest/userguide/common-errors-docker.html#error-403</a></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/premiumsupport/knowledge-center/ecs-fargate-tasks-pending-state/?nc1=h_ls">https://aws.amazon.com/cn/premiumsupport/knowledge-center/ecs-fargate-tasks-pending-state/?nc1=h_ls</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/10/22/docker/%E5%AE%9E%E6%93%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="zhaotian">
+      <meta itemprop="description" content="可能不够详细，但会尽量实用">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不知名TT">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/22/docker/%E5%AE%9E%E6%93%8D/" class="post-title-link" itemprop="url">docker实操</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-22 16:37:04 / 修改时间：21:41:23" itemprop="dateCreated datePublished" datetime="2022-10-22T16:37:04+08:00">2022-10-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/10/16/git/git%E5%AE%9E%E6%93%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,10 +394,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-10-16 17:07:09 / 修改时间：22:13:58" itemprop="dateCreated datePublished" datetime="2022-10-16T17:07:09+08:00">2022-10-16</time>
+              <time title="创建时间：2022-10-16 17:07:09" itemprop="dateCreated datePublished" datetime="2022-10-16T17:07:09+08:00">2022-10-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-22 16:31:37" itemprop="dateModified" datetime="2022-10-22T16:31:37+08:00">2022-10-22</time>
+              </span>
 
           
 
@@ -297,7 +477,7 @@
 <ul>
 <li>–hard</li>
 </ul>
-<p><code> git reset --soft HEAD^</code></p>
+<p><code> git reset --hard HEAD^</code></p>
 <p>回退的同时重置暂存区和工作区（清空回退带来的变更）</p>
 <ul>
 <li>–merge</li>
@@ -467,64 +647,6 @@
 <h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 停止所有正在运行的容器（不适用windows cmd）</span></span><br><span class="line">docker stop $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有容器（不适用windows cmd）</span></span><br><span class="line">docker rm $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除所有镜像（不适用windows cmd）</span></span><br><span class="line">docker rmi $(docker images -a -q)</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/07/03/docker/docker-compose/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/03/docker/docker-compose/" class="post-title-link" itemprop="url">docker-compose</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-03 22:00:41 / 修改时间：22:09:31" itemprop="dateCreated datePublished" datetime="2022-07-03T22:00:41+08:00">2022-07-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -1051,66 +1173,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ztt0tian.github.io/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="zhaotian">
-      <meta itemprop="description" content="可能不够详细，但会尽量实用">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不知名TT">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/CodeTop/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">page</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-17 21:20:24 / 修改时间：21:20:55" itemprop="dateCreated datePublished" datetime="2022-03-17T21:20:24+08:00">2022-03-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归之后得到一个当时翻转的那个节点的引用</span></span><br><span class="line">    ListNode newNode = reverseList(head.next);</span><br><span class="line">    <span class="comment">// 将第n-1次递归的入参节点尾插到第n次递归的尾结点之后</span></span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// 这里每次返回的都是最后的那个节点的引用（每次递归返回都会增加其长度）</span></span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 非递归形式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">reverseList2</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line">    ListNode pre = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">        head = head.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1181,7 +1243,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1194,7 +1256,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">72</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
